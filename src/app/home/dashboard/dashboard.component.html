@@ -1,0 +1,48 @@
+<div id="dashborad" class="parent-contents">
+   <div class="inner-tabs-div col-xs-12">
+      <div class="parent-my-account-sec new-tabs-style">
+         <div class="tabs-scroller tabs-scroller-accounts">
+            <ul class="nav nav-tabs upper-ul scroller scroller-for-myaccount">
+               <li class="active side-status" (click)="optionSelected('MyAccount');"><a data-toggle="tab" href="#m-account"
+                     aria-expanded="false"> <img src="assets/m-accout.png"><div><span>Status
+                     </span></div></a></li>
+               <li class="side-edit" (click)="optionSelected('Edit');"><a data-toggle="tab" href="#Profile" aria-expanded="false"><img
+                        src="assets/edit-pro.png"><div><span>Edit
+                        Profile</span></div></a></li>
+               <li class="side-privary" (click)="optionSelected('Privacy');"><a data-toggle="tab" href="#p-tools" aria-expanded="false">
+                     <img src="assets/p-tools.png"><div><span>privacy
+                        tools</span></div></a></li>
+
+               <li class="side-sub" (click)="optionSelected('Subscriptions');"><a data-toggle="tab" href="#Subscriptions"
+                     aria-expanded="false"> <img src="assets/subs.png"><div><span>Subscriptions</span></div></a></li>
+             
+               <li *ngIf="userRole=='ROLE_TUTOR'" class="side-sub" (click)="optionSelected('Institute');"><a data-toggle="tab" href="#Institute"
+                        aria-expanded="false"> <img src="assets/inst3.png"><div><span>Institute</span></div></a></li>
+            </ul>
+         </div>
+         <div class="tab-content-inner" [ngSwitch]="selectedOption">
+            <div id="m-account" *ngSwitchCase="'MyAccount'" class="list-section">
+               <app-parent-my-account> </app-parent-my-account>
+            </div><!-- DIV TAB 1 -->
+            <div id="p-tools" *ngSwitchCase=" 'Privacy'" class="list-section">
+               <app-parent-privacy> </app-parent-privacy>
+
+            </div> <!-- DIV TAB 2 -->
+            <div id="Profile" *ngSwitchCase="'Edit'" class="list-section">
+               <app-parent-edit> </app-parent-edit>
+
+            </div> <!-- DIV TAB 3 -->
+
+            <div id="Subscriptions" *ngSwitchCase="'Subscriptions'" class="list-section">
+               <app-subscription></app-subscription>
+
+            </div> <!-- DIV TAB 4 -->
+            <div id="Institute" *ngSwitchCase="'Institute'" class="list-section">
+               <app-institute></app-institute>
+
+            </div> <!-- DIV TAB 5 -->
+
+         </div>
+      </div>
+   </div>
+</div>

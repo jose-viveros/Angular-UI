@@ -1,0 +1,126 @@
+a{
+	color: #0080ff;
+}
+a:hover{
+ cursor: pointer;
+ color: #00ceff;
+}
+.color-active{
+  color: #0080ff;
+  text-decoration-line: underline;
+}
+.emp-row {
+  display: none!important;
+}
+.tab-for-status {
+  width: 100% !important;
+  margin: 0 0 20px!important;
+}
+.tab-for-status h3.status {
+  background: #f5f5f5 !important;
+  color: #404040 !important;
+  padding: 15px 0 !important;
+  border-radius: 5px 5px 0px 0px !important;
+}
+.tab-for-status .wrapper {
+  padding: 15px 20px!important;
+  margin: 0px 0px 0px!important;
+  border-bottom: solid 1px #bfbfbf!important;
+}
+.tab-for-status .wrapper:last-child {
+  border-bottom: solid 0px #bfbfbf!important;
+}
+.p-tools-sec h3{
+  margin: 20px 0;
+}
+@media (min-width: 1200px) {
+  .status {
+    font-size: 17px;
+  }
+  .wrapper{
+    font-size: 16px;
+  }
+}
+@media(max-width: 1199px) and (min-width: 992px){
+  .status {
+    font-size: 16px;
+  }
+  .wrapper{
+    font-size: 14px;
+  }
+}
+@media(max-width: 991px) and (min-width: 768px){
+  .status {
+    font-size: 16px;
+  }
+  .wrapper{
+    font-size: 11px;
+  }
+}
+@media(max-width: 767px) and (min-width: 576px){
+  .status {
+    font-size: 13px !important;
+  }
+  .wrapper{
+    font-size: 11px;
+    display: flex !important;
+  }
+  .wrapper .col-sm-8{
+    max-width: 75%;
+  }
+  .wrapper .col-sm-4{
+    max-width: 25%;
+  }
+}
+
+@media(max-width: 575px) and (min-width: 415px){
+  .status {
+    font-size: 13px !important;
+  }
+  .inner-tab{
+    margin-left: 7px !important;
+  }
+  .inner-tab .wrapper{
+    font-size: 11px;
+    display: flex !important;
+    padding: 15px 0px !important
+  }
+  .wrapper .col-sm-8{
+    max-width: 70%;
+  }
+  .wrapper .col-sm-4{
+    max-width: 30%;
+  }
+  .wrapper .col-sm-4 a{
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 50%;
+  }
+}
+
+@media(max-width: 414px) and (min-width: 360px){
+  .status {
+    font-size: 13px !important;
+  }
+  .inner-tab{
+    margin-left: 7px !important;
+  }
+
+  .inner-tab .wrapper{
+    font-size: 11px;
+    display: flex !important;
+    /* padding: 10px 5px !important; */
+    padding: 10px 0px !important
+  }
+  .wrapper .col-sm-8{
+    max-width: 70%;
+  }
+  .wrapper .col-sm-4{
+    max-width: 30%;
+  }
+  .wrapper .col-sm-4 a{
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 50%;
+  }
+}

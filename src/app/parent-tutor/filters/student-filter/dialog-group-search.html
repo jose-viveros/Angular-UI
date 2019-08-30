@@ -1,0 +1,42 @@
+<mat-card class="example-card serach-for-sutd-">
+	<mat-form-field class="example-full-width">
+		<input matInput (keyup)="applyFilter($event.target.value)" placeholder="Search by Group Name" id="filterText" #filterText="ngModel"  [(ngModel)]= "model.filterText">
+  </mat-form-field>
+  <mat-accordion displayMode="flat" multi class="example-headers-align grp-filter">
+    <section matSort class="mat-header-row">
+      <span class="mat-header-cell gs" mat-sort-header="select" >
+        <mat-checkbox (change)="$event ? masterToggle() : null"
+												[checked]="selection.hasValue() && isAllSelected()"
+												[indeterminate]="selection.hasValue() && !isAllSelected()">
+        </mat-checkbox>
+      </span>
+      <span class="mat-header-cell gn" mat-sort-header="groupName" >Group Name</span>
+      <span class="mat-header-cell g" mat-sort-header="noOfStudents" >Number of students</span>
+      <span class="mat-header-cell gi" mat-sort-header="id" >Id</span>
+    </section>
+    <mat-expansion-panel *ngFor="let item of displayedRows$ | async">
+      <mat-expansion-panel-header class="mat-row">
+        <span class="mat-cell gs">
+          <mat-checkbox (click)="$event.stopPropagation()"
+												(change)="$event ? selection.toggle(item) : null"
+												[checked]="selection.isSelected(item)">
+          </mat-checkbox>
+        </span>
+        <span class="mat-cell gn" >{{item.groupName}}</span>
+        <span class="mat-cell g" >{{item.noOfStudents}}</span>
+        <span class="mat-cell gi" >{{item.id}}</span>
+      </mat-expansion-panel-header>
+    </mat-expansion-panel>
+  </mat-accordion>
+  <mat-paginator #paginator
+    [length]="totalRows$ | async"
+    [pageIndex]="0"
+    [pageSize]="5"
+    [pageSizeOptions]="[5, 10, 20]"
+    [showFirstLastButtons]="true"
+  ></mat-paginator>
+  <div class="navi-btn">
+    <button mat-button class="select" [mat-dialog-close]="{'data': this.selection, 'isAllSelected': isAllSelected()}" cdkFocusInitial>Ok</button>
+    <button mat-button class="cancel" value="Cancel" (click)="onNoClick()">Cancel</button>
+  </div>
+</mat-card>

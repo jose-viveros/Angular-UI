@@ -1,0 +1,43 @@
+<article class="main-content">
+<ng4-loading-spinner [timeout]="7000"></ng4-loading-spinner>
+<div>
+    <mat-accordion class="example-headers-align">
+        <mat-card class="example-card">
+            <button mat-raised-button class="btn btn-primary btn-active table-information" (click)="addAssistant()"
+                id="btnAdd">Add Assistant</button>
+        </mat-card>
+        <mat-card class="example-card">
+            <mat-table #table class="table-section" [dataSource]="dataSource">
+                <ng-container matColumnDef="firstName">
+                    <mat-header-cell *matHeaderCellDef class="table-header"> First Name </mat-header-cell>
+                    <mat-cell *matCellDef="let element" class="table-information"> {{element.firstName}} </mat-cell>
+                </ng-container>
+                <ng-container matColumnDef="lastName">
+                    <mat-header-cell *matHeaderCellDef class="table-header"> Last Name
+                    </mat-header-cell>
+                    <mat-cell *matCellDef="let element" class="table-information"> {{element.lastName}} </mat-cell>
+                </ng-container>
+                <ng-container matColumnDef="email">
+                    <mat-header-cell *matHeaderCellDef class="table-header"> Email </mat-header-cell>
+                    <mat-cell *matCellDef="let element" class="table-information"> {{element.email}} </mat-cell>
+                </ng-container>
+                <ng-container matColumnDef="actions">
+                    <mat-header-cell *matHeaderCellDef class="table-header"> Active </mat-header-cell>
+                    <!--mat-cell *matCellDef="let element" class="table-information login-btn">
+                        <button class="edit" (click)="editAssistant(element)"><span><img
+                                    src="assets/edit.png"></span>Edit</button>
+                    </mat-cell-->
+                    <mat-cell *matCellDef="let element">
+	      				<mat-slide-toggle [checked]="element.enabled" [(ngModel)]="element.enabled"  (change)="changeAssistantState($event, element)"></mat-slide-toggle>
+	      			</mat-cell>
+                </ng-container>
+                <mat-header-row style="background:#f5f5f5" *matHeaderRowDef="displayedColumns">
+                </mat-header-row>
+                <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+            </mat-table>
+            <mat-paginator #paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 20]" [showFirstLastButtons]="true">
+            </mat-paginator>
+        </mat-card>
+    </mat-accordion>
+</div>
+</article>

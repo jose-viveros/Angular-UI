@@ -1,0 +1,53 @@
+<article class="main-content">
+<ng4-loading-spinner [timeout]="7000"></ng4-loading-spinner>
+<div>
+    <mat-accordion class="example-headers-align">
+        <mat-card class="example-card">
+			<div class="form-inner">
+                <form [formGroup]="examDetailsForm" (ngSubmit)="onSubmitExamDetails(examDetailsForm.value)">
+					<div class="wrapper row">
+						<div class="col-sm-4">
+                            <label>Write-Up Style*</label>
+                                <select formControlName="freestyle" required>
+									<option *ngFor="let k of model.freestyletopics" [value]="k.id">{{
+										k.description }}</option>
+								</select>
+							<div
+								*ngFor="let validation of exam_validation_messages.freestyle">
+								<div class="error-message" 
+									*ngIf="examDetailsForm.get('freestyle').hasError(validation.type) && (examDetailsForm.get('freestyle').dirty || examDetailsForm.get('freestyle').touched)">{{validation.message}}</div>
+							</div>
+                        </div>
+                        
+                        <div class="col-sm-4">
+							<label>Topic Name</label> <input type="text" required 
+								formControlName="examName" ngModel>
+							<div
+								*ngFor="let validation of exam_validation_messages.examName">
+								<div class="error-message"
+									*ngIf="examDetailsForm.get('examName').hasError(validation.type) && (examDetailsForm.get('examName').dirty || examDetailsForm.get('examName').touched)">{{validation.message}}</div>
+							</div>
+						</div>
+						<div class="col-sm-4">
+							<label>Marks</label> <input type="text" required formControlName="marks" ngModel>
+                            <div
+								*ngFor="let validation of exam_validation_messages.marks">
+                                <div class="error-message"
+                                    *ngIf="examDetailsForm.get('marks').hasError(validation.type) && (examDetailsForm.get('marks').dirty || examDetailsForm.get('marks').touched)">{{validation.message}}</div>
+                            </div>
+						</div>
+						
+					</div>
+					<div class="col-xs-12 submit text-center">
+						<input type="submit" name="submit" class="btn-active move"
+							value="ADD" id="add-now"
+							>
+					</div>
+
+                </form>
+            </div>
+        </mat-card>
+        </mat-accordion>
+    </div>
+</article>
+

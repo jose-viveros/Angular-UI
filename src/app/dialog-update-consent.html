@@ -1,0 +1,11 @@
+<h2 mat-dialog-title>Notification</h2>
+<div mat-dialog-content>
+  <p>You might not be receiving important emails from us.Please update your privacy settings to let us know which emails you would like to receive.
+  </p><p> 
+     This message will appear until you have pressed the UPDATE CONSENT button on the Privacy Tools page.
+  </p>
+</div>
+<div mat-dialog-actions>
+  <button mat-button [mat-dialog-close]="true" cdkFocusInitial>DO IT NOW</button>
+  <button mat-button (click)="onNoClick()">UPDATE LATER</button>
+</div> 

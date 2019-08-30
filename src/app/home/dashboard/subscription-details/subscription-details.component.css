@@ -1,0 +1,14 @@
+.table-section {
+    border: solid 1px #bbb !important;
+}
+.table-header {    
+    font-family: 'Poppins', sans-serif !important;
+    font-size: 15px;
+    color: #333;
+    font-weight: bold;
+}
+
+.table-information {    
+    font-family: 'Poppins', sans-serif !important;
+    font-size: 12px;
+}

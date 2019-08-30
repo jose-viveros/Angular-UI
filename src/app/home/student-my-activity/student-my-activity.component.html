@@ -1,0 +1,78 @@
+<div id="activity" class="parent-contents">
+<ng4-loading-spinner  [timeout]="15000" ></ng4-loading-spinner>
+   <div class="inner-tabs-div col-xs-12">
+     <div class="activity-filters col-xs-12">
+         <div>
+            <app-exam-filter [showAssignedComponent]=false></app-exam-filter>
+         </div>
+      </div>
+     <div class="activity-action col-xs-12 text-right">
+       <div class="activity-exam-numbers col-sm-2 col-xs-2 text-left">
+         <p>{{noOfRows}} Tests found</p>
+       </div>
+       <div class="activity-action-btns col-sm-10 col-xs-12 text-right">
+         <button mat-raised-button class="btn btn-primary btn-active btn-activity" (click)="getResult('COMPLETE')"
+         id="btnSearch">Results</button>
+         <button mat-raised-button class="btn btn-primary btn-active btn-activity" (click)="getResult('INPROGRESS')"
+             id="btnSearch">Tests To Resume</button>
+         <button mat-raised-button class="btn btn-primary btn-active btn-activity" (click)="getResult('PENDING')"
+             id="btnSearch">Tests To Do</button>
+       </div>
+     </div>
+     <p class="resp" style="display: none;">{{noOfRows}} Tests found</p>
+     <div class="activity-table col-xs-12">
+       <mat-accordion displayMode="flat" multi class="example-headers-align stud-exam-data">
+          <section matSort class="mat-header-row">
+            <span class="mat-header-cell t" mat-sort-header="testName">TEST NAME</span>
+            <span class="mat-header-cell a" mat-sort-header="assignedDate">ASSIGNED DATE</span>
+            <span class="mat-header-cell d" mat-sort-header="dueDate">DUE DATE</span>
+            <span class="mat-header-cell f" mat-sort-header="finishedDate">FINISHED DATE</span>
+            <span class="mat-header-cell s" mat-sort-header="score">SCORE</span>
+            <span class="mat-header-cell ac" mat-sort-header="action">ACTION</span>
+          </section>
+          <mat-expansion-panel *ngFor="let item of displayedRows$ | async">
+            <mat-expansion-panel-header class="mat-row">
+              <span class="mat-cell t" [ngClass]="{'overDue' : item.overDue}"
+                     [matTooltip]="item.overDue ? 'This test is overdue!' : ''">{{item.testName}}</span>
+              <span class="mat-cell a" [ngClass]="{'overDue' : item.overDue}"
+                     [matTooltip]="item.overDue ? 'This test is overdue!' : ''">{{item.assignedDate | date:'dd/MM/yyyy'}}</span>
+              <span class="mat-cell d" [ngClass]="{'overDue' : item.overDue}"
+                     [matTooltip]="item.overDue ? 'This test is overdue!' : ''">{{item.dueDate | date: 'dd/MM/yyyy'}}</span>
+              <span class="mat-cell f" [ngClass]="{'overDue' : item.overDue}"
+                     [matTooltip]="item.overDue ? 'This test is overdue!' : ''">{{item.finishedDate | date: 'dd/MM/yyyy'}}</span>
+              <span class="mat-cell s" [ngClass]="{'overDue' : item.overDue}"
+                     [matTooltip]="item.overDue ? 'This test is overdue!' : ''">{{item.score}}</span>
+              <span class="mat-cell ac">
+                <button mat-raised-button class="btn btn-primary btn-active btn-activity" (click)="getAction(item)"
+                        id="btnAction">{{item.action}}</button>
+              </span>
+            </mat-expansion-panel-header>
+            <div class="item-content">
+              <div class="content-item">
+                <div class="elem">ASSIGNED DATE</div>
+                <div class="val">{{item.assignedDate | date: 'dd/MM/yyyy'}}</div>
+              </div>
+              <div class="content-item">
+                <div class="elem">DUE DATE</div>
+                <div class="val">{{item.dueDate | date: 'dd/MM/yyyy'}}</div>
+              </div>
+              <div class="content-item">
+                <div class="elem">FINISHED DATE</div>
+                <div class="val">{{item.finishedDate | date: 'dd/MM/yyyy'}}</div>
+              </div>
+            </div>
+          </mat-expansion-panel>
+         </mat-accordion>
+       <mat-paginator #paginator
+          [length]="totalRows$ | async"
+          [pageIndex]="0"
+          [pageSize]="5"
+          [pageSizeOptions]="[5, 10, 20]"
+          [showFirstLastButtons]="true"
+        ></mat-paginator>
+     </div>
+     <!--<div class="activity-no-table col-xs-12 text-center" *ngIf="noOfRows == 0">-->
+       <!--<p>No Test data available</p>-->
+     <!--</div>-->
+   </div><!-- inner-tabs-div -->
+</div>

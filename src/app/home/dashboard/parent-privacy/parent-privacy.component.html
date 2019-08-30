@@ -1,0 +1,40 @@
+<div class="p-tools-sec col-xs-12">
+   <div class="wrapper col-xs-12 row">
+      <div class="inner">
+         <h3>Receive notifications email 
+            <ui-switch style="float:right;" [checked]="changeNotification" (change)="changeNotification=!changeNotification"></ui-switch>
+         </h3>
+         <p>
+            <strong>We highly recommend leaving this switched on.</strong> With this option on you will be notified of important things relating directly to your account e.g. when your subscription about to expire, announcement of any important dates etc. With this switched off you might miss out on important info.
+            
+         </p>
+      </div>
+      <div class="inner">
+         <h3>Receive Results email 
+            <ui-switch style="float:right;" [checked]="changeresultNotifications" (change)="changeresultNotifications=!changeresultNotifications"></ui-switch>
+         </h3>
+         <p>
+            Every time one of your students completes a test you will receive an email containing the result and a link to review the test if this option is switched on.
+         </p>
+      </div>
+   </div>
+   <div class="up-contest col-xs-12 inner row">
+      <h5>By pressing the button below you give your consent to receive tne communication that are
+         switched on above and you also agree to our 
+         <a style="color: #0080ff; text-decoration-line: underline;" class="color-active" (click)="navigateTo('terms-n-conditions')">T
+            &amp; C</a> and
+         <a style="color: #0080ff; text-decoration-line: underline;" class="color-active" (click)="navigateTo('privacy-policy')">Privacy &amp; Policy</a></h5>
+      <div class="col-xs-12 submit text-center">
+         <input type="submit" name="submit" class="btn-active move" value="UPDATE CONSENT" id="" (click)="updateConsent()">
+         <a (click)="downloadContent()" class="downloader"><img alt="download" src="assets/download-img.png"> Download
+            your DATA</a>
+      </div>
+   </div>
+   <div class="remove-data inner col-xs-12 row">
+      <h3>Remove your personal data</h3>
+      <p class="warn"> <span class="warning">WARNING </span>- PRESSING THIS BUTTON WILL TOTALLY WIPE YOUR PERSONAL DATA. YOU WILL NO LONGER BE ABLE TO LOG IN. If you ever wanted to use the site again you would have to register and start with an empty account.</p>
+      <div class="col-xs-12 submit text-center">
+         <input type="submit" name="submit" class="red move" value="DELETE PERSONAL DATA" id="" (click)="openDialog()">
+      </div>
+   </div>
+</div> <!-- p-tools-sec -->

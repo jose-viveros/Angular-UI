@@ -1,0 +1,240 @@
+<div *ngIf="showByGroups" id="students" class="parent-contents">
+   <ng4-loading-spinner [timeout]="5000"></ng4-loading-spinner>
+   <div class="inner-tabs-div col-sm-12">
+     <div class="activity-filters col-sm-12">
+       <div class="col-sm-12 student-activity-status activity-inner">
+         <div class="col-sm-12 prents-filter nav-option">
+            <div class="col-sm-6 text-left">
+               <span *ngIf="this.qStudentNames && this.qStudentNames.length>0">SELECTED STUDENTS</span>
+               <span *ngIf="this.qGroupNames && this.qGroupNames.length>0">SELECTED GROUPS</span>
+            </div>
+            <br class="response-enter">
+            <div class="col-sm-12 text-left added-btns-row">
+               <ul class="nav nav-tabs left-tabs-nav selected-student">
+                  <li class="active" style="margin-right: 20px; height: 24px;"
+                     *ngFor="let studentName of this.qStudentNames ; let idx = index">
+                     <a data-toggle="tab" aria-expanded="true">{{studentName}}
+                        <span class="nums" (click)="removeStudent(studentName)"><img
+                              src="assets/close-gray.svg"></span></a></li>
+                  <li class="active" style="margin-right: 20px; height: 24px;"
+                     *ngFor="let groupName of this.qGroupNames; let idx = index">
+                     <a data-toggle="tab" aria-expanded="true">{{groupName}}
+                        <span class="nums" (click)="removeGroup(groupName)"><img
+                              src="assets/close-gray.svg"></span></a></li>
+               </ul>
+            </div>
+         </div>
+       </div>
+       <div class="col-sm-12 show-by text-center exam-filter">
+         <div class="radio-for-studs col-sm-12 row">
+           <div class="col-xl-4 col-lg-5  col-md-6 col-sm-12 sech-by-name">
+             <h4 *ngIf="tutor">SHOW BY :
+              <span
+                [ngClass]="{ 'color-active point': showByStudents, 'color-inactive point': !showByStudents }"
+                (click)="showBy('students')">Students</span>
+              <span
+                [ngClass]="{ 'color-active point': showByGroups, 'color-inactive point' : !showByGroups }"
+                (click)="showBy('groups')">Groups</span>
+            </h4>
+           </div>
+           <div class="col-sm-12" style="padding: 0 !important;">
+             <div class="col-xl-4 col-lg-3  col-md-3 col-sm-12 sech-by-name">
+               <input type="text" placeholder="SEARCH" (keyup)="applyFilter($event.target.value)" [(ngModel)]="model.selGroup" />
+             </div>
+             <div class="col-xl-8 col-lg-9 col-md-9 col-sm-12 radio-btn text-center">
+               <mat-radio-group>
+                  <mat-radio-button class="radio1" value="SHOW SELECTED STUDENTS ONLY"
+                    (click)="showSelectedOnly()">SHOW
+                    SELECTED GROUPS ONLY</mat-radio-button>
+                  <mat-radio-button class="radio2" value="INCLUDE ARCHIVED GROUPS"
+                    (click)="includeArchived()">
+                    INCLUDE ARCHIVED GROUPS </mat-radio-button>
+                </mat-radio-group>
+             </div>
+           </div>
+        </div>
+       </div>
+       <div class="col-sm-12 add-group text-right">
+         <mat-accordion class="example-headers-align">
+           <div class="col-sm-6 selected-rec">{{noOfGroups}} Records found
+            <button class="rec-btn"> {{selectedGroupsCount}} selected </button>
+           </div>
+           <br class="resp-enter">
+           <button mat-raised-button class="btn btn-primary btn-active table-information"
+                          (click)="navigateTo('mocklist')" id="btnAct"
+                          [disabled]="selectedGroupsCount==0">Assign Tests to selected group</button>
+           <button mat-raised-button class="btn btn-primary btn-active table-information"
+              (click)="openCreateGroupDialog()" id="btnAdd">Create Group</button>
+          <!--<mat-card class="example-card">-->
+             <!--<table class="table-information" style="width: 100%">-->
+                <!--<tbody>-->
+                   <!--<tr>-->
+                      <!--<td>{{noOfGroups}} Records found/{{selectedGroupsCount}}-->
+                         <!--selected</td>-->
+                      <!--<td style="text-align: right">-->
+                         <!--<button mat-raised-button class="btn btn-primary btn-active table-information"-->
+                            <!--(click)="navigateTo('mocklist')" id="btnAct"-->
+                            <!--[disabled]="selectedGroupsCount==0">Assign Tests to selected group</button>-->
+                         <!--<button mat-raised-button class="btn btn-primary btn-active table-information"-->
+                            <!--(click)="openCreateGroupDialog()" id="btnAdd">Create Group</button>-->
+                      <!--</td>-->
+                   <!--</tr>-->
+                <!--</tbody>-->
+             <!--</table>-->
+          <!--</mat-card>-->
+          </mat-accordion>
+       </div>
+       <div class="col-sm-12 found-record" *ngIf="!noRecord">
+         <div class="col-sm-6 selected-rec res" style="display: none;">{{noOfGroups}} Records found
+          <button class="rec-btn"> {{selectedGroupsCount}} selected </button>
+         </div>
+         <mat-accordion displayMode="flat" multi class="example-headers-align tutor-my-stud">
+          <section matSort class="mat-header-row">
+            <span class="mat-header-cell n" mat-sort-header="username">GROUP NAME</span>
+            <span class="mat-header-cell a" mat-sort-header="groupname">ACTIONS</span>
+            <span class="mat-header-cell o" mat-sort-header="action">NUMBER OF STUDENTS</span>
+            <span class="mat-header-cell s" mat-sort-header="select">SELECT
+              <mat-checkbox (change)="$event ? masterToggle() : null " style="margin-top: 3px; margin-left: 2px;"
+                    [checked]="groupselection.hasValue() && isAllSelected()"
+                    [indeterminate]="groupselection.hasValue() && !isAllSelected()">
+              </mat-checkbox>
+            </span>
+            <span class="mat-header-cell sm" style="display: none;" mat-sort-header="select">
+              <mat-checkbox (change)="$event ? masterToggle() : null " style="margin-top: 3px; margin-left: 2px;"
+                    [checked]="groupselection.hasValue() && isAllSelected()"
+                    [indeterminate]="groupselection.hasValue() && !isAllSelected()">
+              </mat-checkbox>
+            </span>
+          </section>
+          <mat-expansion-panel *ngFor="let item of displayedRows$ | async">
+            <mat-expansion-panel-header class="mat-row">
+              <span class="mat-cell n" [ngClass]="{'active' : item.archived == 'Active', 'inactive' :item.archived=='InActive'}">{{item.groupName}}</span>
+              <span class="mat-cell a">
+                <span *ngIf="item.archived=='Active'">
+                   <button class="act" (click)="openEditGroupDialog(item)"><span><img
+                            src="assets/edit.png"></span>Edit</button>
+                   <button class="act" (click)="openDeleteGroupDialog(item)"><span><img
+                            src="assets/edit.png"></span>Delete</button>
+                   <button class="act" (click)="openAddStudentDialog(item)"><span><img
+                            src="assets/login.png"></span>Add Students</button>
+                   <button class="act" (click)="openRemoveStudentDialog(item)"
+                      ><span><img
+                            src="assets/edit.png"></span>Remove Students</button>
+                </span>
+                <span *ngIf="item.archived=='InActive'">
+                   <button class="action-btn" (click)="unArchiveGroup(item)">UnArchive</button>
+                </span>
+              </span>
+              <span class="mat-cell o" [ngClass]="{'active' : item.archived == 'Active', 'inactive' :item.archived=='InActive'}">{{item.noOfStudents}}</span>
+              <span class="mat-cell s" [ngClass]="{'active' : item.archived == 'Active', 'inactive' :item.archived=='InActive'}">
+                <mat-checkbox (click)="$event.stopPropagation()"
+                                 (change)="$event ? groupselection.toggle(item) : null;groupSelectionChanged($event, item.id, item.groupName)"
+                                 [checked]="groupselection.isSelected(item)"
+                                 [disabled]="item.archived=='InActive'">
+                </mat-checkbox>
+              </span>
+            </mat-expansion-panel-header>
+            <div class="item-content">
+              <div class="content-item">
+                <div class="elem" *ngIf="item.archived=='Active'"><p>ACTIONS</p></div>
+                <div class="elem" *ngIf="item.archived=='InActive'"><span>ACTIONS</span></div>
+                <div class="val">
+                  <span *ngIf="item.archived=='Active'">
+                   <button class="act" (click)="openEditGroupDialog(item)"><span><img
+                            src="assets/edit.png"></span>Edit</button>
+                   <button class="act" (click)="openDeleteGroupDialog(item)"><span><img
+                            src="assets/edit.png"></span>Delete</button>
+                   <button class="act" (click)="openAddStudentDialog(item)"><span><img
+                            src="assets/login.png"></span>Add Students</button>
+                   <button class="act" (click)="openRemoveStudentDialog(item)"
+                      ><span><img
+                            src="assets/edit.png"></span>Remove Students</button>
+                  </span>
+                  <span *ngIf="item.archived=='InActive'">
+                     <button class="action-btn" (click)="unArchiveGroup(item)">UnArchive</button>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </mat-expansion-panel>
+         </mat-accordion>
+         <mat-paginator #paginator
+            [length]="totalRows$ | async"
+            [pageIndex]="0"
+            [pageSize]="5"
+            [pageSizeOptions]="[5, 10, 20]"
+            [showFirstLastButtons]="true"
+          ></mat-paginator>
+           <!--<mat-accordion class="example-headers-align grp-data-all">-->
+              <!--<mat-card class="example-card">-->
+                 <!--<mat-table #table class="table-section" [dataSource]="groupdataSource">-->
+
+                    <!--<ng-container matColumnDef="groupName">-->
+                       <!--<mat-header-cell *matHeaderCellDef class="table-header"> Group Name </mat-header-cell>-->
+                       <!--<mat-cell *matCellDef="let element"-->
+                          <!--[ngClass]="{'active' : element.archived == 'Active', 'inactive' :element.archived=='InActive'}"-->
+                          <!--class="table-information"> {{element.groupName}} </mat-cell>-->
+                    <!--</ng-container>-->
+                    <!--<ng-container matColumnDef="actions">-->
+                       <!--<mat-header-cell *matHeaderCellDef class="table-header"> Actions</mat-header-cell>-->
+                       <!--<mat-cell *matCellDef="let element" class="table-information">-->
+                          <!--<span *ngIf="element.archived=='Active'">-->
+                             <!--<button class="act" (click)="openEditGroupDialog(element)"><span><img-->
+                                      <!--src="assets/edit.png"></span>Edit</button>-->
+                             <!--<button class="act" (click)="openDeleteGroupDialog(element)"><span><img-->
+                                      <!--src="assets/edit.png"></span>Delete</button>-->
+                             <!--<button class="act" (click)="openAddStudentDialog(element)"><span><img-->
+                                      <!--src="assets/login.png"></span>Add Students</button>-->
+                             <!--<button class="act" (click)="openRemoveStudentDialog(element)"-->
+                                <!--[disabled]="element.noOfStudents==0"><span><img-->
+                                      <!--src="assets/edit.png"></span>Remove Students</button>-->
+                          <!--</span>-->
+                          <!--<span *ngIf="element.archived=='InActive'">-->
+                             <!--<button class="action-btn" (click)="unArchiveGroup(element)">UnArchive</button>-->
+                          <!--</span>-->
+                       <!--</mat-cell>-->
+                    <!--</ng-container>-->
+                    <!--<ng-container matColumnDef="noOfStudents">-->
+                       <!--<mat-header-cell *matHeaderCellDef class="table-header"> Number of Students-->
+                       <!--</mat-header-cell>-->
+                       <!--<mat-cell *matCellDef="let element"-->
+                          <!--[ngClass]="{'active' : element.archived == 'Active', 'inactive' :element.archived=='InActive'}"-->
+                          <!--class="table-information"> {{element.noOfStudents}} </mat-cell>-->
+                    <!--</ng-container>-->
+
+                    <!--<ng-container matColumnDef="select">-->
+                       <!--<mat-header-cell *matHeaderCellDef class="table-header"> Select-->
+                          <!--<mat-checkbox (change)="$event ? masterToggle() : null "-->
+                             <!--[checked]="groupselection.hasValue() && isAllSelected()"-->
+                             <!--[indeterminate]="groupselection.hasValue() && !isAllSelected()">-->
+                          <!--</mat-checkbox>-->
+
+                       <!--</mat-header-cell>-->
+                       <!--<mat-cell *matCellDef="let element" class="table-information">-->
+                          <!--<mat-checkbox (click)="$event.stopPropagation()"-->
+                             <!--(change)="$event ? groupselection.toggle(element) : null;groupSelectionChanged($event, element.id, element.groupName)"-->
+                             <!--[checked]="groupselection.isSelected(element)"-->
+                             <!--[disabled]="element.archived=='InActive'">-->
+                          <!--</mat-checkbox>-->
+
+                       <!--</mat-cell>-->
+                    <!--</ng-container>-->
+                    <!--<mat-header-row style="background:#f5f5f5" *matHeaderRowDef="displayedGroupColumns">-->
+                    <!--</mat-header-row>-->
+                    <!--<mat-row *matRowDef="let row; columns: displayedGroupColumns;"></mat-row>-->
+                 <!--</mat-table>-->
+                 <!--<mat-paginator #paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 20]"-->
+                    <!--[showFirstLastButtons]="true">-->
+                 <!--</mat-paginator>-->
+              <!--</mat-card>-->
+           <!--</mat-accordion>-->
+         </div>
+      </div>
+     <div class="no-message col-sm-12">
+       <p *ngIf="noRecord">{{noRecordMessage}}</p>
+     </div>
+   </div>
+ </div>
+<div *ngIf="showByStudents">
+   <app-my-stud></app-my-stud>
+</div>

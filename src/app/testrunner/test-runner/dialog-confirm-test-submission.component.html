@@ -1,0 +1,17 @@
+<div *ngIf="data && !data.timeOver">
+    <div mat-dialog-content>
+        <p>Are you sure you want to submit the test?</p>
+    </div>
+    <div mat-dialog-actions>
+        <button mat-button [mat-dialog-close]="confirm" cdkFocusInitial>Yes</button>
+        <button mat-button (click)="onNoClick()">No</button>
+    </div>
+</div>
+<div *ngIf="data && data.timeOver">
+    <div mat-dialog-content>
+        <p>Time for the exam is finished, you will be redirected to Review page.</p>
+    </div>
+    <div mat-dialog-actions>
+        <button mat-button [mat-dialog-close]="confirm" cdkFocusInitial>Ok</button>
+    </div>
+</div>

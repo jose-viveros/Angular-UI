@@ -1,0 +1,50 @@
+<div *ngIf="exam">
+
+  <h2>{{exam.name }} </h2>
+  <div><span>Course: </span>{{exam.courseName}}</div>
+  <div><span>Details: </span>{{exam.examInfo}}</div>
+  <div><span>ExamDate: </span>{{exam.date}}</div>
+  <div>
+    <mat-table [dataSource]="exam.subscriptions" class="mat-elevation-z8">
+
+  <!--- Note that these columns can be defined in any order.
+        The actual rendered columns are set as a property on the row definition" -->
+
+  <!-- Plan Column -->
+  <ng-container matColumnDef="title">
+    <mat-header-cell *matHeaderCellDef> Plan </mat-header-cell>
+    <mat-cell *matCellDef="let subscription"> {{subscription.title}} </mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="noOfMockTests">
+    <mat-header-cell *matHeaderCellDef> Mock Tests #</mat-header-cell>
+    <mat-cell *matCellDef="let subscription"> {{subscription.noOfMockTests}} </mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="noOfTopicTests">
+    <mat-header-cell *matHeaderCellDef> Topic Tests #</mat-header-cell>
+    <mat-cell *matCellDef="let subscription"> {{subscription.noOfTopicTests}} </mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="expiryDate">
+    <mat-header-cell *matHeaderCellDef> Expires on </mat-header-cell>
+    <mat-cell *matCellDef="let subscription"> {{subscription.expiryDate | date:'medium'}} </mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="expiryDuration">
+    <mat-header-cell *matHeaderCellDef> Validity </mat-header-cell>
+    <mat-cell *matCellDef="let subscription"> {{subscription.expiryDuration}} </mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="price">
+    <mat-header-cell *matHeaderCellDef> Price </mat-header-cell>
+    <mat-cell *matCellDef="let subscription"> {{subscription.price | currency: currency:true}} </mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="action">
+      <mat-header-cell *matHeaderCellDef> Buy  </mat-header-cell>
+      <mat-cell *matCellDef="let subscription" class="table-information">
+        <button mat-raised-button class="btn btn-primary btn-active btn-activity" 
+            (click)="checkout(subscription.id)" id="btnAction">Buy</button>
+      </mat-cell>
+  </ng-container>
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+</mat-table>
+  </div>
+
+</div>

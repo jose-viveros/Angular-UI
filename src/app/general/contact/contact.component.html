@@ -1,0 +1,87 @@
+<div class="container container_contact ">
+    <ng4-loading-spinner> </ng4-loading-spinner>
+	<h2>Contact Us</h2>
+	<!-- <h4>Support</h4>
+	<p>Before getting in touch, you might like to try the following
+		steps to resolve your issue...</p>
+	<ul>
+		<li>General <a routerLink="faq" (click)="navigateTo('faq')">Support</a>
+			FAQ
+		</li>
+		<li>Review issues in the link <a routerLink="common-issues"	(click)="navigateTo('common-issues')">Common Issues</a> Section
+		</li>
+	</ul> 
+	<h4>Email Us:</h4>-->
+	<br>
+	<p>Write a direct message to Excel11Plus team by filling following	form..</p>
+
+	<br>
+	<div class="contactPanel" >
+
+		<form [formGroup]="contactDetailsForm" novalidate
+			(ngSubmit)="onSubmitContactDetails(contactDetailsForm.value)"
+			style="width: 100%;">
+
+			<mat-form-field style="width:100%;"> <input
+				matInput maxlength="25" placeholder="Name" formControlName="name"
+				required> <mat-error
+				*ngFor="let validation of contact_validation_messages.name">
+			<mat-error class="error-message"
+				*ngIf="contactDetailsForm.get('name').hasError(validation.type) && 
+                 										(contactDetailsForm.get('name').dirty || contactDetailsForm.get('name').touched)">{{validation.message}}
+			</mat-error> </mat-error> </mat-form-field>
+			<br>
+			<mat-form-field style="width:100%;"> <input
+				matInput type="email" placeholder="Email" formControlName="email"
+				required> <mat-error
+				*ngFor="let validation of contact_validation_messages.email">
+			<mat-error class="error-message"
+				*ngIf="contactDetailsForm.get('email').hasError(validation.type) && (contactDetailsForm.get('email').dirty || 
+                 										contactDetailsForm.get('email').touched)">{{validation.message}}</mat-error>
+			</mat-error> </mat-form-field>
+
+			<br>
+			<mat-form-field style="width:100%;"> <input
+				matInput type="tel" maxlength="25" placeholder="ContactNo"
+				formControlName="contactno" required> <mat-error
+				*ngFor="let validation of contact_validation_messages.contactno">
+			<mat-error class="error-message"
+				*ngIf="contactDetailsForm.get('contactno').hasError(validation.type) && 
+                 										(contactDetailsForm.get('contactno').dirty || contactDetailsForm.get('contactno').touched)">{{validation.message}}</mat-error>
+			</mat-error> </mat-form-field>
+			<br>
+			<mat-form-field style="width:100%;"> <input
+				matInput maxlength="25" placeholder="Subject"
+				formControlName="subject" required> <mat-error
+				*ngFor="let validation of contact_validation_messages.subject">
+			<mat-error class="error-message"
+				*ngIf="contactDetailsForm.get('subject').hasError(validation.type) && 
+                 										(contactDetailsForm.get('subject').dirty || contactDetailsForm.get('subject').touched)">{{validation.message}}</mat-error>
+			</mat-error> </mat-form-field>
+			<br>
+			<mat-form-field style="width:100%;height:20%"> <input
+				matInput maxlength="200" placeholder="Message"
+				formControlName="message" required> <mat-error
+				*ngFor="let validation of contact_validation_messages.message">
+			<mat-error class="error-message"
+				*ngIf="contactDetailsForm.get('message').hasError(validation.type) && 
+                 										(contactDetailsForm.get('message').dirty || contactDetailsForm.get('message').touched)">{{validation.message}}</mat-error>
+			</mat-error> </mat-form-field>
+			<br><br>
+
+			<app-antibot></app-antibot>
+
+			<br>
+			<br>
+
+			<div style="float:left; margin: 5%;">
+				<button class="btn btn-primary" mat-raised-button type="submit"
+					[disabled]="!contactDetailsForm.valid">Send</button>
+				<button class="btn btn-primary" mat-raised-button type="reset">Reset</button>
+			</div>
+		</form>
+
+	</div>
+
+</div>
+

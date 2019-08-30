@@ -1,0 +1,43 @@
+
+<mat-card class="example-card search-for-assign">
+	<h3>Assign Tests</h3>
+<ng4-loading-spinner ></ng4-loading-spinner>
+<mat-form-field class="example-full-width">
+	  <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter" id="filterText" #filterText="ngModel"  [(ngModel)]= "model.filterText">
+</mat-form-field>
+<mat-form-field class="example-full-width">
+		<input matInput type="date" placeholder="Due Date" id="dueDate" #filterText="ngModel"  [(ngModel)]= "model.dueDate">
+</mat-form-field>
+<mat-table #table [dataSource]="dataSource">
+	<ng-container matColumnDef="examName">
+		<mat-header-cell *matHeaderCellDef> Exam Name </mat-header-cell>
+		<mat-cell *matCellDef="let element" [ngClass]="{'inactive' : element.totalStudentsInGroup == 0}"> {{element.examName}} </mat-cell>
+	</ng-container>
+	
+	<ng-container matColumnDef="groupName">
+		<mat-header-cell *matHeaderCellDef> Group Name </mat-header-cell>
+		<mat-cell *matCellDef="let element" [ngClass]="{'inactive' : element.totalStudentsInGroup == 0}"> {{element.groupName}} </mat-cell>
+	</ng-container>
+	
+	<ng-container matColumnDef="totalStudentsInGroup">
+		<mat-header-cell *matHeaderCellDef> Number of students </mat-header-cell>
+		<mat-cell *matCellDef="let element" [ngClass]="{'inactive' : element.totalStudentsInGroup == 0}"> {{element.totalStudentsInGroup}} </mat-cell>
+	</ng-container>
+	
+	<ng-container matColumnDef="status">
+		<mat-header-cell *matHeaderCellDef> Status </mat-header-cell>
+		<mat-cell *matCellDef="let element"[ngClass]="{'inactive' : element.totalStudentsInGroup == 0}" > {{element.status}} </mat-cell>
+	</ng-container>
+					
+	  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+	<mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+</mat-table>
+<mat-paginator #paginator
+						 [pageSize]="5"
+						 [pageSizeOptions]="[5, 10, 20]"
+						 [showFirstLastButtons]="true">
+</mat-paginator>
+<button mat-raised-button class="btn btn-primary btn-active" (click)="action()" cdkFocusInitial>Assign</button>
+<button mat-button (click)="onNoClick()">Cancel</button>
+</mat-card>
+						  

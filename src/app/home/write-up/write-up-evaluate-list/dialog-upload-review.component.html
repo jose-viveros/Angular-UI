@@ -1,0 +1,64 @@
+<h2 mat-dialog-title>Upload Review</h2>
+<form [formGroup]="freeStyleFormGroup" novalidate (ngSubmit)="uploadFile(freeStyleFormGroup.value)">
+<div mat-dialog-content>
+  <table>
+      <tr>
+          <td>
+              Student Name:
+          </td>
+          <td>
+              {{data.studentName}}
+          </td>
+      </tr>
+      <tr>
+          <td>
+              Write-Up Type:
+          </td>
+          <td>
+              {{data.writeupType}}
+          </td>
+      </tr>
+      <tr>
+          <td>
+              Topic:
+          </td>
+          <td>
+              {{data.topicName}}
+          </td>
+      </tr>
+      <tr>
+        <td>
+              Upload: 
+        </td>
+        <td>
+            <div class="col-sm-4">
+                <input type="text" required formControlName="marks" ngModel>
+                <div *ngFor="let validation of evaluation_messagesmarks">
+                    <div class="error-message"
+                        *ngIf="freeStyleFormGroup.get('marks').hasError(validation.type) && (freeStyleFormGroup.get('marks').dirty || freeStyleFormGroup.get('marks').touched)">
+                        {{validation.message}}</div>
+                </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+              Upload: 
+        </td>
+        <td>
+            <div class="col-sm-4">
+                <input type="file" (change)="handleFreeStyleFile($event.target.files)" formControlName="freeStyleImage" ngModel>
+                <div class="error-message" *ngIf="sizeErrorLogo">image size should be less than 1 MB</div>
+            </div>
+        </td>
+      </tr>
+  </table>
+</div>
+<div mat-dialog-actions>
+  <div class="col-xs-12 submit text-center">
+     <input type="submit" name="submit" class="btn-active move" value="Upload" id="register-now"
+     [disabled]="!freeStyleFormGroup.valid">
+     <button mat-button class="btn-active move" [mat-dialog-close]="true" cdkFocusInitial>Close</button>
+  </div>
+</div> 
+</form>

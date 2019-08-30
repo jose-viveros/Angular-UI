@@ -1,0 +1,40 @@
+
+
+<div mat-dialog-content id="uploadResult" class="parent-contents">
+  <h2>Upload Result</h2>
+  <br>
+ <div *ngIf="data.length>0">
+  <label>File Name: </label>{{data[0].fileName}} <br>
+  <label>Upload Date: </label>{{data[0].uploadDate }} <br>
+  <table id="saved" >
+    <tr>
+      <th>Row Number</th>
+      <th>Name</th>
+      <th>User Name</th>
+      <th>Status</th>
+      <th>Reason</th>
+    </tr>
+    <tr *ngFor="let d of data">
+      <td>{{d.rowNum}}</td>
+      <td>{{d.name}}</td>
+      <td>{{d.userName}}</td>
+      <td  [ngClass]="{'orange' : d.status=='Not Saved' && d.missingValues.length>0, 'red' : d.status=='Not Saved', 'green' : d.status=='Saved'}">{{d.status}}</td>
+      <td  [ngClass]="{'orange' : d.status=='Not Saved' && d.missingValues.length>0, 'red' : d.status=='Not Saved', 'green' : d.status=='Saved'}">{{d.reason}}
+          <span *ngIf = "d.missingValues.length>0">[
+           <i *ngFor="let val of d.missingValues">{{val}},</i>]
+          </span>
+
+      </td>
+    </tr>
+    
+  </table>
+  </div>
+ <br>
+ <div *ngIf="data.length==0">
+   <label> No any valid record found to save.</label>
+ </div>
+  <input type="submit" name="submit" class="btn-active move"
+					(click)="closeDailog()" value="OK" id="register-now"> 
+  <input type="submit" name="submit" class="btn-active move"
+					(click)="downloadPdf(data)" value="Download Result PDF" id="register-now">
+</div>

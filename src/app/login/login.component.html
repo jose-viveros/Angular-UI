@@ -1,0 +1,63 @@
+<article class="main-content">
+   <section class="breadcums-inner col-xs-12">
+      <div class="container registration-content">
+         <div class="dashborad-breadcums">
+            <ul>
+               <li><a href="http://dev.99webdesigns.net/Excell-plus/"> Home </a> &gt; Login</li>
+            </ul>
+         </div>
+      </div>
+   </section>
+   <section class="main-banner reg-form-banner">
+      <div class="container registration-content">
+         <div class="banner-title teg-banner-title">
+            <img src="assets/reg-form.png">
+            <h2> Login Form </h2>
+         </div>
+      </div>
+   </section>
+   <section class="form-sec col-xs-12">
+      <div class="container registration-content">
+         <div class="form-reg-section col-xs-12">
+            <div class="note row">Note: Student &lt; 18 must be added through your parent or tutor's account </div>
+            <div class="form-inner">
+               <form class="registration" #loginForm="ngForm" id="registration" method="post" action="http://dev.99webdesigns.net/Excell-plus/registration.php#">
+                  <div class="col-xs-12 text-center">
+                     <input class="user-details" type="text" ngModel name="username" placeholder="Username"
+                        required="">
+                  </div>
+                  <div class="col-xs-12 text-center">
+                     <input class="user-details" type="Password" name="password" (keydown)="$event.keyCode == 13 ? login(loginForm) : null"
+                        required ngModel [type]="hide ? 'password' : 'text'" placeholder="Password"
+                        required="">
+                  </div>
+                  <div *ngIf="isAuth" class="col-xs-12 text-center invalid-auth">{{error}}</div>
+                  <div class="col-xs-12 submit text-center">
+                     <input type="submit" name="login" class="btn-active move" value="Login" id="Login" (click)="login(loginForm)">
+                     <p>Not Registered?<a routerLink="/registration" class="color-active">Register Now</a> &nbsp;
+                       <br class="reponse" style="display: none;">
+                       <a routerLink="/forgot-password" class="color-active">Forgot Password?</a></p>
+                  </div>
+               </form>
+            </div>
+           <div class="col-xl-6 col-lg-7 col-md-9 col-sm-10 social-auth">
+            <div id="gSignInWrapper" class="col-md-6 col-sm-8">
+              <span class="label">Sign up with:</span>
+              <div class="btn-google-signin"  (click)="socialSignIn('google')">
+                <span class="icon"></span>
+                <span class="buttonText"></span>
+              </div>
+            </div>
+             <br>
+            <div id="fSignInWrapper" class="col-md-6 col-sm-8 facebook">
+              <span class="label">Sign up with:</span>
+              <div class="btn-facebook-signin"  (click)="socialSignIn('facebook')">
+                <span class="icon"></span>
+                <span class="buttonText"></span>
+              </div>
+            </div>
+           </div>
+         </div>
+      </div>
+   </section>
+</article>

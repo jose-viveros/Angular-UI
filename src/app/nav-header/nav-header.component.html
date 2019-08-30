@@ -1,0 +1,81 @@
+<body>
+   <div class="header col-xs-12">
+      <div class="container header-options">
+         <div class="col-sm-2 logo1" *ngIf="this.overrideLogo === false">
+            <a routerLink="" (click)="homeClick()"><img src="assets/logo1.png" align="center" alt="Excell II Plan"></a>
+         </div>
+         <div class="col-sm-2 logo1" *ngIf="this.overrideLogo === true">
+            <a routerLink="" (click)="homeClick()">
+               <img src="data:image/PNG;base64,{{logo}}" align="center" alt="Excell II Plan" class="fixedSize" />
+            </a>
+         </div>
+         <div class="col-sm-10 nav-div">
+            <!-- <img src="assets/parent.png" *ngIf="(loginTxt == 'Logout')" class="user-avatar"> -->
+           <div class="user-avatar" *ngIf="(loginTxt == 'Logout')">
+            <ngx-avatar  size="50"  bgColor="#000040" fgColor="white" [round]="true" name={{userName}}></ngx-avatar>
+            </div>
+            <div class="inner-menu">
+               <nav class="nav col-sm-6" id="nav_">
+                  <ul>
+                     <li>
+                        <a routerLink="/">HOME</a>
+                     </li>
+                     <li *ngIf="!isSubDomain && (loginTxt=='Login' || (loginTxt!='Login' && userType!='STUDENT'))">
+                        <a routerLink="" class="rege-link" (click)="shopClick()">SHOP</a>
+                     </li>
+                     <li>
+                        <a routerLink="/about" class="menu-dropdown">ABOUT US</a>
+                        
+                     </li>
+                     <li *ngIf="loginTxt!='Login'">
+                        <a routerLink="" class="rege-link" (click)="excel11plusClick()">MyExcelIIPlus</a>
+                     </li>
+
+                  </ul>
+               </nav>
+               <div *ngIf="loginTxt=='Login'" class="login col-sm-2 lap">
+                  <a routerLink="" class="rege-link" (click)="registerClick()">Register</a>
+               </div>
+               <div class="login col-sm-1 lap">
+                  <a routerLink="" class="rege-link" (click)="loginClick()">
+                     {{loginTxt}}</a>
+               </div>
+               <div class="mob-auth" style="display: none;">
+                  <div class="mob-register" *ngIf="loginTxt=='Login'">
+                     <a routerLink="" class="register-link" (click)="registerClick()"> Register</a>
+                  </div>
+                  <div class="mob-setting" *ngIf="loginTxt=='Logout'">
+                     <div class="set-item" *ngFor="let menu of menus" (click)="menuChangeEvent(menu)">
+                        {{menu}}
+                     </div>
+                  </div>
+                  <div class="mob-login">
+                     <a routerLink="" class="login-link" (click)="loginClick()"> {{loginTxt}}</a>
+                  </div>
+               </div>
+               <div class="login col-sm-1 user-info-section" *ngIf="(loginTxt == 'Logout')">
+                  <div class="info-inner">
+                     <button  class="nav-menu-button" [matMenuTriggerFor]="actions" id="btnAct" (click)="getMenusForUser()"><span
+                           class="name-left">{{userName}} <span class="user-role">({{userType}})</span></span><span class="name-right">&#9660;</span> </button>
+                     <mat-menu #actions="matMenu" [overlapTrigger]="false">
+                        <button mat-menu-item class="sub-menu" (click)="menuChangeEvent(menu)"
+                           *ngFor="let menu of menus">{{menu}}</button>
+                     </mat-menu>
+                  </div>
+               </div>
+            </div>
+            <!-- <img src="assets/parent.png" *ngIf="(loginTxt == 'Logout')" class="user-avatar-mob"> -->
+            <div class="user-avatar-mob" *ngIf="(loginTxt == 'Logout')">
+            <ngx-avatar  size="50" [round]="true" name={{userName}}></ngx-avatar>
+            </div>
+            <div class="mob-userInfo" style="display: none;">
+               <span class="name-left" *ngIf="(loginTxt == 'Logout')">{{userName}}<br>
+               <span class="user-role" *ngIf="(loginTxt == 'Logout')">({{userType}})</span></span>
+            </div>
+            <span id="mob-menu" style="display:none" (click)="getMenusForUser()"><i class="fa fa-bars"></i></span>
+         </div>
+      </div>
+   </div>
+   <script type="text/javascript">
+   </script>
+</body>

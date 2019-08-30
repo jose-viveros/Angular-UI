@@ -1,0 +1,51 @@
+<div class="learning">
+	<div align="left" [innerHTML]="topicList.welcomeMessage | safeHtml"></div>
+	<div>
+		<input type="submit" id = "mock" value="Start Mock Test" (click)="testrunner()" > 
+		<input type="submit" id = "back" value="Back" routerLink="/subject" >
+	</div>
+</div>
+<br>
+
+<div class="container">
+<mat-table #table [dataSource]="averageScores">
+
+    <ng-container matColumnDef="topicName">
+      <mat-header-cell *matHeaderCellDef> Topic </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.topicName}} </mat-cell>
+    </ng-container>
+	
+	<ng-container matColumnDef="topicId">
+      <mat-header-cell *matHeaderCellDef> Topic Id </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.topicId}} </mat-cell>
+    </ng-container>
+     
+     <ng-container matColumnDef="studentAverageScores">
+      <mat-header-cell *matHeaderCellDef> Average Score for last 3 Tests </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.studentAverageScore}} </mat-cell>
+    </ng-container>
+     
+    <ng-container matColumnDef="regionAverageScores">
+      <mat-header-cell *matHeaderCellDef> Average Score in your Region </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.regionAverageScore}} </mat-cell>
+    </ng-container>
+    
+     <ng-container matColumnDef="result">
+      <mat-header-cell *matHeaderCellDef> Topic Results </mat-header-cell>
+      <mat-cell *matCellDef="let element"> 
+      <button (click)="getTopicResult(element.topicId)" class="btn btn-primary">Results</button>
+      </mat-cell>
+    </ng-container>
+     
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+
+  </mat-table>
+
+  <mat-paginator #paginator
+                 [pageSize]="5"
+                 [pageSizeOptions]="[5, 10, 20]"
+                 [showFirstLastButtons]="true">
+  </mat-paginator>
+
+ </div> 

@@ -1,0 +1,142 @@
+<article class="main-content">
+	<div class="container registration-content">
+		<h2 align="center" style="border-bottom-style: solid 2px transparent;">
+			Edit Student</h2>
+		<div class="form-reg-section col-xs-12">
+
+			<div class="form-inner">
+				<ng4-loading-spinner [timeout]="10000"></ng4-loading-spinner>
+				<form [formGroup]="studentEditForm" novalidate (ngSubmit)="onSubmitStudentDetails(studentEditForm.value)"
+					*ngIf="formloading">
+					<div class="wrapper row">
+						<div class="col-sm-4">
+							<label>Student ID </label> <input type="text" value={{studentId}} readonly>
+
+						</div>
+						<div class="col-sm-4">
+							<label>First Name*</label> <input type="text" required formControlName="firstName">
+							<div *ngFor="let validation of student_validation_messages.firstName">
+								<div class="error-message"
+									*ngIf="studentEditForm.get('firstName').hasError(validation.type) && (studentEditForm.get('firstName').dirty || studentEditForm.get('firstName').touched)">
+									{{validation.message}}</div>
+							</div>
+						</div>
+						<div class="col-sm-4">
+							<label>Last Name*</label> <input type="text" required formControlName="lastName">
+							<div *ngFor="let validation of student_validation_messages.lastName">
+								<div class="error-message"
+									*ngIf="studentEditForm.get('lastName').hasError(validation.type) && (studentEditForm.get('lastName').dirty || studentEditForm.get('lastName').touched)">
+									{{validation.message}}</div>
+							</div>
+						</div>
+
+					</div>
+
+					<div class="wrapper row">
+						<div class="col-sm-4">
+							<label>User Name*</label> <input type="text" required formControlName="username">
+							<div *ngFor="let validation of student_validation_messages.username">
+								<div class="error-message"
+									*ngIf="studentEditForm.get('username').hasError(validation.type) && (studentEditForm.get('username').dirty || studentEditForm.get('username').touched)">
+									{{validation.message}}</div>
+							</div>
+							<div class="error-message" *ngIf="errorMessage">{{message}}</div>
+						</div>
+						<div class="col-sm-4">
+							<label>Standard</label> <input type="text" formControlName="standard">
+						</div>
+						<div class="col-sm-4">
+							<label>Region*</label> <select formControlName="region" required>
+								<option *ngFor="let region of regions" [value]="region">{{
+									region }}</option>
+							</select>
+							<div *ngFor="let validation of student_validation_messages.region">
+								<div class="error-message"
+									*ngIf="studentEditForm.get('region').hasError(validation.type) && (studentEditForm.get('region').dirty || studentEditForm.get('region').touched)">
+									{{validation.message}}</div>
+							</div>
+						</div>
+
+					</div>
+
+					<div class="wrapper row">
+						<div class="col-sm-4">
+							<label>Gender*</label> <select formControlName="gender" required>
+								<option *ngFor="let gender of genders" [value]="gender">{{
+									gender }}</option>
+							</select>
+							<div *ngFor="let validation of student_validation_messages.gender">
+								<div class="error-message"
+									*ngIf="studentEditForm.get('gender').hasError(validation.type) && (studentEditForm.get('gender').dirty || studentEditForm.get('gender').touched)">
+									{{validation.message}}</div>
+
+							</div>
+						</div>
+
+						<div *ngIf="this.tutor" class="col-sm-4">
+							<label>Parent's Email</label> <input type="email" formControlName="email">
+							<div *ngFor="let validation of student_validation_messages.email">
+								<div class="error-message"
+									*ngIf="studentEditForm.get('email').hasError(validation.type) && (studentEditForm.get('email').dirty || studentEditForm.get('email').touched)">
+									{{validation.message}}</div>
+							</div>
+						</div>
+					</div>
+						<div class="wrapper row">
+						<div class="col-sm-4">
+							<label>1st Choice School</label> <select formControlName="school1">
+								<option *ngFor="let school1 of schools" [value]="school1">{{
+									school1 }}</option>
+							</select>
+
+						</div>
+						<div class="col-sm-4">
+							<label>2nd Choice School</label> <select formControlName="school2">
+								<option *ngFor="let school2 of schools" [value]="school2">{{
+									school2 }}</option>
+							</select>
+						</div>
+
+						<div class="wrapper row">
+
+							<div formGroupName="matching_passwords" class="col-sm-12">
+
+								<div class="col-sm-6">
+									<label>Password</label> <input type="Password" formControlName="password">
+									<div *ngFor="let validation of student_validation_messages.password">
+										<div class="error-message" *ngIf="studentEditForm.get('matching_passwords').get('password').hasError(validation.type) &&
+              										(studentEditForm.get('matching_passwords').get('password').dirty ||
+              										studentEditForm.get('matching_passwords').get('password').touched)">{{validation.message}}
+										</div>
+									</div>
+								</div>
+								<div class="col-sm-6">
+									<label>Repeat Password</label> <input type="Password" formControlName="confirm_password">
+									<div *ngFor="let validation of student_validation_messages.confirm_password">
+										<div class="error-message" *ngIf="(studentEditForm.get('matching_passwords').get('confirm_password').hasError(validation.type)||
+              										  studentEditForm.get('matching_passwords').hasError(validation.type)) &&
+              										  (studentEditForm.get('matching_passwords').get('confirm_password').dirty ||
+              										  studentEditForm.get('matching_passwords').get('confirm_password').touched)">
+											{{validation.message}}
+										</div>
+									</div>
+
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-xs-12 submit text-center">
+						<input type="submit" name="submit" class="btn-active move" value="Update" id="register-now"
+							[disabled]="!studentEditForm.valid">
+						<input type="button" name="submit" value="Cancel" id="cancel-now" class="btn-active move"
+							(click)="navigateTo('my-student')" style="font-weight: 600 !important;">
+					</div>
+
+				</form>
+
+			</div>
+		</div>
+	</div>
+</article>
+
+

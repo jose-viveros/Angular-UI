@@ -1,0 +1,76 @@
+<article class="main-content">
+<ng4-loading-spinner [timeout]="7000"></ng4-loading-spinner>
+    <div class="container registration-content">
+        <div class="form-reg-section col-xs-12">
+			<div class="form-inner">
+                <form [formGroup]="assistantDetailsForm" novalidate (ngSubmit)="onSubmitAssistantDetails(assistantDetailsForm.value)"
+					*ngIf="!morethanoneStudent">
+					<div class="wrapper row">
+						<div class="col-sm-4">
+							<label>First Name*</label> <input type="text" required
+								formControlName="firstName" ngModel>
+							<div
+								*ngFor="let validation of assiatant_validation_messages.firstName">
+								<div class="error-message" 
+									*ngIf="assistantDetailsForm.get('firstName').hasError(validation.type) && (assistantDetailsForm.get('firstName').dirty || assistantDetailsForm.get('firstName').touched)">{{validation.message}}</div>
+							</div>
+						</div>
+						<div class="col-sm-4">
+							<label>Last Name*</label> <input type="text" required
+								formControlName="lastName" ngModel>
+							<div
+								*ngFor="let validation of assiatant_validation_messages.lastName">
+								<div class="error-message"
+									*ngIf="assistantDetailsForm.get('lastName').hasError(validation.type) && (assistantDetailsForm.get('lastName').dirty || assistantDetailsForm.get('lastName').touched)">{{validation.message}}</div>
+							</div>
+						</div>
+						<div class="col-sm-4">
+							<label>Email</label> <input type="email" required
+								formControlName="email" ngModel>
+							<div class="error-message" *ngIf="emailerrorMessage">{{emailmessage}}</div>
+						</div>
+					</div>
+					
+					<div class="wrapper row" formGroupName="matching_passwords">
+
+						<div class="col-sm-4">
+							<label>Password*</label> <input type="Password" required
+								formControlName="password">
+							<div
+								*ngFor="let validation of assiatant_validation_messages.password">
+								<div class="error-message"
+									*ngIf="assistantDetailsForm.get('matching_passwords').get('password').hasError(validation.type) && 
+              										(assistantDetailsForm.get('matching_passwords').get('password').dirty || 
+              										assistantDetailsForm.get('matching_passwords').get('password').touched)">{{validation.message}}
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-4">
+							<label>Repeat Password*</label> <input type="Password" required
+								formControlName="confirm_password">
+							<div
+								*ngFor="let validation of assiatant_validation_messages.confirm_password">
+								<div class="error-message"
+									*ngIf="(assistantDetailsForm.get('matching_passwords').get('confirm_password').hasError(validation.type)|| 
+              										  assistantDetailsForm.get('matching_passwords').hasError(validation.type)) && 
+              										  (assistantDetailsForm.get('matching_passwords').get('confirm_password').dirty || 
+              										  assistantDetailsForm.get('matching_passwords').get('confirm_password').touched)">{{validation.message}}
+								</div>
+							</div>
+
+						</div>
+					</div>
+
+
+					<div class="col-xs-12 submit text-center">
+						<input type="submit" name="submit" class="btn-active move"
+							value="ADD" id="add-now"
+							[disabled]="!assistantDetailsForm.valid">
+					</div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</article>
+

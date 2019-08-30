@@ -1,0 +1,54 @@
+.tblMain {
+	width: "100%";
+}
+
+select { 
+    color:black;
+}
+
+.txtarea { 
+    color:black;
+}
+
+.full-width {
+  width: 80%;
+  height: 40%;
+  color: black;
+}
+
+.half-width {
+  width: 40%;
+}
+
+.form-wrapper {
+	border-style: groove;
+	border-radius: 30px;
+}
+
+.matCardMain {
+	background-color: #f5f5f5;
+	vertical-align: baseline;
+	border: 1px solid grey;
+	
+}
+
+.matCard {
+	background-color: #f5f5f5;
+	vertical-align: baseline;
+	border-left: 1px solid grey;
+	border-right: 1px solid grey;
+	
+}
+
+
+.trQuestionMain {
+	background: linear-gradient(to right, #ffffff 0%, #00b1c5 100%);
+	vertical-align: baseline;
+	box-sizing: border-box;
+	width: 100%;
+}
+
+.tblHeader {
+    font-size: 13px;
+    font-style: oblique;
+}

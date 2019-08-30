@@ -1,0 +1,82 @@
+<div class="filter-content col-xs-12">
+    <app-student-filter *ngIf="this.isStudent == false" [showChangeButton]=false></app-student-filter>
+    <div class="container note" *ngIf="this.isStudent == false">
+        <b><u>**Note:</u></b>Click on Show button after Student is selected. Performance graph will be shown only one student at a time</div>
+    <mat-accordion class="example-headers-align">
+            <mat-expansion-panel [expanded]="true">
+               <mat-card class="example-card">
+                <table class="fullwidth">
+                    <tbody>
+                        <tr>
+                            <td>
+                            <mat-select class="select-area" placeholder="Show since" name="period" [(ngModel)]="model.period" id="period" #period="ngModel">
+                                <mat-option value="CW">Current Week</mat-option>
+                                <mat-option value="LW">Last Week</mat-option>
+                                <mat-option value="4W">Last 4 Weeks</mat-option>
+                                <mat-option value="3M">Last 3 Months</mat-option>
+                                <mat-option value="6M">Last 6 Months</mat-option>
+                                <mat-option value="1Y">Last 1 Year</mat-option>
+                            </mat-select>
+                                <div class="filtr-btn">
+                                <button mat-raised-button class="btn btn-primary btn-active" (click)="showReport()" id="btnSearch">Show</button>
+                                <button mat-raised-button class="btn btn-primary btn-active" (click)="downloadPdf()" id="btnSearch">Download</button>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                </mat-card>
+                <!-- <div class="row">
+                    <div class="col-sm-4">
+                        <button mat-raised-button class="btn btn-primary btn-active" (click)="calculate()" id="btnCalculate">Re-Calculate</button>
+                    </div>
+                    <div class="col-sm-4">
+                        <button mat-raised-button class="btn btn-primary btn-active" (click)="downloadPdf()" id="btnSearch">Download</button>
+                    </div>
+                    <div class="col-sm-4">
+
+                    </div>
+                </div> -->
+            </mat-expansion-panel>
+    </mat-accordion>
+</div>
+<table id="completeGraph">
+    <tr><td>
+<div class="subjects-tabs col-xs-12 nopadds">
+	<ul class="nav nav-tabs">
+        <li *ngFor="let k of model.subjects ; let idx = index" class="{{getCss(idx)}}"><a data-toggle="tab" (click)="getSubjectReportData(k.id)">{{k.description}}</a></li>
+    </ul>
+    <div class="chart-container" id="initSubjectChartContainer">
+            <canvas id="subjectGraph" style="display: block; width: 500px; height: 250px;" width="500" height="250" class="chartjs-render-monitor"></canvas>
+    </div>
+    <div id="subjectChartContainer" class="container">
+
+    </div>
+    <br>
+    <div>
+        <table class="fullwidth">
+                    <tbody>
+                        <tr>
+                            <td width="70%" style="text-align: right" class="timeLabels">
+                                Sort: &nbsp;
+                            </td>
+                            <td width="30%" style="text-align: left">
+                                <mat-select class="mat-expansion-panel-content" placeholder="Sort" name="sortBy" [(ngModel)]="model.sortBy" id="sortBy"
+                                #sortBy="ngModel" (change)="showReport()">
+                                    <mat-option value="AP">Alphabet</mat-option>
+                                    <mat-option value="CQ">Correct Questions</mat-option>
+                                    <mat-option value="ICQ">In-Correct Questions</mat-option>
+                                </mat-select>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+    </div>
+    <br>
+    <div>
+        <div id="topicChartContainer" class="container">
+
+        </div>
+    </div>
+</div>
+</td></tr></table>

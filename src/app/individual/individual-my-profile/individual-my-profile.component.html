@@ -1,0 +1,35 @@
+<div id="dashborad" class="parent-contents">
+  <div class="inner-tabs-div col-xs-12">
+     <div class="parent-my-account-sec new-tabs-style">
+        <div class="tabs-scroller tabs-scroller-accounts">
+           <ul class="nav nav-tabs upper-ul scroller scroller-for-myaccount">
+              
+              <li class="active" (click)="optionSelected('Edit');"><a data-toggle="tab" href="#Profile" aria-expanded="false"><img
+                       src="assets/edit-pro.png"><span>Edit
+                       Profile</span></a></li>
+              <li class="" (click)="optionSelected('Privacy');"><a data-toggle="tab" href="#p-tools" aria-expanded="false">
+                    <img src="assets/p-tools.png"><span>privacy
+                       tools</span></a></li>
+
+              <li class="" (click)="optionSelected('Subscriptions');"><a data-toggle="tab" href="#Subscriptions"
+                    aria-expanded="false"> <img src="assets/subs.png"><span>Subscriptions</span></a></li>
+           </ul>
+        </div>
+        <div class="tab-content-inner" [ngSwitch]="selectedOption">
+          
+           <div id="p-tools" *ngSwitchCase=" 'Privacy'">
+              <app-parent-privacy> </app-parent-privacy>
+
+           </div> <!-- DIV TAB 2 -->
+           <div id="Profile" *ngSwitchCase="'Edit'">
+              <app-parent-edit> </app-parent-edit>
+
+           </div> <!-- DIV TAB 3 -->
+
+           <div id="Subscriptions" *ngSwitchCase="'Subscriptions'">
+              <app-subscription></app-subscription>
+
+           </div> <!-- DIV TAB 4 -->
+
+        </div>
+     </div>

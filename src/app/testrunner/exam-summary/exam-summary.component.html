@@ -1,0 +1,63 @@
+<div style="border-style: none; height: 50px; max-width: 800px; margin: auto; text-align: right;" class="learning" >
+	<input type="submit" id = "back" value="Back" routerLink="/subject" >
+	<input type="submit" id = "rank" value="Regional Ranking" (click)="getRegionalRanking()"  >
+</div>
+
+<!-- routerLink="/regional-ranking/1"
+ -->
+<div class="container">
+<mat-table #table [dataSource]="dataSource1">
+
+    <ng-container matColumnDef="subjectName">
+      <mat-header-cell *matHeaderCellDef> Subject Name </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.subjectName}} </mat-cell>
+    </ng-container>
+    
+    <ng-container matColumnDef="examName">
+      <mat-header-cell *matHeaderCellDef> Exam Name </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.examName}} </mat-cell>
+    </ng-container>
+    
+    <ng-container matColumnDef="maxMarks">
+      <mat-header-cell *matHeaderCellDef> Max Marks </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.maxMarks}} </mat-cell>
+    </ng-container>
+    
+    <ng-container matColumnDef="marksObtained">
+      <mat-header-cell *matHeaderCellDef> Marks Obtained </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.marksObtained}} </mat-cell>
+    </ng-container>
+    
+    <ng-container matColumnDef="totalQuestions">
+      <mat-header-cell *matHeaderCellDef> Total Questions </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.totalQuestions}} </mat-cell>
+    </ng-container>
+        
+    <ng-container matColumnDef="correctQuestionCount">
+      <mat-header-cell *matHeaderCellDef> Correct Answers</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.correctQuestionCount}} </mat-cell>
+    </ng-container>
+    
+    <ng-container matColumnDef="completedIn">
+      <mat-header-cell *matHeaderCellDef> Completion In </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.completedIn}} </mat-cell>
+    </ng-container>
+    
+	<ng-container matColumnDef="updatedDate">
+      <mat-header-cell *matHeaderCellDef> Completed On </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.updatedDate}} </mat-cell>
+    </ng-container>
+    
+    <ng-container matColumnDef="testId">
+      <mat-header-cell *matHeaderCellDef> Test Id </mat-header-cell>
+      <mat-cell *matCellDef="let element"> 
+      <button (click)="checkAnswers(element.testId)" class="btn btn-primary">Results</button>
+      </mat-cell>
+    </ng-container>
+    
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+
+  </mat-table>
+
+ </div> 

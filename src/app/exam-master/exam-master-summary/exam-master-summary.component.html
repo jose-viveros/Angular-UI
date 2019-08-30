@@ -1,0 +1,115 @@
+<div class="container" style="border-style: none;" >
+	<div >
+			<table style="width:100%;">
+			    <tbody>
+			      <tr>
+			        <td>
+			        	<mat-form-field class="half-width">
+			        		<mat-select placeholder="Domain" name="domain" required [(ngModel)]="model.seldomain" id="domain" #domain="ngModel" (change)="fetchSubjects()">
+						    	<mat-option value="{{k.id}}" *ngFor="let k of  model.domain">{{k.name}}</mat-option>
+					  		</mat-select>
+						</mat-form-field>	
+					</td>
+					<td>
+						<mat-form-field class="half-width">
+			        		<mat-select placeholder="Exam Type" required name="examType" [(ngModel)]="model.examType" id="examType" #examType="ngModel" (change)="onExamTypeChange($event)">
+						    	<mat-option value="MOCK">Mock</mat-option>
+						    	<mat-option value="TOPIC">Topic</mat-option>
+					  		</mat-select>
+						</mat-form-field>
+					</td>
+				</tr>
+				<tr>
+					<td>
+			        	<mat-form-field class="half-width">
+			        		<mat-select placeholder="Subject" required name="subject" [(ngModel)]="model.selsubject" id="subject" #subject="ngModel" (change)="fetchExamMastersOrTopics($event)">
+						    	<mat-option value="{{k.id}}" *ngFor="let k of  model.subject">{{k.description}}</mat-option>
+					  		</mat-select>
+						</mat-form-field>	
+					</td>
+					<td>
+			        	<mat-form-field class="half-width">
+			        		<mat-select placeholder="Topic" name="topic" [(ngModel)]="model.seltopic" id="topic" #topic="ngModel" [disabled]="topicDisable" (change)="fetchExamMastersForTopic($event)">
+						    	<mat-option value="{{k.id}}" *ngFor="let k of  model.topic">{{k.description}}</mat-option>
+					  		</mat-select>
+						</mat-form-field>	
+					</td>
+			      </tr>
+			      <tr>
+			      	<td colspan=2>
+			      	<mat-accordion class="example-headers-align">
+						    <mat-card class="example-card">
+		  						<mat-form-field class="example-full-width">
+  									<input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter" id="filterText" #filterText="ngModel"  [(ngModel)]= "model.filterText">
+								</mat-form-field>
+							
+							
+								<mat-table #table [dataSource]="dataSource">
+									<ng-container matColumnDef="name">
+									    <mat-header-cell *matHeaderCellDef class="wideCell"> Name </mat-header-cell>
+	      								<mat-cell *matCellDef="let element" class="wideCell"> {{element.name}} </mat-cell>
+									</ng-container>
+									<ng-container matColumnDef="publisher">
+									    <mat-header-cell *matHeaderCellDef> Publisher </mat-header-cell>
+	      								<mat-cell *matCellDef="let element"> {{element.publisher}} </mat-cell>
+                                    </ng-container>
+                                    <ng-container matColumnDef="package">
+									    <mat-header-cell *matHeaderCellDef> Package </mat-header-cell>
+	      								<mat-cell *matCellDef="let element"> {{element.package}} </mat-cell>
+									</ng-container>
+									<ng-container matColumnDef="maxMarks">
+									    <mat-header-cell *matHeaderCellDef> Total Marks </mat-header-cell>
+	      								<mat-cell *matCellDef="let element"> {{element.maxMarks}} </mat-cell>
+									</ng-container>
+									<ng-container matColumnDef="totalQuestions">
+									    <mat-header-cell *matHeaderCellDef> No. Of Questions </mat-header-cell>
+	      								<mat-cell *matCellDef="let element"> {{element.totalQuestions}} </mat-cell>
+									</ng-container>
+									<ng-container matColumnDef="createdBy">
+									    <mat-header-cell *matHeaderCellDef> Created By </mat-header-cell>
+	      								<mat-cell *matCellDef="let element"> {{element.createdBy}} </mat-cell>
+									</ng-container>
+									<ng-container matColumnDef="createdDate">
+									    <mat-header-cell *matHeaderCellDef> Created On </mat-header-cell>
+	      								<mat-cell *matCellDef="let element"> {{element.createdDate}} </mat-cell>
+									</ng-container>
+									<ng-container matColumnDef="active">
+									    <mat-header-cell *matHeaderCellDef> Active </mat-header-cell>
+	      								<mat-cell *matCellDef="let element">
+	      									<mat-slide-toggle [checked]="element.active" [(ngModel)]="element.active"  (change)="changeQuestionState($event, element)"></mat-slide-toggle>
+	      								</mat-cell>
+									</ng-container>
+									<ng-container matColumnDef="edit">
+									    <mat-header-cell *matHeaderCellDef fxFlex="60px">  </mat-header-cell>
+	      								<mat-cell *matCellDef="let element" fxFlex="60px">
+	      									<button mat-button color="warn" [disabled]="element.active" (click)="editExam(element.id)">Edit</button>
+	      								</mat-cell>
+									</ng-container>
+									<ng-container matColumnDef="copy">
+									    <mat-header-cell *matHeaderCellDef> </mat-header-cell>
+	      								<mat-cell *matCellDef="let element">
+	      									<button mat-button color="warn" [disabled]="!element.active" (click)="openDialog(element.id, element.name)">Copy</button>
+	      								</mat-cell>
+									</ng-container>
+	  								<mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+	    							<mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+								</mat-table>
+								<mat-paginator #paginator
+							                 [pageSize]="5"
+							                 [pageSizeOptions]="[5, 10, 20]"
+							                 [showFirstLastButtons]="true">
+							  	</mat-paginator>
+						  	</mat-card>
+						  	<mat-card>	
+						    <mat-action-row>
+						      <button mat-button color="warn" (click)="createExam()">Create {{model.examType}} Exam</button>
+						    </mat-action-row>
+						    </mat-card>
+						    
+			      	</mat-accordion>
+			      	</td>
+			      </tr>
+		      </tbody>
+	      </table>
+     </div>
+</div>

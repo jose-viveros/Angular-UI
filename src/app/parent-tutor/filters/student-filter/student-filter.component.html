@@ -1,0 +1,34 @@
+<div class="col-sm-12 text-left added-btns-row">
+   <mat-card class="example-card search-for-change">
+      <div class="prents-filter nav-option">
+         <div class="col-sm-6 sel-label">
+            <span class="wide" *ngIf="this.model.selectedStudents && this.model.selectedStudents.length>0">SELECTED STUDENTS</span>
+            <span class="wide"*ngIf="this.model.selectedGroups && this.model.selectedGroups.length>0">SELECTED GROUPS</span>
+            <span class="response" style="display: none;" *ngIf="this.model.selectedStudents && this.model.selectedStudents.length>0">STUDENTS</span>
+            <span class="response" style="display: none;" *ngIf="this.model.selectedGroups && this.model.selectedGroups.length>0">GROUPS</span>
+            <button class="normal-btn c" *ngIf="!selectedStudent" (click)="openDialog('student')" [disabled]="selectedGroup">Select Student</button>
+            <button class="normal-btn c" *ngIf="selectedStudent" (click)="openStudentDialog()">Change Student</button>
+            <button class="normal-btn c" *ngIf="!selectedGroup && tutor" (click)="openDialog('group')">Select Group</button>
+            <button class="normal-btn c" *ngIf="selectedGroup && tutor" (click)="openGroupDialog()">Change Group</button>
+         </div>
+         <div class="col-xl-6 col-md-6 col-lg-6 col-sm-12 text-right filter-btns">
+            <button class="normal-btn" *ngIf="!selectedStudent" (click)="openDialog('student')" [disabled]="selectedGroup">Select Student</button>
+            <button class="normal-btn" *ngIf="selectedStudent" (click)="openStudentDialog()">Change Student</button>
+            <button class="normal-btn" *ngIf="!selectedGroup && tutor && showChangeButton" (click)="openDialog('group')">Select Group</button>
+            <button class="normal-btn" *ngIf="selectedGroup && tutor && showChangeButton" (click)="openGroupDialog()">Change Group</button>
+         </div>
+         <br class="res-shift">
+         <div class="col-sm-12 text-left added-btns-row" >
+            <ul class="nav nav-tabs left-tabs-nav selected-student">
+               <li class="active" style="margin-right: 20px; height: 24px;" *ngFor="let student of this.model.selectedStudents; let idx = index">
+                  <a data-toggle="tab" aria-expanded="true">{{student.name}}
+                     <span class="nums" (click)="removeStudent(student)"><img src="assets/close-gray.svg"></span></a></li>
+
+               <li class="active" style="margin-right: 20px; height: 24px;" *ngFor="let group of this.model.selectedGroups; let idx = index">
+                  <a data-toggle="tab" aria-expanded="true">{{group.groupName}}
+                     <span class="nums" (click)="removeGroup(group)"><img src="assets/close-gray.svg"></span></a></li>
+            </ul>
+         </div>
+      </div>
+   </mat-card>
+</div>

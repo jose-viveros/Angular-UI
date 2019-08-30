@@ -1,0 +1,128 @@
+@media (min-width: 1200px){
+    .student-dash-tabs ul.nav-tabs.upper-ul li{
+        min-width: 20%;
+    }
+    .inner-tabs-div{
+        padding: 40px 10px 0px;
+    }
+    ul.left-tabs-nav{
+        padding-top: 0px !important;
+    }
+}
+
+@media(max-width: 1199px) and (min-width: 992px){
+    .student-dash-tabs ul.nav-tabs.upper-ul li{
+        min-width: 20%;
+    }
+    .inner-tabs-div{
+        padding: 40px 10px 0px;
+    }
+    ul.left-tabs-nav{
+        padding-top: 0px !important;
+    }
+}
+@media(max-width: 991px) and (min-width: 768px){
+    .sec-tab-con{
+        margin-left: 30px;
+    }
+    .student-dash-tabs ul.nav-tabs.upper-ul li{
+        min-width: 20%;
+    }
+    .student-dash-tabs ul.nav-tabs.upper-li li a{
+        font-size: 14px;
+    }
+    .inner-tabs-div{
+        padding: 20px 10px 0px;
+    }
+    ul.left-tabs-nav{
+        padding-top: 0px !important;
+    }
+    ul.left-tabs-nav li{
+        margin-bottom: 20px;
+    }
+}
+
+@media(max-width: 767px) and (min-width: 576px){
+    .sec-tab-con{
+        max-width: 97.5%;
+        min-width: 97.5%;
+        margin-left: 9px !important;
+        padding-bottom: 20px !important;
+    }
+    .sec-tab-con ul li{
+        font-size: 14px;
+    }
+    .student-dash-tabs ul.nav-tabs.upper-ul li{
+        min-width: 20%;
+    }
+    .inner-tabs-div{
+        padding: 20px 0px 0px;
+        display: flex;
+        flex-direction: column;
+    }
+    ul.left-tabs-nav{
+        padding-top: 0px !important;
+        font-size: 11px;
+        max-width: 100%;
+        margin-left: 9px !important;
+    }
+    ul.left-tabs-nav li{
+        margin-bottom: 20px;
+    }
+}
+@media(max-width: 575px) and (min-width: 415px){
+    .sec-tab-con{
+        max-width: 97%;
+        min-width: 97%;
+        margin-left: 6px !important;
+        margin-bottom: 20px;
+    }
+    .student-dash-tabs ul.nav-tabs.upper-ul li{
+        min-width: 20%;
+    }
+    .student-dash-tabs ul.nav-tabs.upper-ul li a{
+        font-size: 14px;
+    }
+    .inner-tabs-div{
+        padding: 20px 0px 0px;
+        display: flex;
+        flex-direction: column;
+    }
+    ul.left-tabs-nav{
+        padding-top: 0px !important;
+        font-size: 11px;
+        margin-left: 6px;
+    }
+    ul.left-tabs-nav li{
+        margin-bottom: 20px;
+    }
+}
+@media(max-width: 414px) and (min-width: 360px){
+    .sec-tab-con{
+        max-width: 97%;
+        min-width: 97%;
+        margin-left: 6px !important;
+        margin-bottom: 20px;
+    }
+    .sec-tab-con ul li{
+        font-size: 13px;
+        padding: 18px 15px !important;
+        min-height: 0px !important;
+    }
+    .student-dash-tabs ul.nav-tabs.upper-ul li{
+        min-width: 20%;
+    }
+    .inner-tabs-div{
+        padding: 20px 0px 0px;
+        display: flex;
+        flex-direction: column;
+    }
+    ul.left-tabs-nav{
+        padding-top: 0px !important;
+        font-size: 11px;
+        margin-left: 6px !important;
+    }
+    ul.left-tabs-nav li{
+        margin-bottom: 20px;
+    }
+}

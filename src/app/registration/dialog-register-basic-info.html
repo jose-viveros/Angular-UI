@@ -1,0 +1,20 @@
+<div *ngIf="this.data.lastLogin != null">
+    <h2 mat-dialog-title>You have alredy registered with us</h2>
+    <h4>You last loged in on {{this.data.lastLogin}}</h4>
+</div>
+<div *ngIf="this.data.lastLogin == null">
+    <h2 mat-dialog-title>What Type of user you are?</h2>
+</div>
+<div mat-dialog-content>
+  <mat-form-field style="width:70%">
+	    <mat-select placeholder="I am a" required name="userType" [(ngModel)]="data.userType" id="userType" #userType="ngModel">
+		    <mat-option value="{{usertype}}" *ngFor="let usertype of data.availableTypes">{{usertype}}</mat-option>
+		</mat-select>
+  </mat-form-field>
+</div>
+<br>
+<div mat-dialog-actions>
+    <button mat-button [mat-dialog-close]="data" *ngIf="this.data.lastLogin != null" cdkFocusInitial>Continue</button>
+    <button mat-button [mat-dialog-close]="data" *ngIf="this.data.lastLogin == null" cdkFocusInitial>Register</button>
+    <button mat-button (click)="onNoClick()">Close</button>
+</div>

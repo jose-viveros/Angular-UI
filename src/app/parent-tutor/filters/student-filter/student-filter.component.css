@@ -1,0 +1,118 @@
+ul {
+    display: -webkit-inline-box;
+    font-size: 12px !important;
+    width: 100%;
+    max-width: 100%;
+}
+.search-for-change{
+  padding: 0 !important;
+}
+.filter-btns{
+  margin-top: 10px;
+}
+.normal-btn.c{
+  display: none !important;
+}
+.select,
+.cancel{
+  background-color: #00ceff;
+  color: white;
+}
+.added-btns-row .left-tabs-nav li{
+  width: auto !important;
+}
+@media (min-width: 1200px) {
+  .added-btns-row .left-tabs-nav li{
+    margin-bottom: 10px !important;
+    margin-right: 10px !important;
+    width: auto !important;
+  }
+  .added-btns-row .left-tabs-nav li a {
+    padding: 10px 0 !important;
+    font-size: 14px !important;
+  }
+}
+@media (max-width: 1199px) and (min-width: 992px) {
+  .added-btns-row .left-tabs-nav li{
+    width: auto !important;
+    margin-right: 10px;
+    margin-bottom: 10px;
+  }
+}
+@media (max-width: 991px) and (min-width: 768px) {
+  .added-btns-row .left-tabs-nav li{
+    width: 15% !important;
+    margin-right: 10px;
+    margin-bottom: 10px;
+  }
+  button.mat-raised-button{
+    font-size:17px !important;
+    min-width: 225px !important;
+  }
+}
+@media (max-width: 767px) and (min-width: 576px){
+  .added-btns-row ul li{
+    width: auto !important;
+    margin-bottom: 10px !important;
+    margin-right: 10px !important;
+  }
+  .added-btns-row .left-tabs-nav li a{
+    padding: 12px 0 !important;
+  }
+  .filter-btns{
+    text-align: center !important;
+  }
+}
+@media (max-width: 575px) and (min-width: 416px){
+  .added-btns-row ul li{
+    width: auto !important;
+    margin-bottom: 10px !important;
+    margin-right: 10px !important;
+  }
+  .added-btns-row .left-tabs-nav li a{
+    padding: 12px 0 !important;
+  }
+}
+@media (max-width: 415px) and (min-width: 360px) {
+  div.filter-btns{
+    text-align: center !important;
+    display: none !important;
+  }
+  .added-btns-row .left-tabs-nav li{
+    width: 40% !important;
+    margin-right: 10px !important;
+    margin-bottom: 10px !important;
+  }
+  .added-btns-row .left-tabs-nav li a{
+    padding: 12px 0 !important;
+  }
+  .normal-btn.c, .normal-btn{
+    display: inline-block !important;
+    font-size: 12px;
+    top: 0;
+    right: 0;
+    position: relative;
+    padding: 5px 5px;
+    transform: translateX(25%);
+    margin-bottom: 5px;
+  }
+  .sel-label{
+    font-size: 14px !important;
+  }
+  .sel-label span{
+    padding-right: 0 !important;
+  }
+  .res-shift{
+    display: none;
+  }
+  .mob-enter{
+    display: block !important;
+  }
+  .sel-label .response{
+    display: inline !important;
+  }
+  .sel-label .wide{
+    display: none !important;
+  }
+}
+

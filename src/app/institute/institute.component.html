@@ -1,0 +1,105 @@
+<article class="main-content">
+<ng4-loading-spinner [timeout]="7000"></ng4-loading-spinner>
+	<div class="container registration-content">
+		<h2 align="center" style="border-bottom-style: solid 2px transparent;">
+			Add Institute</h2>
+		<div class="form-reg-section col-xs-12">
+			<div class="form-inner">
+				<ng4-loading-spinner [timeout]="10000" ></ng4-loading-spinner>
+				<form [formGroup]="instituteDetailsForm" novalidate
+					(ngSubmit)="onSubmitInstituteDetails(instituteDetailsForm.value)">
+					<div class="wrapper row">
+						<div class="col-sm-4">
+							<label>Institute Name</label> <input type="text" required [readonly]="this.instituteAlreadyRegistered" value={{this.instituteDetailsForm.value.instituteName}}
+                                formControlName="instituteName" ngModel>
+                  <div *ngIf="this.instituteAlreadyRegistered===false">
+							<div
+								*ngFor="let validation of institute_validation_messages.instituteName" >
+								<div class="error-message"
+									*ngIf="instituteDetailsForm.get('instituteName').hasError(validation.type) && (instituteDetailsForm.get('instituteName').dirty || instituteDetailsForm.get('instituteName').touched)">{{validation.message}}</div>
+                            </div>
+                            </div>
+						</div>
+						<div class="col-sm-4">
+							<label>About Institute</label> <input type="textarea" rows="4" cols="30" value={{this.instituteDetailsForm.value.instituteDescription}}
+								formControlName="instituteDescription" ngModel>
+						</div>
+						<div class="col-sm-4">
+							<label>Upload Institute Logo</label> <input type="file"  (change)="handleInstituteLogoFileInput($event.target.files)"
+								formControlName="instituteLogoImage" ngModel  [readonly]="this.instituteAlreadyRegistered" >
+							<div class="error-message" *ngIf="sizeErrorLogo">image size should be less than 1 MB</div>
+						</div>
+					</div>
+					<div class="wrapper row">
+						<div class="col-sm-4">
+							<label>Select Domain</label> <input type="text" required  value={{this.instituteDetailsForm.value.instituteURL}}
+                                formControlName="instituteURL" ngModel  [readonly]="this.instituteAlreadyRegistered">
+              <div *ngIf="this.instituteAlreadyRegistered===false">
+                  <div
+                      *ngFor="let validation of institute_validation_messages.instituteURL">
+                      <div class="error-message"
+                          *ngIf="instituteDetailsForm.get('instituteURL').hasError(validation.type) && (instituteDetailsForm.get('instituteURL').dirty || instituteDetailsForm.get('instituteURL').touched)">{{validation.message}}</div>
+                  </div>
+                  <div *ngIf="this.isInValidEmail">
+                      <div class="error-message"> {{this.emailErrorMessage}} </div>
+                  </div>
+              </div>
+						</div>
+						<div class="col-sm-4">
+							<label> &nbsp;</label>
+							<div class="blueLabel" *ngIf="this.instituteAlreadyRegistered===false">
+								{{protocol}}//{{instituteDetailsForm.value.instituteURL}}.{{this.hostURL}}
+                            </div>
+						</div>
+            <div class="col-sm-4">
+							<label>Directors Name</label> <input type="text" value={{this.instituteDetailsForm.value.directorName}}
+								formControlName="directorName" ngModel>
+						</div>
+          </div>
+                    <!--div class="wrapper row">
+						<div class="col-sm-4">
+							<label>Communication Emails from</label> <input type="text" required  value={{this.instituteDetailsForm.value.communicationEmailFrom}}
+                                formControlName="communicationEmailFrom" ngModel  [readonly]="this.instituteAlreadyRegistered" >
+                            <div *ngIf="this.instituteAlreadyRegistered===false">
+                                <div
+                                    *ngFor="let validation of institute_validation_messages.communicationEmailFrom">
+                                    <div class="error-message"
+                                        *ngIf="instituteDetailsForm.get('communicationEmailFrom').hasError(validation.type) && (instituteDetailsForm.get('communicationEmailFrom').dirty || instituteDetailsForm.get('communicationEmailFrom').touched)">{{validation.message}}</div>
+                                </div>
+                            </div>
+						</div>
+						<div class="col-sm-4">
+							<label> &nbsp;</label>
+							<div class="blueLabel" *ngIf="this.instituteAlreadyRegistered===false">
+                                info@{{instituteDetailsForm.value.communicationEmailFrom}}.{{this.hostURL}}
+                            </div>
+						</div>
+					</div-->
+					<div class="wrapper row">
+						<div class="col-sm-4">
+							<label>Upload Director's Photo</label> <input type="file"  (change)="handleDirectorPhotoFileInput($event.target.files)"
+								formControlName="directorImage" ngModel  [readonly]="this.instituteAlreadyRegistered" >
+								<div class="error-message" *ngIf="sizeErrorDirector">image size should be less than 1 MB</div>
+						</div>
+            <div class="col-sm-4">
+							<label>Message To Students</label> <input type="textarea" value={{this.instituteDetailsForm.value.message}}
+								formControlName="message" ngModel>
+						</div>
+						<div class="col-sm-4">
+							<label>Quotes</label> <input type="textarea" value={{this.instituteDetailsForm.value.quotes}}
+								formControlName="quotes" ngModel>
+						</div>
+					</div>
+					<div class="col-xs-12 submit text-center">
+						<input type="submit" name="submit" class="btn-active move"
+							value="Save" id="register-now"
+							[disabled]="!instituteDetailsForm.valid">
+            <input type="submit" name="submit" class="btn-active move"
+							value="Cancel" id="cancel">
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</article>
+

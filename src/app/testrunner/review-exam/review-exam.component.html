@@ -1,0 +1,417 @@
+<!--<div class="container" style="border-style: none;" >-->
+	<!--<div>-->
+			<!--<table style="width:100%;">-->
+			    <!--<tbody>-->
+					<!--<tr>-->
+						<!--<td style="padding: inherit;">-->
+							<!--<table style='width: 100%' class="mat-elevation-z8">-->
+							<!--<tr>-->
+								<!--<td colspan = 2>-->
+									<!--<table style='width: 100%'>-->
+										<!--<tbody>-->
+											<!--<tr>-->
+                        <!--<td><b>Exam Name : {{ paginationData.testName }} </b></td>-->
+												<!--<td><b>Subject : {{ paginationData.subjectName }} </b></td>-->
+												<!--<td><b>Max Marks : {{-->
+														<!--paginationData.MAX_MARKS }} </b></td>-->
+												<!--<td><b>Time Taken: {{ paginationData.COMPLETED_IN }} </b></td>-->
+											<!--</tr>-->
+											<!--<tr>-->
+                                                <!--<td><b>Passing Marks : {{ paginationData.passingMarks }} </b></td>-->
+												<!--<td><b>Topic : {{ paginationData.topicName }} </b></td>-->
+												<!--<td><b>Marks : {{ paginationData.MARKS_OBTAINED }} </b></td>-->
+												<!--<td><b>Date Completed : {{-->
+														<!--paginationData.COMPLETION_DATE }} </b></td>-->
+											<!--</tr>-->
+										<!--</tbody>-->
+									<!--</table>-->
+								<!--</td>-->
+							<!--</tr>-->
+							<!--<tr>-->
+								<!--<td width="30%" valign="top" style="padding: inherit;">-->
+									<!--<table style='width: 100%; overflow: scroll' class="mat-elevation-z8">-->
+										<!--<tr>-->
+											<!--<td>-->
+												<!--<table style="width:100%">-->
+													<!--<thead>-->
+														<!--<th style="width:20%">QNO</th>-->
+														<!--<th style="width:60%">TIME</th>-->
+														<!--<th style="width:20%">CORRECT</th>-->
+													<!--</thead>-->
+												<!--</table>-->
+											<!--</td>-->
+										<!--</tr>-->
+										<!--<tr>-->
+											<!--<td>-->
+												<!--<table style="width:100%; display: block; height: 600px; overflow-y: auto" class="question-list">-->
+													<!--<tbody>-->
+														<!--<tr *ngFor="let itm of this.allItems; let idx = index;" [ngClass]="{active:pager.currentPage === page}" (click)="setPage(idx + 1); pageChangeNew(idx + 1);">-->
+															<!--<td class="{{getCss(idx + 1)}}" style="width:20%">-->
+																<!--{{idx + 1}}-->
+															<!--</td>-->
+															<!--<td class="{{getCss(idx + 1)}}" style="width:60%">-->
+																<!--{{this.paginationData.QUESTION_RESULT[idx].timeTaken}}-->
+															<!--</td>-->
+															<!--<td class="{{getCss(idx + 1)}}" style="width:20%">-->
+																<!--<p *ngIf="this.paginationData.QUESTION_RESULT[idx].isCorrect == 'correct'"><mat-icon class="green-icon">check</mat-icon></p>-->
+																<!--<p *ngIf="this.paginationData.QUESTION_RESULT[idx].isCorrect != 'correct'"><mat-icon class="red-icon">close</mat-icon></p>-->
+			                                                <!--</td>-->
+														<!--</tr>-->
+														<!--&lt;!&ndash; tr *ngFor="let page of pager.pages"-->
+																<!--[ngClass]="{active:pager.currentPage === page}"-->
+																<!--(click)="setPage(page); pageChangeNew(page);">-->
+															<!--<td class="{{getCss(page)}}">-->
+																<!--{{page}}-->
+															<!--</td>-->
+															<!--<td class="{{getCss(page)}}">-->
+																<!--{{this.paginationData.QUESTION_RESULT[page - 1].timeTaken}}-->
+															<!--</td>-->
+															<!--<td class="{{getCss(page)}}">-->
+																<!--<p *ngIf="this.paginationData.QUESTION_RESULT[page - 1].isCorrect == 'correct'"><mat-icon class="green-icon">check</mat-icon></p>-->
+																<!--<p *ngIf="this.paginationData.QUESTION_RESULT[page - 1].isCorrect != 'correct'"><mat-icon class="red-icon">close</mat-icon></p>-->
+			                                                <!--</td>-->
+			                                            <!--</tr>-->
+			                                            <!--<tr>-->
+			                                                <!--<td colspan = 3>-->
+			                                                    <!--<ul *ngIf="pager.pages && pager.pages.length" class="pagination">-->
+			                                                        <!--<li [ngClass]="{disabled:pager.currentPage === 1}">-->
+			                                                            <!--<a (click)="setPage(pager.currentPage - 1); pageChangeNew(pager.currentPage);">Previous</a>-->
+															        <!--</li>-->
+									                                <!--<li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">-->
+											                            <!--<a (click)="setPage(pager.currentPage + 1); pageChangeNew(pager.currentPage);">Next</a>-->
+										                            <!--</li>-->
+									                            <!--</ul>-->
+			                                                <!--</td>-->
+			                                            <!--</tr &ndash;&gt;-->
+													<!--</tbody>-->
+												<!--</table>-->
+											<!--</td>-->
+										<!--</tr>-->
+                  <!--</table>-->
+								<!--</td>-->
+								<!--<td width="70%" valign="top" style="padding: inherit;">-->
+									<!--<table style='width: 100%' class="mat-elevation-z8">-->
+										<!--<tr>-->
+											<!--<td>-->
+												<!--<mat-accordion class="example-headers-align" *ngIf="this.question.isGroupQuestion == true">-->
+													<!--<mat-expansion-panel [expanded]="true">-->
+														<!--<mat-expansion-panel-header>-->
+															<!--<table width="100%">-->
+														    	<!--<tr>-->
+															    	<!--<td>-->
+																		<!--Question {{question.questionSequence}}-->
+																	<!--</td>-->
+																	<!--<td class="alignRight">-->
+																		<!--Previous Exam : {{this.question.previousExamName}} in Year : {{this.question.year}}-->
+																	<!--</td>-->
+																<!--</tr>-->
+															<!--</table>-->
+														<!--</mat-expansion-panel-header>-->
+														<!--<mat-card class="example-card">-->
+														  <!--<mat-card-content>-->
+														  		<!--<div [innerHTML]="this.question.headerQuestionDescription | safeHtml"></div>-->
+														  <!--</mat-card-content>-->
+														<!--</mat-card>-->
+													<!--</mat-expansion-panel>-->
+												<!--</mat-accordion>-->
+
+												<!--<mat-accordion class="example-headers-align" *ngFor="let testQ of this.question.testQuestions ; let i = index">-->
+													<!--<mat-card class="example-card">-->
+														  <!--<mat-card-header class="dark-background">-->
+														    <!--<mat-card-title *ngIf="this.question.isGroupQuestion == true && this.question.questionType == 1" class="headerClass">Question {{question.questionSequence}}.{{i + 1}} (Marks: {{testQ.marks}}) <b *ngIf="testQ.attempted == false">Not Attempted</b></mat-card-title>-->
+					    									<!--<table width="100%" *ngIf="(this.question.isGroupQuestion == true && this.question.questionType == 2) || (this.question.isGroupQuestion == false)">-->
+														    	<!--<tr>-->
+															    	<!--<td>-->
+                                    <!--<mat-card-title class="headerClass">Question {{question.questionSequence}} (Marks: {{testQ.marks}})  <b *ngIf="testQ.attempted == false">Not Attempted</b></mat-card-title>-->
+																	<!--</td>-->
+																	<!--<td class="alignRight" *ngIf="this.question.isGroupQuestion == false">-->
+																		<!--{{this.question.previousExamName}} : {{this.question.year}}-->
+																	<!--</td>-->
+																<!--</tr>-->
+															<!--</table>-->
+														  <!--</mat-card-header>-->
+														  <!--<mat-card-content>-->
+														  		<!--<div *ngIf="testQ.audioFilePath==null" [innerHTML]="testQ.questionDescription | safeHtml"></div>-->
+														  		<!--<div *ngIf="testQ.audioFilePath">-->
+														  			<!--<audio controls controlsList="nodownload">-->
+															  			<!--<source src="{{testQ.audioFilePath}}" type="audio/mpeg">-->
+																	  <!--</audio>-->
+														  		<!--</div>-->
+														  		<!--<hr>-->
+														  		<!--<div *ngIf="testQ.options.length > 1">-->
+														  			<!--<mat-card class="example-card" *ngFor="let opt of testQ.options ; let j = index">-->
+														  				<!--<mat-card-content *ngIf="!testQ.isMultiChoice || testQ.isMultiChoice == false">-->
+														  					<!--<table width="100%">-->
+														  					<!--<tr>-->
+														  					<!--<td width="90%">-->
+															  					<!--<mat-radio-group name="answerOptions">-->
+																  					<!--<mat-radio-button [disabled]=true class="example-radio-button" name="checkedAns" checked="{{opt.isSelected == true}}" [value]="opt.answerId">-->
+																			    		<!--<div [innerHTML]="opt.answerText | safeHtml"></div>-->
+																					<!--</mat-radio-button>-->
+																				<!--</mat-radio-group>-->
+																			<!--</td>-->
+																			<!--<td>-->
+																				<!--<i class="material-icons" *ngIf="opt.isCorrect==true">done</i>-->
+																				<!--<i class="material-icons" *ngIf="opt.isCorrect==false">clear</i>-->
+																			<!--</td>-->
+																			<!--</tr>-->
+																			<!--</table>-->
+														  				<!--</mat-card-content>-->
+														  				<!--<mat-card-content *ngIf="testQ.isMultiChoice && testQ.isMultiChoice == true">-->
+														  					<!--<table width="100%">-->
+														  					<!--<tr>-->
+														  						<!--<td width="90%">-->
+														  							<!--<mat-checkbox [disabled]=true name="chkIsCorrect3" [checked]="opt.isSelected" class="example-margin" ><div [innerHTML]="opt.answerText | safeHtml"></div></mat-checkbox>-->
+														  						<!--</td>-->
+														  						<!--<td>-->
+																					<!--<i class="material-icons" *ngIf="opt.isCorrect==true">done</i>-->
+																					<!--<i class="material-icons" *ngIf="opt.isCorrect==false">clear</i>-->
+																				<!--</td>-->
+														  					<!--</tr>-->
+														  					<!--</table>-->
+														  				<!--</mat-card-content>-->
+														  			<!--</mat-card>-->
+														  		<!--</div>-->
+														  		<!--<div *ngIf="testQ.options.length == 1">-->
+														  			<!--<mat-card class="example-card" *ngFor="let opt of testQ.options ; let j = index">-->
+														  				<!--<mat-card-content>-->
+															  				<!--<B>Your Answer:</B>-->
+															  				<!--<p><B [innerHTML]="testQ.answerText | safeHtml"></B><br><hr></p>-->
+																	  		<!--<B>Correct Answer:</B>-->
+																	  		<!--<B [innerHTML]="opt.answerText | safeHtml"></B>-->
+																  		<!--</mat-card-content>-->
+														  			<!--</mat-card>-->
+														  		<!--</div>-->
+														  <!--</mat-card-content>-->
+														  <!--<mat-card-content class="dark-background">-->
+														  <!--<p class="alignCenter">-->
+														  	<!--Explanation-->
+														  <!--</p>-->
+														  <!--<div [innerHTML]="testQ.explanation | safeHtml">-->
+														  <!--</div>-->
+														  <!--</mat-card-content>-->
+														  <!--<mat-card-actions class="textAlignCenter">-->
+														  <!--<ul *ngIf="pager.pages && pager.pages.length" class="pagination">-->
+														  	<!--<li [ngClass]="{disabled:pager.currentPage === 1}"><a-->
+																<!--(click)="setPage(1); pageChangeNew(1);">First</a></li>-->
+															<!--<li [ngClass]="{disabled:pager.currentPage === 1}"><a-->
+																<!--(click)="setPage(pager.currentPage - 1); pageChangeNew(pager.currentPage);">Previous</a>-->
+															<!--</li>-->
+
+															<!--<li-->
+																<!--[ngClass]="{disabled:pager.currentPage === pager.totalPages}">-->
+																<!--<a-->
+																<!--(click)="setPage(pager.currentPage + 1); pageChangeNew(pager.currentPage);">Next</a>-->
+															<!--</li>-->
+															<!--<li-->
+																<!--[ngClass]="{disabled:pager.currentPage === pager.totalPages}">-->
+																<!--<a-->
+																<!--(click)="setPage(pager.totalPages); pageChangeNew(pager.totalPages);">Last</a>-->
+															<!--</li>-->
+
+														  <!--</ul>-->
+														     <!--<span class="report" (click)="openDescriptionBox()">Report a problem</span>-->
+														  <!--</mat-card-actions>-->
+													<!--</mat-card>-->
+												<!--</mat-accordion>-->
+											<!--</td>-->
+										<!--</tr>-->
+
+									<!--</table>-->
+								<!--</td>-->
+							<!--</tr>-->
+						<!--</table>-->
+					<!--</td>-->
+					<!--</tr>-->
+				<!--</tbody>-->
+			<!--</table>-->
+		<!--</div>-->
+<!--</div>-->
+
+<div class="container col-sm-12" style="border-style: none;" >
+  <div class="review-header col-sm-12">
+    <div class="sub col-sm-12">
+      <div class="sub-item col-sm-3">
+        <b><span class="label-header-exam">Exam Name :</span> {{ paginationData.testName }} </b>
+      </div>
+      <div class="sub-item col-sm-3">
+        <b><span class="label-header-subj">Subject :</span> {{ paginationData.subjectName }} </b>
+      </div>
+      <div class="sub-item col-sm-3">
+        <b><span class="label-header-max">Max Marks :</span> {{paginationData.MAX_MARKS }} </b>
+      </div>
+      <div class="sub-item col-sm-3">
+        <b><span class="label-header-time">Time Taken:</span> {{ paginationData.COMPLETED_IN }} </b>
+      </div>
+    </div>
+    <div class="sub1 col-sm-12">
+      <div class="sub-item col-sm-3">
+        <b><span class="label-header-topic">Topic :</span> {{ paginationData.topicName }} </b>
+      </div>
+      <div class="sub-item col-sm-3">
+        <b><span class="label-header-mark">Marks :</span> {{ paginationData.MARKS_OBTAINED }} </b>
+      </div>
+      <div class="sub-item col-sm-3">
+        <b><span class="label-header-date">Date Completed</span> : {{paginationData.COMPLETION_DATE }} </b>
+      </div>
+    </div>
+  </div>
+  <div class="review-content col-sm-12">
+    <div class="review-record col-sm-3">
+      <div class="header col-sm-12">
+        <div class="sub-label-n text-left">QNO</div>
+        <div class="sub-label-t text-left">TIME</div>
+        <div class="sub-label-c text-center">CORRECT</div>
+      </div>
+      <div class="question-list col-sm-12">
+        <div class="question" *ngFor="let item of this.allItems; let idx = index;"
+             [ngClass]="{active:pager.currentPage === page}"
+             (click)="setPage(idx + 1); pageChangeNew(idx + 1);">
+          <div class="{{getCss(idx + 1)}}" style="width: 20%;transform: translateY(30%);padding-left: 6px;">{{idx + 1}}</div>
+          <div class="{{getCss(idx + 1)}}" style="width: 50%;transform: translateY(30%);text-align: center;">{{this.paginationData.QUESTION_RESULT[idx].timeTaken}}</div>
+          <div class="{{getCss(idx + 1)}}" style="width: 30%;transform: translateY(25%);text-align: center;padding-left: 20px;">
+            <p *ngIf="this.paginationData.QUESTION_RESULT[idx].isCorrect == 'correct'"><mat-icon class="green-icon">check</mat-icon></p>
+						<p *ngIf="this.paginationData.QUESTION_RESULT[idx].isCorrect != 'correct'"><mat-icon class="red-icon">close</mat-icon></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="exam-answers col-sm-9">
+      <mat-accordion class="example-headers-align" *ngIf="this.question.isGroupQuestion == true">
+        <mat-expansion-panel [expanded]="true">
+          <mat-expansion-panel-header>
+            <div class="col-sm-12" style="display: flex">
+              <div>Question {{question.questionSequence}}</div>
+              <div class="text-right">Previous Exam : {{this.question.previousExamName}} in Year : {{this.question.year}}</div>
+            </div>
+          </mat-expansion-panel-header>
+          <div class="example-card">
+            <div [innerHTML]="this.question.headerQuestionDescription | safeHtml"></div>
+          </div>
+        </mat-expansion-panel>
+      </mat-accordion>
+      <mat-accordion *ngFor="let testQ of this.question.testQuestions ; let i = index">
+        <div class="answer-header col-sm-12" *ngIf="this.question.isGroupQuestion == true && this.question.questionType == 1">
+          Question {{question.questionSequence}}.{{i + 1}} (Marks: {{testQ.marks}})
+          <b *ngIf="testQ.attempted == false">Not Attempted</b>
+        </div>
+        <div class="answer-sub-header col-sm-12">
+          Question {{question.questionSequence}} (Marks: {{testQ.marks}})
+          <b *ngIf="testQ.attempted == false">Not Attempted</b>
+        </div>
+        <!-- <div class="answer-label col-sm-12" *ngIf="this.question.isGroupQuestion == false">
+          {{this.question.previousExamName}} : {{this.question.year}}
+        </div> -->
+        <div class="answer-content col-sm-12">
+          <div class="description" *ngIf="testQ.audioFilePath==null" [innerHTML]="testQ.questionDescription | safeHtml"></div>
+          <div *ngIf="testQ.audioFilePath">
+            <audio controls controlsList="nodownload">
+              <source src="{{testQ.audioFilePath}}" type="audio/mpeg">
+            </audio>
+          </div>
+          <hr>
+          <div *ngIf="testQ.options.length > 1">
+            <div class="item col-sm-12" *ngFor="let opt of testQ.options ; let j = index">
+              <div class="answer-item" *ngIf="(!testQ.isMultiChoice || testQ.isMultiChoice == false) && opt.isCorrect==false">
+                <div class="item-unit col-sm-12">
+                  <div class="item-val col-sm-11">
+                    <mat-radio-group name="answerOptions">
+                      <mat-radio-button [disabled]=true class="example-radio-button" name="checkedAns" checked="{{opt.isSelected == true}}" [value]="opt.answerId">
+                        <div class="item-label" [innerHTML]="opt.answerText | safeHtml"></div>
+                      </mat-radio-button>
+                    </mat-radio-group>
+                  </div>
+                  <div class="item-check col-sm-1">
+                    <i class="material-icons" *ngIf="opt.isCorrect==true">done</i>
+                    <i class="material-icons" *ngIf="opt.isCorrect==false">clear</i>
+                  </div>
+                </div>
+              </div>
+              <div class="answer-item-g" *ngIf="(!testQ.isMultiChoice || testQ.isMultiChoice == false) && opt.isCorrect==true">
+                <div class="item-unit col-sm-12">
+                  <div class="item-val col-sm-11">
+                    <mat-radio-group name="answerOptions">
+                      <mat-radio-button [disabled]=true class="example-radio-button" name="checkedAns" checked="{{opt.isSelected == true}}" [value]="opt.answerId">
+                        <div class="item-label" [innerHTML]="opt.answerText | safeHtml"></div>
+                      </mat-radio-button>
+                    </mat-radio-group>
+                  </div>
+                  <div class="item-check col-sm-1">
+                    <i class="material-icons" *ngIf="opt.isCorrect==true">done</i>
+                    <i class="material-icons" *ngIf="opt.isCorrect==false">clear</i>
+                  </div>
+                </div>
+              </div>
+              <div class="answer-item" *ngIf="(testQ.isMultiChoice && testQ.isMultiChoice == true) && opt.isCorrect == false">
+                <div class="item-unit col-sm-12">
+                  <div class="item-val col-sm-11">
+                    <mat-checkbox [disabled]=true name="chkIsCorrect3" [checked]="opt.isSelected" class="example-margin" >
+                      <div [innerHTML]="opt.answerText | safeHtml"></div>
+                    </mat-checkbox>
+                  </div>
+                  <div class="item-check col-sm-1">
+                    <i class="material-icons" *ngIf="opt.isCorrect==true">done</i>
+                    <i class="material-icons" *ngIf="opt.isCorrect==false">clear</i>
+                  </div>
+                </div>
+              </div>
+              <div class="answer-item-g" *ngIf="(testQ.isMultiChoice && testQ.isMultiChoice == true) && opt.isCorrect == true">
+                <div class="item-unit col-sm-12">
+                  <div class="item-val col-sm-11">
+                    <mat-checkbox [disabled]=true name="chkIsCorrect3" [checked]="opt.isSelected" class="example-margin" >
+                      <div [innerHTML]="opt.answerText | safeHtml"></div>
+                    </mat-checkbox>
+                  </div>
+                  <div class="item-check col-sm-1">
+                    <i class="material-icons" *ngIf="opt.isCorrect==true">done</i>
+                    <i class="material-icons" *ngIf="opt.isCorrect==false">clear</i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div *ngIf="testQ.options.length == 1">
+            <div class="col-sm-12" *ngFor="let opt of testQ.options ; let j = index">
+              <B>Your Answer:</B>
+              <p><B [innerHTML]="testQ.answerText | safeHtml"></B><br><hr></p>
+              <B>Correct Answer:</B>
+              <B [innerHTML]="opt.answerText | safeHtml"></B>
+            </div>
+          </div>
+        </div>
+        <br class="response" style="display: none;">
+        <div class="comment col-sm-12">
+          <p class="alignCenter">Explanation</p>
+          <div [innerHTML]="testQ.explanation | safeHtml"></div>
+        </div>
+      </mat-accordion>
+      <br class="response" style="display: none;">
+      <div class="action col-sm-12">
+        <div class="col-sm-9"></div>
+        <div class="action-buttons col-sm-3 text-right">
+          <!--<ul *ngIf="pager.pages && pager.pages.length" class="pagination">-->
+            <!--<li [ngClass]="{disabled:pager.currentPage === 1}">-->
+              <!--<a (click)="setPage(1); pageChangeNew(1);">First</a>-->
+            <!--</li>-->
+            <!--<li [ngClass]="{disabled:pager.currentPage === 1}">-->
+              <!--<a (click)="setPage(pager.currentPage - 1); pageChangeNew(pager.currentPage);">Previous</a>-->
+            <!--</li>-->
+            <!--<li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">-->
+              <!--<a (click)="setPage(pager.currentPage + 1); pageChangeNew(pager.currentPage);">Next</a>-->
+            <!--</li>-->
+            <!--<li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">-->
+              <!--<a (click)="setPage(pager.totalPages); pageChangeNew(pager.totalPages);">Last</a>-->
+            <!--</li>-->
+          <!--</ul>-->
+          <button class="action prev"  (click)="setPage(pager.currentPage - 1); pageChangeNew(pager.currentPage);"
+                  [ngClass]="{disabled:pager.currentPage === 1}">PREVIOUS</button>
+          <button class="action next"  (click)="setPage(pager.currentPage + 1); pageChangeNew(pager.currentPage);"
+                  [ngClass]="{disabled:pager.currentPage === pager.totalPages}">NEXT</button>
+        </div>
+        <div class="action-report col-sm-12 text-right">
+          <span class="report" (click)="openDescriptionBox()">Report a problem</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

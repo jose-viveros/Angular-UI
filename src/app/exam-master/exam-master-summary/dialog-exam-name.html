@@ -1,0 +1,11 @@
+<h2 mat-dialog-title>Copy and Create a new exam from {{data.srcExamName}}</h2>
+<div mat-dialog-content>
+  <p>New Exam Name</p>
+  <mat-form-field>
+    <input matInput [(ngModel)]="data.targetExamName" [maxlength]="50">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">No Thanks</button>
+  <button mat-button [mat-dialog-close]="data.targetExamName" cdkFocusInitial>Ok</button>
+</div>

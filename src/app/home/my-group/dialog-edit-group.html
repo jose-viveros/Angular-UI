@@ -1,0 +1,22 @@
+<div class="create-group-form">
+	<h1 mat-dialog-title>Edit Group Name</h1>
+    <form [formGroup]="groupNameForm" class="dg-edit" method="post" action="">
+			<div class="grp-name col-sm-8">
+				<label>Existing Group Name : </label> <br>
+				<input type="text" value={{oldGroupName}} readonly>
+			</div>
+			<div class="grp-name col-sm-8">
+				<label>New Group Name : </label> <br>
+				<input type="text"
+					formControlName="groupName" [(ngModel)]="data.groupName">
+					<span *ngIf="duplicateValue" class="error-msg">{{errormsg}}</span>
+			</div>
+			<div class="col-xs-12 submit text-center">
+			<!-- <button mat-button btn-active move [mat-dialog-close]="data.groupName" (click)="onSubmitGroupDetails(data.groupName)" cdkFocusInitial>Create</button>
+			 <button mat-button btn-active move (click)="onNoClick()">Cancel</button> -->
+				<button mat-button
+					value="Update" id="edit-btn" (click)="onSubmitGroupDetails(data.groupName)">Update</button>
+			   <button mat-button id="cancel-btn" value="Cancel" (click)="onNoClick()">Cancel</button>
+			</div>
+		</form>
+	</div>

@@ -1,0 +1,111 @@
+<h2 class="dg-title">Remove students from {{data.groupName}}</h2>
+  <mat-card class="example-card">
+    <mat-form-field class="example-full-width">
+  									<input matInput (keyup)="applyFilter($event.target.value)" placeholder="Search By Name" id="filterText" #filterText="ngModel"  [(ngModel)]= "model.filterText">
+								</mat-form-field>
+    <mat-form-field class="example-full-width">
+  									<input matInput (keyup)="applyStandardFilter($event.target.value)" placeholder="Search By Standard" id="filterStandard" #filterStandard="ngModel"  [(ngModel)]= "model.filterStandard">
+								</mat-form-field>
+    <mat-accordion displayMode="flat" multi class="example-headers-align tutor-remove-stud">
+      <section matSort class="mat-header-row">
+        <span class="mat-header-cell fs" mat-sort-header="select" >
+          <mat-checkbox (change)="$event ? masterToggle() : null"
+                          [checked]="selection.hasValue() && isAllSelected()"
+                          [indeterminate]="selection.hasValue() && !isAllSelected()">
+          </mat-checkbox>
+        </span>
+        <span class="mat-header-cell fn" mat-sort-header="type" >Name</span>
+        <span class="mat-header-cell fi" mat-sort-header="type" >Id</span>
+        <span class="mat-header-cell fg" mat-sort-header="type" >Group Name</span>
+        <span class="mat-header-cell fd" mat-sort-header="type" >Standard</span>
+      </section>
+      <mat-expansion-panel *ngFor="let item of displayedRows$ | async">
+        <mat-expansion-panel-header class="mat-row">
+          <span class="mat-cell fs">
+            <mat-checkbox (click)="$event.stopPropagation()"
+                          (change)="$event ? selection.toggle(item) : null"
+                          [checked]="selection.isSelected(item)">
+            </mat-checkbox>
+          </span>
+          <span class="mat-cell fn" >{{item.name}}</span>
+          <span class="mat-cell fi" >{{item.id}}</span>
+          <span class="mat-cell fg" >{{item.groupName}}</span>
+          <span class="mat-cell fd" >{{item.standard}}</span>
+        </mat-expansion-panel-header>
+        <!--<div class="item-content">-->
+          <!--<div class="content-item">-->
+            <!--<div class="elem">TEST Type</div>-->
+            <!--<div class="val">{{item.examType}}</div>-->
+          <!--</div>-->
+          <!--<div class="content-item">-->
+            <!--<div class="elem">ASSIGNED DATE</div>-->
+            <!--<div class="val">{{item.assignedDate | date:'dd/MM/yyyy'}}</div>-->
+          <!--</div>-->
+          <!--<div class="content-item">-->
+            <!--<div class="elem">FINISHED DATE</div>-->
+            <!--<div class="val time">{{item.finishedDate | date: 'dd/MM/yyyy'}}</div>-->
+          <!--</div>-->
+          <!--<div class="content-item">-->
+            <!--<div class="elem">SCORE</div>-->
+            <!--<div class="val">{{item.score}}</div>-->
+          <!--</div>-->
+          <!--<div class="content-item">-->
+            <!--<div class="elem">RANK</div>-->
+            <!--<div class="val">{{item.rank}}</div>-->
+          <!--</div>-->
+        <!--</div>-->
+      </mat-expansion-panel>
+    </mat-accordion>
+    <mat-paginator #paginator
+      [length]="totalRows$ | async"
+      [pageIndex]="0"
+      [pageSize]="5"
+      [pageSizeOptions]="[5, 10, 20]"
+      [showFirstLastButtons]="true"
+    ></mat-paginator>
+
+    <!--<mat-table #table [dataSource]="dataSource">-->
+      <!--<ng-container matColumnDef="select">-->
+          <!--<mat-header-cell *matHeaderCellDef >-->
+            <!--<mat-checkbox (change)="$event ? masterToggle() : null"-->
+                            <!--[checked]="selection.hasValue() && isAllSelected()"-->
+                            <!--[indeterminate]="selection.hasValue() && !isAllSelected()">-->
+              <!--</mat-checkbox>-->
+          <!--</mat-header-cell>-->
+          <!--<mat-cell *matCellDef="let row" >-->
+            <!--<mat-checkbox (click)="$event.stopPropagation()"-->
+                            <!--(change)="$event ? selection.toggle(row) : null"-->
+                            <!--[checked]="selection.isSelected(row)"s>-->
+              <!--</mat-checkbox>-->
+          <!--</mat-cell>-->
+        <!--</ng-container>-->
+      <!--<ng-container matColumnDef="name">-->
+          <!--<mat-header-cell *matHeaderCellDef> Name </mat-header-cell>-->
+            <!--<mat-cell *matCellDef="let element" > {{element.name}} </mat-cell>-->
+      <!--</ng-container>-->
+      <!---->
+      <!--<ng-container matColumnDef="id">-->
+          <!--<mat-header-cell *matHeaderCellDef> Id </mat-header-cell>-->
+            <!--<mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>-->
+      <!--</ng-container>-->
+      <!--<ng-container matColumnDef="groupName">-->
+          <!--<mat-header-cell *matHeaderCellDef> Group Name </mat-header-cell>-->
+            <!--<mat-cell *matCellDef="let element"> {{element.groupName}} </mat-cell>-->
+      <!--</ng-container>-->
+      <!---->
+      <!--<ng-container matColumnDef="standard">-->
+          <!--<mat-header-cell *matHeaderCellDef> Standard </mat-header-cell>-->
+            <!--<mat-cell *matCellDef="let element"> {{element.standard}} </mat-cell>-->
+      <!--</ng-container>-->
+      <!---->
+        <!--<mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>-->
+        <!--<mat-row *matRowDef="let row; columns: displayedColumns;" (click)="selection.toggle(row)"></mat-row>-->
+    <!--</mat-table>-->
+    <!--<mat-paginator #paginator-->
+     <!--[pageSize]="5"-->
+     <!--[pageSizeOptions]="[5, 10, 20]"-->
+     <!--[showFirstLastButtons]="true">-->
+	  <!--</mat-paginator>-->
+  <button mat-button class="dg-btn" [mat-dialog-close]="{'data': this.selection}" cdkFocusInitial>Remove</button>
+  <button mat-button class="dg-btn" value="Cancel" (click)="onNoClick()">Cancel</button>
+</mat-card>

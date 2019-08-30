@@ -1,0 +1,15 @@
+
+.parent-content {
+    font-family: Roboto,"Helvetica Neue",sans-serif !important;
+    font-size: 15px !important;
+    height: 400px;
+    box-shadow: 2px 2px 2px 2px #888888 !important;
+    margin-top: 2px;
+   
+}
+.content{
+	 color: #919191;
+}
+.parent-help {
+	margin-top:2%;
+}

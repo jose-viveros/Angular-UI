@@ -1,0 +1,89 @@
+.lastli {
+	font-weight: bold;
+  	text-decoration: underline;
+  	color: black;
+}
+
+.editCls {
+	cursor: pointer;
+}
+
+.notactive {
+  	cursor: hand;
+  	text-decoration: none;
+  	color: #337ab7;
+}
+
+.notactive:hover {
+	cursor: hand;
+  	text-decoration: underline;
+  	color: #23527c;
+}
+
+.trQuestionMain {
+	background: linear-gradient(to right, #ffffff 0%, #00b1c5 100%);
+	vertical-align: baseline;
+	box-sizing: border-box;
+	width: 100%;
+}
+
+.trSubQuestion {
+	background-color: #f5f5f5;
+	vertical-align: baseline;
+	box-sizing: border-box;
+}
+
+.matCardMain {
+	background-color: #f5f5f5;
+	vertical-align: baseline;
+	border: 1px solid grey;
+	
+}
+
+.example-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.example-container > * {
+  width: 100%;
+}
+
+
+.matCard {
+	background-color: #f5f5f5;
+	vertical-align: baseline;
+	border-left: 1px solid grey;
+	border-right: 1px solid grey;
+	
+}
+
+.form-wrapper {
+	color: black;
+}
+
+.tblHeader {
+    font-size: 13px;
+    font-style: oblique;
+}
+
+.cssMinWidth {
+	width: min-width;
+	display: inline
+}
+
+.cssWidth20 {
+	width: 20%;
+}
+
+.cssWidth30 {
+	width: 30%;
+}
+
+.cssInline {
+	display: inline;
+}
+
+.cssWidth10 {
+	width: 10%;
+}

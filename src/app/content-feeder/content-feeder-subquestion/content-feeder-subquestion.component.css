@@ -1,0 +1,51 @@
+
+#divQuestion {
+	height: 240px;
+}
+
+#question {
+	height: 100%;
+}
+.example-section {
+	margin-left: 10px;
+}
+
+mat-card-actions {
+  margin: 2em auto;
+  text-align: right;
+}
+
+.lastli {
+	font-weight: bold;
+  	text-decoration: underline;
+  	color: black;
+}
+
+
+
+.notactive {
+  	cursor: hand;
+  	text-decoration: none;
+  	color: #337ab7; 
+}
+
+.notactive:hover {
+	cursor: hand;
+  	text-decoration: underline;
+  	color: #23527c;
+}
+
+.example-full-width {
+  width: 100%;
+}
+
+
+.example-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.example-full-width {
+  width: 100%;
+}

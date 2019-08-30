@@ -1,0 +1,288 @@
+<!--<div class="half-width">-->
+    <!--<h3 class="status">{{this.examName}}</h3>-->
+<!--</div>-->
+<!--<div *ngIf="showTimer" class="color-light" style="border-style: none;">-->
+    <!--<app-timer [startsWithInSecs]="this.testTimeTaken" [maxExamDuration]="this.maxExamDuration"></app-timer>-->
+<!--</div>-->
+<!--<div *ngIf="errorMessage" class="alert alert-danger">-->
+<!--<table>-->
+	<!--<tr>-->
+		<!--<td>-->
+			<!--<div [innerHTML]="errorMessage | safeHtml"></div>-->
+		<!--</td>-->
+		<!--<td>-->
+			<!--<div (click)="errorMessage=false; this.timerCount = 0;"><em class="material-icons hand-cursor">close</em></div>-->
+		<!--</td>-->
+	<!--</tr>-->
+<!--</table>-->
+<!--</div>-->
+<!--<table>-->
+    <!--<tr>-->
+        <!--<td style="vertical-align: top; width: 25%; font-weight: bold">-->
+                    <!--<table style="width:100%; font-size: 14px; color: rgba(0,0,0,.87)" class="mat-elevation-z8" >-->
+                        <!--<thead>-->
+                            <!--<th>Q.NO.</th>-->
+                            <!--<th>TIME</th>-->
+                            <!--<th>Attempted</th>-->
+                        <!--</thead>-->
+                        <!--<tbody>-->
+                            <!--<tr *ngFor="let itm of this.questionsTimeTaken; let idx = index;" (click)="fetchQuestion(itm)">-->
+                                <!--<td style="width:20%">-->
+                                    <!--{{idx + 1}}-->
+                                <!--</td>-->
+                                <!--<td style="width:60%">-->
+                                    <!--{{itm.timeTaken}}-->
+                                <!--</td>-->
+                                <!--<td style="width:20%">-->
+                                    <!--{{itm.IS_ATTEMPTED}}-->
+                                <!--</td>-->
+                            <!--</tr>-->
+                        <!--</tbody>-->
+                    <!--</table>-->
+        <!--</td>-->
+        <!--<td>-->
+            <!--<mat-accordion class="example-headers-align" *ngIf="this.question.isGroupQuestion == true">-->
+                <!--<mat-expansion-panel [expanded]="true">-->
+                    <!--<mat-expansion-panel-header>-->
+                        <!--<table>-->
+                            <!--<tr>-->
+                                <!--<td>-->
+                                    <!--<mat-panel-title>Question {{question.questionSequence}}</mat-panel-title>-->
+                                <!--</td>-->
+                                <!--<td>-->
+                                    <!--{{this.question.previousExamName}} : {{this.question.year}}-->
+                                <!--</td>-->
+                            <!--</tr>-->
+                        <!--</table>-->
+                    <!--</mat-expansion-panel-header>-->
+                    <!--<mat-card class="example-card">-->
+                    <!--<mat-card-content>-->
+                            <!--<div [innerHTML]="this.question.headerQuestionDescription | safeHtml"></div>-->
+                    <!--</mat-card-content>-->
+                    <!--</mat-card>-->
+                <!--</mat-expansion-panel>-->
+            <!--</mat-accordion>-->
+
+            <!--<mat-accordion class="example-headers-align" *ngFor="let testQ of this.question.testQuestions ; let i = index">-->
+                <!--<mat-card class="example-card">-->
+                    <!--<mat-card-header>-->
+                        <!--<mat-card-title *ngIf="this.question.isGroupQuestion == true && this.question.questionType == 1" class="headerClass">Question {{question.questionSequence}}.{{i + 1}}</mat-card-title>-->
+                        <!--<table *ngIf="(this.question.isGroupQuestion == true && this.question.questionType == 2) || (this.question.isGroupQuestion == false)" >-->
+                            <!--<tr>-->
+                                <!--<td>-->
+                                    <!--<mat-card-title class="headerClass">Question {{question.questionSequence}}</mat-card-title>-->
+                                <!--</td>-->
+                                <!--<td *ngIf="this.question.isGroupQuestion == false">-->
+                                    <!--{{this.question.previousExamName}} : {{this.question.year}}-->
+                                <!--</td>-->
+                            <!--</tr>-->
+                        <!--</table>-->
+                    <!--</mat-card-header>-->
+                    <!--<mat-card-content>-->
+                            <!--<div *ngIf="testQ.audioFilePath==null" [innerHTML]="testQ.questionDescription | safeHtml"></div>-->
+                            <!--<div *ngIf="testQ.audioFilePath">-->
+                                <!--<audio controls controlsList="nodownload">-->
+                                    <!--<source src="{{testQ.audioFilePath}}" type="audio/mpeg">-->
+                                <!--</audio>-->
+                            <!--</div>-->
+                            <!--<hr>-->
+                            <!--<div *ngIf="testQ.options.length > 1">-->
+                                <!--<mat-card class="example-card" *ngFor="let opt of testQ.options ; let j = index">-->
+                                    <!--<mat-card-content *ngIf="!testQ.isMultiChoice || testQ.isMultiChoice == false">-->
+                                        <!--<mat-radio-group name="answerOptions{{i}}">-->
+                                            <!--<mat-radio-button class="example-radio-button" name="checkedAns{{i}}{{j}}" checked="{{opt.isSelected == true}}" [value]="opt.answerId" (change)="onOptionChange(testQ, opt.answerId, $event)">-->
+                                                <!--<div [innerHTML]="opt.answerText | safeHtml"></div>-->
+                                            <!--</mat-radio-button>-->
+                                        <!--</mat-radio-group>-->
+                                    <!--</mat-card-content>-->
+                                    <!--<mat-card-content *ngIf="testQ.isMultiChoice && testQ.isMultiChoice == true">-->
+                                        <!--<mat-checkbox name="chkIsCorrect3" [checked]="opt.isSelected" class="example-margin" (change)="onOptionChange(testQ, opt.answerId, $event)" ><div [innerHTML]="opt.answerText | safeHtml"></div></mat-checkbox>-->
+                                    <!--</mat-card-content>-->
+                                <!--</mat-card>-->
+                            <!--</div>-->
+                            <!--<div *ngIf="testQ.options.length == 1">-->
+                                <!--<mat-card class="example-card">-->
+                                    <!--<mat-form-field class="example-full-width">-->
+                                        <!--<input autocomplete="off" matInput placeholder="Answer" [ngModel]= "testQ.answerText" name="ansText" id ="ansText" (ngModelChange)="onChange(testQ, $event)">-->
+                                    <!--</mat-form-field>-->
+                                <!--</mat-card>-->
+                            <!--</div>-->
+                    <!--</mat-card-content>-->
+                <!--</mat-card>-->
+                <!--<hr>-->
+            <!--</mat-accordion>-->
+            <!--<mat-card class="example-card">-->
+                <!--<mat-card-actions>-->
+                        <!--<div style="text-align: center;">-->
+                            <!--<button class="btn btn-primary"  (click)="previousQuestion()" [disabled]="disablePrev" >PREVIOUS</button>-->
+                            <!--<button class="btn btn-primary"  (click)="nextQuestion()" [disabled]="disableNext">NEXT</button>-->
+                            <!--<button class="btn btn-primary"  (click)="saveAndExit()" >SAVE AND EXIT</button>-->
+                            <!--<button class="btn btn-primary"  (click)="saveAndSubmit()" [disabled]="disableSubmit" >SUBMIT</button>-->
+                            <!--<span class="report" (click)="openDescriptionBox()">Report a problem</span>-->
+                        <!--</div>-->
+                    <!--</mat-card-actions>-->
+            <!--</mat-card>-->
+        <!--</td>-->
+    <!--</tr>-->
+<!--</table>-->
+
+
+
+<div class="test-runner">
+  <div class="test-area">
+    <div class="test-title">
+      <h3 class="status wide">Exam : {{this.examName}}, Subject : {{this.subjectName}}, Duration : {{this.duration}}, Marks : {{this.marks}}</h3>
+      <h3 class="status resp" style="display: none;">
+        Exam : {{this.examName}}
+        <span>
+          <mat-form-field>
+            <mat-select [(value)]="selected">
+              <mat-option value="option1">Subject : {{this.subjectName}}</mat-option>
+              <mat-option value="option2">Duration : {{this.duration}}</mat-option>
+              <mat-option value="option3">Marks : {{this.marks}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </span>
+      </h3>
+    </div>
+    <div class="time-recoder col-sm-2 wide">
+      <div class="recoder-header">
+        <div class="h-title-l">Q#</div>
+        <div class="h-title-r">Time</div>
+      </div>
+      <div class="recode-list">
+        <div class="recode-item" *ngFor="let itm of this.questionsTimeTaken; let idx = index;" (click)="fetchQuestion(itm)">
+          <div class="num" *ngIf="itm.IS_ATTEMPTED == null">
+            {{idx + 1}}
+          </div>
+          <div class="qu-num" *ngIf="itm.IS_ATTEMPTED == true" (click)="reloadQuestion(idx)">
+            {{idx + 1}}
+          </div>
+          <div class="qu-num-un" *ngIf="itm.IS_ATTEMPTED == false" (click)="reloadQuestion(idx)">
+            {{idx + 1}}
+          </div>
+          <div class="time" *ngIf="itm.IS_ATTEMPTED == null">
+            {{itm.timeTaken}}
+          </div>
+          <div class="re-time" *ngIf="itm.IS_ATTEMPTED == true" (click)="reloadQuestion(idx)">
+            {{itm.timeTaken}}
+          </div>
+          <div class="re-time-un" *ngIf="itm.IS_ATTEMPTED == false"  (click)="reloadQuestion(idx)">
+            {{itm.timeTaken}}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="test-content col-sm-10">
+      <div class="alert alert-danger" *ngIf="errorMessage">
+        <div [innerHTML]="errorMessage | safeHtml"></div>
+        <div (click)="errorMessage=false; this.timerCount = 0;"><em class="material-icons hand-cursor">close</em></div>
+      </div>
+      <div class="test-timer-res color-light col-sm-6 text-right" *ngIf="showTimer" style="display: none;">
+        <app-timer [startsWithInSecs]="this.testTimeTaken" [maxExamDuration]="this.maxExamDuration"></app-timer>
+      </div>
+      <mat-accordion class="example-headers-align">
+        <div class="exam-header col-sm-12">
+          <div class="col-sm-6 question">
+            Question {{question.questionSequence}}
+          <!--  <span>{{this.question.previousExamName}} : {{this.question.year}}</span> -->
+          </div>
+          <div class="test-timer color-light col-sm-6 text-right" *ngIf="showTimer">
+            <app-timer [startsWithInSecs]="this.testTimeTaken" [maxExamDuration]="this.maxExamDuration"></app-timer>
+          </div>
+        </div>
+        <div class="exam-description">
+          <div [innerHTML]="this.question.headerQuestionDescription | safeHtml"></div>
+        </div>
+      </mat-accordion>
+      <mat-accordion class="example-headers-align" *ngFor="let testQ of this.question.testQuestions ; let i = index">
+        <div class="exam-header col-sm-12" *ngIf="this.question.isGroupQuestion == true && this.question.questionType == 1">
+          <div class="col-sm-6 question">
+            Question {{question.questionSequence}}.{{i + 1}}
+            <span>Question {{question.questionSequence}}</span>
+          <!--  <span *ngIf="this.question.isGroupQuestion == false">
+              {{this.question.previousExamName}} : {{this.question.year}}
+            </span>-->
+          </div>
+          <div class="test-timer color-light col-sm-6 text-right" *ngIf="showTimer">
+            <app-timer [startsWithInSecs]="this.testTimeTaken" [maxExamDuration]="this.maxExamDuration"></app-timer>
+          </div>
+        </div>
+        <div class="content-audio" *ngIf="testQ.audioFilePath==null" [innerHTML]="testQ.questionDescription | safeHtml"></div>
+        <div class="content-source" *ngIf="testQ.audioFilePath">
+          <audio controls controlsList="nodownload">
+            <source src="{{testQ.audioFilePath}}" type="audio/mpeg">
+          </audio>
+        </div>
+        <hr>
+        <div class="exam-content" *ngIf="testQ.options.length > 1">
+          <div class="exam-item" *ngFor="let opt of testQ.options ; let j = index">
+            <div class="exam-type" *ngIf="!testQ.isMultiChoice || testQ.isMultiChoice == false">
+              <mat-radio-group name="answerOptions{{i}}">
+                <mat-radio-button class="example-radio-button" name="checkedAns{{i}}{{j}}" checked="{{opt.isSelected == true}}" [value]="opt.answerId" (change)="onOptionChange(testQ, opt.answerId, $event)">
+                    <div class="radio-label" [innerHTML]="opt.answerText | safeHtml"></div>
+                </mat-radio-button>
+              </mat-radio-group>
+            </div>
+            <div class="exam-type" *ngIf="testQ.isMultiChoice && testQ.isMultiChoice == true">
+              <mat-checkbox name="chkIsCorrect3" [checked]="opt.isSelected" class="example-margin" (change)="onOptionChange(testQ, opt.answerId, $event)" >
+                <div class="check-label" [innerHTML]="opt.answerText | safeHtml"></div>
+              </mat-checkbox>
+            </div>
+          </div>
+        </div>
+        <div class="exam-content" *ngIf="testQ.options.length == 1">
+          <div>
+            <mat-form-field class="example-full-width">
+              <input autocomplete="off" matInput placeholder="Answer" spellcheck="false" [ngModel]= "testQ.answerText" name="ansText" id ="ansText" (ngModelChange)="onChange(testQ, $event)">
+            </mat-form-field>
+          </div>
+        </div>
+      </mat-accordion>
+      <hr>
+      <div class="exam-action col-sm-12">
+        <div class="col-sm-6 left-btn">
+          <button class="action"  (click)="saveAndExit()" >SAVE AND EXIT</button>
+          <button class="action"  (click)="saveAndSubmit()" [disabled]="disableSubmit" >SUBMIT</button>
+        </div>
+        <div class="col-sm-6 text-right right-btn">
+          <button class="action wide"  [ngClass] = "{disabled: disablePrev}" (click)="previousQuestion()" [disabled]="disablePrev" >PREVIOUS</button>
+          <button class="action last"  [ngClass] = "{disabled: disableNext}" (click)="nextQuestion()" [disabled]="disableNext">NEXT</button>
+          <button class="action resp"   [ngClass] = "{disabled: disablePrev}" (click)="previousQuestion()" [disabled]="disablePrev" style="display: none;">PREVIOUS</button>
+          <br class="response" style="display: none;">
+          <span class="report" (click)="openDescriptionBox()">Report a problem</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="time-recoder col-sm-2 resp" style="display: none;">
+    <div class="recoder-header">
+      <div class="h-title-l">Q#</div>
+      <div class="h-title-r">Time</div>
+    </div>
+    <div class="recode-list">
+      <div class="recode-item" *ngFor="let itm of this.questionsTimeTaken; let idx = index;" (click)="fetchQuestion(itm)">
+        <div class="num" *ngIf="itm.IS_ATTEMPTED == null">
+            {{idx + 1}}
+        </div>
+        <div class="qu-num" *ngIf="itm.IS_ATTEMPTED == true">
+          {{idx + 1}}
+        </div>
+        <div class="qu-num-un" *ngIf="itm.IS_ATTEMPTED == false" (click)="reloadQuestion(idx)">
+          {{idx + 1}}
+        </div>
+        <div class="time" *ngIf="itm.IS_ATTEMPTED == null">
+          {{itm.timeTaken}}
+        </div>
+        <div class="re-time" *ngIf="itm.IS_ATTEMPTED == true">
+          {{itm.timeTaken}}
+        </div>
+        <div class="re-time-un" *ngIf="itm.IS_ATTEMPTED == false"  (click)="reloadQuestion(idx)">
+          {{itm.timeTaken}}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+

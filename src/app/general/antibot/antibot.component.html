@@ -1,0 +1,13 @@
+<div class="antibot justify-content-between">
+	<span style="float:left;">Solve the arithmetic and write your answer in the box provided : </span>
+	<br>
+	<div class="captch_base">
+	<button class="rotate left"> <i>{{ code1 }}</i></button> {{operator}} <button class="rotate"> <i>{{ code2 }} </i></button>
+
+	</div>
+
+	<input type="text" style="float:left; margin-left:2%;width:20%;height: 50px;"  class="cal-value" id="code" name="code" [(ngModel)]="answer" (change)="closeError()" required>
+	<button style="border:groove;float:left;" type="button" class="confirm-value" (click)="reloadCaptcha()">&#8634;</button>
+	<mat-error style="font-size:11px" class="error-message"
+			*ngIf="error">{{error}} </mat-error> <br>
+</div>

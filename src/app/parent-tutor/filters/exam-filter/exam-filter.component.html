@@ -1,0 +1,129 @@
+<div class="for_filter on_exam-filt">
+  <form name="form" (ngSubmit)="f.form.valid" #f="ngForm" novalidate>
+    <div>
+      <mat-accordion class="example-headers-align">
+        <mat-expansion-panel [expanded]="true" (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+          <mat-expansion-panel-header>
+            <mat-panel-title width="10%">
+              Filters
+            </mat-panel-title>
+            <mat-panel-description class="desc-wide">
+              <i>Test Type: {{this.model.testTypeDesc}}</i>,&nbsp;
+              <i *ngIf="model.courseName">Exam : {{model.courseName}},&nbsp;</i>
+              <i *ngIf="model.examName">Test Name: {{model.examName}},&nbsp;</i>
+              <i *ngIf="model.selpublisher">Publisher: {{model.selpublisher}},&nbsp;</i>
+              <i *ngIf="model.subjectText">Subject: {{model.subjectText}},&nbsp;</i>
+              <i *ngIf="model.topicText">Topic: {{model.topicText}},&nbsp;</i>
+              <i *ngIf="model.difficultyText">Difficulty: {{model.difficultyText}},&nbsp;</i>
+              <i *ngIf="model.statusText">Status: {{model.statusText}},&nbsp;</i>
+              <i *ngIf="model.writeUpTypeText">Write-Up Type: {{model.writeUpTypeText}},&nbsp;</i>
+              <i *ngIf="model.writeUpStatusText">Write-Up Status: {{model.writeUpStatusText}},&nbsp;</i>
+              <a (click)="clear()" style="cursor: pointer;color: #00ceff;font-size: 15px;font-weight: lighter;
+                                   text-decoration: underline;"
+                                   *ngIf="this.model.testTypeDesc!='All' || model.examName || model.selpublisher || model.subjectText || model.topicText || model.statusText || model.difficultyText">Clear Filter</a>
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <div class="example-card for-exams_filtt">
+            <div class="col-xs-12 desc-resp" style="display: none;">
+              <i>Test Type: {{this.model.testTypeDesc}}</i>,&nbsp;
+              <i *ngIf="model.courseName">Exam : {{model.courseName}},&nbsp;</i>
+              <i *ngIf="model.examName">Test Name: {{model.examName}},&nbsp;</i>
+              <i *ngIf="model.selpublisher">Publisher: {{model.selpublisher}},&nbsp;</i>
+              <i *ngIf="model.subjectText">Subject: {{model.subjectText}},&nbsp;</i>
+              <i *ngIf="model.topicText">Topic: {{model.topicText}},&nbsp;</i>
+              <i *ngIf="model.difficultyText">Difficulty: {{model.difficultyText}},&nbsp;</i>
+              <i *ngIf="model.statusText">Status: {{model.statusText}},&nbsp;</i>
+              <a (click)="clear()" style="cursor: pointer;color: #00ceff;font-size: 15px;font-weight: lighter;
+                                    text-decoration: underline;"
+                                    *ngIf="this.model.testTypeDesc!='All' || model.examName || model.selpublisher || model.subjectText || model.topicText || model.statusText || model.difficultyText">Clear Filter</a>
+            </div>
+            <div class="col-sm-12 show-by text-left exam-filter">
+              <h4 style="margin-bottom: 10px !important;">SHOW BY
+                <br class="res-line" style="display: none;">
+                <span *ngIf="this.model.testTypeDesc == 'Mock'" class="color-active click-here" style="cursor: pointer;margin-left: 10px !important;" (click)="showBy('MOCK', 'Mock')">Mock Tests</span>
+                <span *ngIf="this.model.testTypeDesc != 'Mock'" class="color-inactive click-here" style="cursor: pointer;margin-left: 10px !important;" (click)="showBy('MOCK', 'Mock')">Mock Tests</span>
+                <span *ngIf="this.model.testTypeDesc == 'Topic'" class="color-active click-here" style="cursor: pointer;" (click)="showBy('TOPIC', 'Topic')">Topic tests</span>
+                <span *ngIf="this.model.testTypeDesc != 'Topic'" class="color-inactive click-here" style="cursor: pointer;" (click)="showBy('TOPIC', 'Topic')">Topic tests</span>
+                <span *ngIf = "this.tutor && this.model.testTypeDesc == 'Write-up'" class="color-active click-here" (click)="showBy('WRITEUP', 'Write-up')">Write-Up Tests</span>
+                <span *ngIf = "this.tutor && this.model.testTypeDesc != 'Write-up'" class="color-inactive click-here" (click)="showBy('WRITEUP', 'Write-up')">Write-Up Tests</span>
+                <span *ngIf="this.model.testTypeDesc == 'All'" class="color-active click-here" style="cursor: pointer;" (click)="showBy('ALL', 'All')">All</span>
+                <span *ngIf="this.model.testTypeDesc != 'All'" class="color-inactive click-here" style="cursor: pointer;" (click)="showBy('ALL', 'All')">All</span>
+              </h4>
+            </div>
+            <div class="filter-content col-xs-12" [hidden]="!isNotFreeStyle">
+              <div class="row">
+                <div class="col-sm-4">
+                  <mat-select class="select-area" placeholder="{{model.courseName}}" name="course" [(ngModel)]="model.selcourse" id="course" #course="ngModel" (change)="courseChangeEvent($event)">
+                    <mat-option value="{{k.id}}" *ngFor="let k of model.course">{{k.name}}</mat-option>
+                  </mat-select>
+                </div>
+                <div class="col-sm-4">
+                  <input type="text" name="filter" placeholder="Search By Test Name" name="examName" [(ngModel)]="model.examName">
+                </div>
+                <!--<div class="col-sm-4">-->
+                  <!--<input type="text" name="filter" placeholder="Publisher" name="publisher" [(ngModel)]="model.selpublisher">-->
+                <!--</div>-->
+                <div class="col-sm-4">
+                  <mat-select class="select-area" placeholder="Subject" name="subject" [(ngModel)]="model.selsubject" id="subject" #subject="ngModel" (change)="subjectChangeEvent($event)">
+                    <mat-option value="{{k.id}}" *ngFor="let k of model.subject">{{k.description}}</mat-option>
+                  </mat-select>
+                </div>
+              </div><!-- Row 1 -->
+              <div class="row for-all-area">
+                <div class="col-sm-4">
+                  <mat-select class="select-area" placeholder="Topic" name="topic" [(ngModel)]="model.seltopic" id="topic" #topic="ngModel" [disabled]="disableTopic" (change)="topicChangeEvent($event)">
+                    <mat-option value="{{k.id}}" *ngFor="let k of  model.topic">{{k.description}}</mat-option>
+                  </mat-select>
+                </div>
+                <div class="col-sm-4">
+                  <mat-select class="select-area" placeholder="Difficulties" name="difficulty" [(ngModel)]="model.difficultyLevel" (change)="difficultyChangeEvent($event)">
+                    <mat-option value="{{diff.value}}" *ngFor="let diff of difficulties">{{diff.name}}</mat-option>
+                  </mat-select>
+                </div>
+                <div class="col-sm-4" *ngIf="showStatusComponent">
+                  <mat-select class="select-area" placeholder="Status" name="status" [(ngModel)]="model.selstatus" (change)="statusChangeEvent($event)">
+                    <mat-option value="{{st}}" *ngFor="let st of status">{{st}}</mat-option>
+                  </mat-select>
+
+                </div>
+              </div><!-- Row 2 -->
+            </div>
+            <div class="filter-content col-xs-12" [hidden]="isNotFreeStyle">
+                      <div class="row">
+                        <div class="col-sm-4">
+                           <input type="text" name="filter" placeholder="Search By Test Name" name="examName" [(ngModel)]="model.examName">
+                        </div>
+                        <div class="col-sm-4">
+                           <mat-select class="select-area" placeholder="Write-up Tests" name="freestyle" [(ngModel)]="model.selfreestyle" id="freestyle" #freestyle="ngModel" (change)="writeUpTypeChangeEvent($event)">
+                               <mat-option value="-1">All</mat-option>
+                               <mat-option value="{{k.id}}" *ngFor="let k of model.freestyletopics">{{k.description}}</mat-option>
+                           </mat-select>
+                        </div>
+                        <div class="col-sm-4" *ngIf="!hideWriteUpStatusDropDown">
+                           <mat-select class="select-area" placeholder="Status" name="writeUpStatus" [(ngModel)]="model.writeUpStatus" id="writeUpStatus" #writeUpStatus="ngModel" (change)="writeUpStatusChangeEvent($event)">
+                              <mat-option value="ALL">All</mat-option>
+                              <mat-option value="NOTSTARTED">Pending Assignment</mat-option>
+                              <mat-option value="INPROGRESS">Evaluation Pending</mat-option>
+                              <mat-option value="COMPLETE">Evaluation Complete</mat-option>
+                           </mat-select>
+                        </div>
+                      </div>
+            </div>
+            <div class="search">
+              <button mat-raised-button class="btn btn-primary btn-active" (click)="search()" id="btnSearch"><i class="fa fa-search"></i>Search</button>
+            </div>
+            <!--<table class="fullwidth">-->
+              <!--<tbody>-->
+                <!--<tr>-->
+                  <!--<td style="text-align: right">-->
+                    <!--<button mat-raised-button class="btn btn-primary btn-active" (click)="search()" id="btnSearch">Search</button>-->
+                  <!--</td>-->
+                <!--</tr>-->
+              <!--</tbody>-->
+            <!--</table>-->
+          </div>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </div>
+  </form>
+</div>

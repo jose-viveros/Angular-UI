@@ -1,0 +1,22 @@
+<article class="main-content">
+   <section class="main-banner">
+      <img src="assets/main-banner.jpg" alt="Excell II Plan">
+   </section>
+   <section class="welcom-area">
+      <div class="container welcome-message">
+         <div class="inner text-center">
+            <h1>Welcome</h1>
+            <div [innerHTML]="this.homePageData | safeHtml"></div> <br>
+            <div class="thre-btn-sec col-xs-12">
+               <div class="inner-butn-sec">
+                  <button (click)="parentHelp()"><span><img alt="parent-icon" src="assets/parents-icon.png"><img class="hover" alt="parent-help" src="assets/parents-icon-w.png"></span>
+                     Parents</button>
+                  <button (click)="tutorHelp()"><span><img  alt="tutor-icon" src="assets/tutor-icon.png"><img class="hover"  alt="tuto-help" src="assets/tutor-icon-w.png"></span>Tutors</button>
+                  <button (click)="studentHelp()"><span><img alt="student-icon" src="assets/students-w.png"><img class="hover"  alt="student-help" src="assets/students.png"></span>
+                     Students</button>
+               </div>
+            </div>
+         </div>
+      </div>
+   </section>
+</article>

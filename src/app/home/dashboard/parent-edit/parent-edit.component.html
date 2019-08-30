@@ -1,0 +1,89 @@
+<div class="edit-pro-inner col-xs-12">
+   <ng4-loading-spinner [timeout]="10000"></ng4-loading-spinner>
+   <form [formGroup]="userUpdateForm" novalidate (ngSubmit)="onSubmitUserDetails(userUpdateForm.value)"
+      class="edit-pro" id="edit" method="post" action="" *ngIf="formloading">
+      <div class="wrapper row">
+         <div class="col-sm-4">
+            <label>I am</label>
+            <input type="text" name="" formControlName="userType" value={{userType}} readonly>
+
+         </div>
+         <div class="col-sm-4">
+            <label>Display Name*</label>
+            <input type="text" name="" placeholder="" formControlName="displayName" required>
+            <mat-error *ngFor="let validation of user_validation_messages.displayName">
+               <mat-error class="error-message" *ngIf="userUpdateForm.get('displayName').hasError(validation.type) && (userUpdateForm.get('displayName').dirty || userUpdateForm.get('displayName').touched)">{{validation.message}}</mat-error>
+            </mat-error>
+         </div>
+         <div class="col-sm-4">
+            <label>Year Of Birth</label>
+            <select formControlName="birthYear">
+               <option value=birthDate [selected]="true">{{birthDate}}</option>
+               <option *ngFor="let birth of birthYears">{{ birth }} </option>
+            </select>
+
+         </div>
+      </div><!-- Wrapper -->
+      <div class="wrapper row">
+         <div class="col-sm-4">
+            <label>First Name*</label>
+            <input type="text" name="" placeholder="" formControlName="firstName" required>
+            <mat-error *ngFor="let validation of user_validation_messages.firstName">
+               <mat-error class="error-message" *ngIf="userUpdateForm.get('firstName').hasError(validation.type) && (userUpdateForm.get('firstName').dirty || userUpdateForm.get('firstName').touched)">{{validation.message}}</mat-error>
+            </mat-error>
+         </div>
+         <div class="col-sm-4">
+            <label>Last Name*</label>
+            <input type="text" name="" placeholder="" formControlName="lastName" required>
+            <mat-error *ngFor="let validation of user_validation_messages.lastName">
+               <mat-error class="error-message" *ngIf="userUpdateForm.get('lastName').hasError(validation.type) && (userUpdateForm.get('lastName').dirty || userUpdateForm.get('lastName').touched)">{{validation.message}}</mat-error>
+            </mat-error>
+         </div>
+         <div class="col-sm-4">
+            <label>Gender*</label>
+            <select formControlName="gender" formControlName="gender" required>
+               <option *ngFor="let gender of genders" [value]="gender">{{ gender }} </option>
+            </select>
+            <mat-error *ngFor="let validation of user_validation_messages.gender">
+               <mat-error class="error-message" *ngIf="userUpdateForm.get('gender').hasError(validation.type) && (userUpdateForm.get('gender').dirty || userUpdateForm.get('gender').touched)">{{validation.message}}</mat-error>
+            </mat-error>
+         </div>
+      </div><!-- Wrapper -->
+      <div class="wrapper row">
+
+         <div class="col-sm-8">
+            <label>Address</label>
+            <input type="text" name="" placeholder="" formControlName="address" autocomplete="false">
+         </div>
+      </div><!-- Wrapper -->
+      <div class="wrapper row" *ngIf="!isSocialUser">
+         <div formGroupName="matching_passwords" class="pass-section">
+            <div class="col-sm-4">
+               <label>Password</label>
+               <input type="Password" formControlName="password" autocomplete="false">
+               <mat-error *ngFor="let validation of user_validation_messages.password">
+                  <mat-error class="error-message" *ngIf="userUpdateForm.get('matching_passwords').get('password').hasError(validation.type) && 
+                              (userUpdateForm.get('matching_passwords').get('password').dirty || 
+                              userUpdateForm.get('matching_passwords').get('password').touched)">{{validation.message}}
+                  </mat-error>
+               </mat-error>
+            </div>
+            <div class="col-sm-4">
+               <label>Repeat Password</label>
+               <input type="Password" formControlName="confirm_password" autocomplete="false">
+               <mat-error *ngFor="let validation of user_validation_messages.confirm_password">
+                  <mat-error class="error-message" *ngIf="(userUpdateForm.get('matching_passwords').get('confirm_password').hasError(validation.type)|| 
+                                 userUpdateForm.get('matching_passwords').hasError(validation.type)) && 
+                                 (userUpdateForm.get('matching_passwords').get('confirm_password').dirty || 
+                                 userUpdateForm.get('matching_passwords').get('confirm_password').touched)">{{validation.message}}
+                  </mat-error>
+               </mat-error>
+            </div>
+         </div>
+      </div><!-- Wrapper -->
+      <div class="col-xs-12 submit text-center">
+         <!-- <input type="submit" name="submit" class="btn-active move" value="UPDATE" id="register-now" [disabled]="!userUpdateForm.valid"> -->
+         <button type="submit" name="sbumit" class="btn-active update" value="UPDATE" id="register-now" [disabled]="!userUpdateForm.valid">UPDATE</button>
+      </div>
+   </form>
+</div>

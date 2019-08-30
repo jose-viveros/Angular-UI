@@ -1,0 +1,76 @@
+.headerClass {
+	color: red;
+}
+
+#divQuestion {
+	height: 240px;
+}
+
+#question {
+	height: 100%;
+}
+
+.example-section {
+	margin-left: 10px;
+}
+
+mat-card-actions {
+  margin: 2em auto;
+  text-align: right;
+}
+
+.lastli {
+	font-weight: bold;
+  	text-decoration: underline;
+  	color: black;
+}
+
+.notactive {
+  	cursor: hand;
+  	text-decoration: none;
+  	color: #337ab7; 
+}
+
+.notactive:hover {
+	cursor: hand;
+  	text-decoration: underline;
+  	color: #23527c;
+}
+
+.example-full-width {
+  width: 100%;
+}
+
+
+.example-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.example-full-width {
+  width: 100%;
+}
+
+input[type=submit] {
+	background-color: #204a87;
+	color: white;
+	padding: 10px 15px;
+	margin: 8px 0px;
+	border-radius: 10px;
+	cursor: pointer;
+	font-weight: bold;
+}
+
+input[type=submit]:hover {
+	background-color: #00b1c5;
+	font-style: italic;
+}
+
+.btn btn-primary {
+	color: blue;
+}
+
+.matInputCss {
+	color: rgba(0,0,0,.87);
+}

@@ -1,0 +1,47 @@
+.container_contact {
+	 font-family: 'Poppins', sans-serif !important;
+    font-size: 15px !important;
+    height: auto;
+   
+}
+.col {
+    padding: .8em 1.1em;
+    margin-left:100px;
+}
+.color-dark {
+    background: #2885C4;
+}
+.color-light {
+    background: #b7def9;
+}
+
+
+.contactPanel {
+	 
+	float:left;
+    padding: 10px 10px;
+    border-style: groove; 
+   
+	border-radius: 30px;
+     font-family: 'Poppins', sans-serif !important;
+      font-size: 15px !important;
+ 
+    color: #204a87;
+    width: 450px;
+    height: auto;
+    
+	
+}
+
+input[type=submit] {
+	background-color: #00b900;
+	color: white;
+	padding: 5px 15px;
+	border-radius: 10px;
+	cursor: pointer;
+}
+
+input[type=submit]:hover {
+	background-color: #00ff00;
+	font-style: italic;
+}

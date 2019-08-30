@@ -1,0 +1,18 @@
+<div id="dashborad" class="container parent-content">
+<ng4-loading-spinner [threshold]="2000" [timeout]="10000" [zIndex]="9999"></ng4-loading-spinner>
+   <div class="inner-tabs-div col-xs-12">
+     
+      <div class="tab-content sec-tab-con col-md-8 col-sm-8">
+         
+         <div id="topic-test" >
+         
+            <ul>
+               <li *ngFor="let CF of response">Number of questions fed by {{CF.ContentFeederName}} : <span class="li-nums">{{CF.numberOfQuestions}}</span></li>
+               
+            </ul>
+         </div>
+        
+      </div>
+      <!-- Inner DIV -->
+   </div><!-- inner-tabs-div -->
+</div>

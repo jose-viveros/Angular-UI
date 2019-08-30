@@ -1,0 +1,20 @@
+<div class="create-group-form">
+	<h1 mat-dialog-title>Create Group</h1>
+			<form [formGroup]="groupNameForm" class="dg-create" method="post" action="">
+			<div class="grp-name col-sm-8">
+				<label>Group Name &nbsp;:&nbsp; </label>
+				<input type="text"
+					formControlName="groupName" [(ngModel)]="data.groupName">
+					<span *ngIf="duplicateValue" class="error-msg">{{errormsg}}</span>
+			</div>
+			<div class="col-xs-12 submit text-center">
+			<!-- <button mat-button btn-active move [mat-dialog-close]="data.groupName" (click)="onSubmitGroupDetails(data.groupName)" cdkFocusInitial>Create</button>
+			 <button mat-button btn-active move (click)="onNoClick()">Cancel</button> -->
+				<button mat-button
+					value="Create" id="create" (click)="onSubmitGroupDetails(data.groupName)">Create</button>
+			   <button mat-button id="cancel" value="Cancel" (click)="onNoClick()">Cancel</button>
+
+			</div>
+		</form>
+
+	</div>

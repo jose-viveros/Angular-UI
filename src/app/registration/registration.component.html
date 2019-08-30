@@ -1,0 +1,94 @@
+<article class="main-content">
+   <section class="breadcums-inner col-xs-12">
+      <div class="container registration-content">
+         <div class="dashborad-breadcums">
+            <ul>
+               <li><a href="http://dev.99webdesigns.net/Excell-plus/"> Home </a> &gt; Register</li>
+            </ul>
+         </div>
+      </div>
+   </section>
+   <section class="main-banner reg-form-banner">
+      <div class="container registration-content">
+         <div class="banner-title teg-banner-title">
+            <img src="assets/reg-form.png">
+            <h2> Registration Form </h2>
+         </div>
+      </div>
+   </section>
+   <section class="form-sec col-xs-12">
+      <div class="container registration-content">
+         <div class="form-reg-section col-xs-12">
+            <div class="note row">Note: Student &lt; 18 must be added through your parent or tutor’s account </div>
+            <div class="form-inner" *ngIf="this.showConfirmation == false">
+               <ng4-loading-spinner> </ng4-loading-spinner>
+               <form [formGroup]="userDetailsForm" novalidate (ngSubmit)="onSubmitUserDetails(userDetailsForm.value)"
+                  class="registration" id="registration" method="post" action="">
+                  <div class="col-sm-6">
+                     <label>I am a</label>
+                     <select class="select-type" name="select" #device (change)="onChangeUserType($event, device)" formControlName="userType"
+                        ngModel>
+                        <option *ngFor="let usertype of userRoles" value="usertype" name="userType">{{usertype}}</option>
+                     </select>
+                     <span *ngIf="userTypeerrorMessage" class="user-type">Please select user type</span>
+                  </div>
+                  <div class="col-sm-6 email">
+                     <label>Email</label>
+                     <input type="email" required formControlName="email" (change)='emailChange($event)' ngModel>
+                      <span *ngIf="isInValidEmail" class="error-msg">{{emailErrorMessage}}</span>
+                  </div>
+                  <div formGroupName="matching_passwords">
+                     <div class="col-sm-6 pass">
+                        <label>Password</label>
+                        <input type="Password" required formControlName="password" (change)="passworChange($event)"
+                           ngModel>
+                        <span *ngIf="isPassword" class="error-msg">{{passworErrorMessage}}</span>
+                     </div>
+                     <div class="col-sm-6 reset-pass">
+                        <label>Repeat Password</label>
+                        <input type="Password" required formControlName="confirm_password" (change)="confirmPassworChange($event)"
+                           ngModel>
+                        <span *ngIf="isConfirmPassword" class="error-msg">{{confPassErrorMsg}}</span>
+                     </div>
+                  </div>
+
+                  <div class="col-sm-12 checkbox">
+                     <mat-checkbox class="accept" formControlName="terms"> I accept <a routerLink="terms-n-conditions" (click)="navigateTo('terms-n-conditions')">
+                           Terms & Conditions </a> </mat-checkbox>
+                  </div>
+
+                  <div class="col-xs-12 captcha">
+                      <app-antibot></app-antibot>
+                  </div>
+                  <div class="col-xs-12 submit text-center">
+                     <input type="submit" name="submit" [disabled]="!userDetailsForm.valid" class="btn-active move"
+                        value="register Now" id="register-now" [ngClass]="[!(userDetailsForm.valid) ? 'register' : '']">
+                     <p> Already Registered?<a routerLink="/login" class="color-active">Log In</a></p>
+                  </div>
+               </form>
+               <br>
+               <div class="col-xl-6 col-lg-7 col-md-9 col-sm-10 social-auth">
+                <div id="gSignInWrapper" class="col-md-6 col-sm-8 google">
+                  <span class="label">Sign up with:</span>
+                  <div class="btn-google-signin"  (click)="socialSignInRegister('google')">
+                    <span class="icon"></span>
+                    <span class="buttonText"></span>
+                  </div>
+                </div>
+                <div id="fSignInWrapper" class="col-md-6 col-sm-8 facebook">
+                  <span class="label">Sign up with:</span>
+                  <div class="btn-facebook-signin"  (click)="socialSignInRegister('facebook')">
+                    <span class="icon"></span>
+                    <span class="buttonText"></span>
+                  </div>
+                </div>
+               </div>
+            </div>
+            <div class="form-inner" *ngIf="this.showConfirmation">
+                Your account is activated successfully. Try <a routerLink="" class="rege-link" (click)="loginClick()">
+                     Login</a>
+            </div>
+         </div>
+      </div>
+   </section>
+</article>

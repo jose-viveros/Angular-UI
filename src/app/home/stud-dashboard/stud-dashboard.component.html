@@ -1,0 +1,26 @@
+<div id="dashborad" class="parent-contents">
+<ng4-loading-spinner  [timeout]="10000" ></ng4-loading-spinner>
+   <div class="inner-tabs-div col-xs-12">
+      <ul class="nav nav-tabs left-tabs-nav col-md-4 col-sm-4">
+         <li class="active" *ngFor="let smenu of submenus">
+            <a data-toggle="tab" aria-expanded="true" (click)="selectMenu(); navigateTo(smenu.menuUrl)">{{smenu.menuName}}
+               <span class="nums">{{smenu.count}}</span></a></li>
+      </ul>
+      <div class="tab-content sec-tab-con col-md-8 col-sm-8">
+         <h3 class="status">STATUS</h3>
+         <div id="topic-test">
+            <ul>
+               <li>Mocks assigned to you <span class="li-nums">{{Total_MockExams}}</span></li>
+               <li>Mocks in progress <span class="li-nums">{{MocksInProgress}}</span></li>
+               <li>Write-Ups Assigned to you <span class="li-nums">{{writeUpExams}}</span></li>
+               <li>Incorrect questions <span class="li-nums">{{Wrong_Answers}}</span></li>
+               <li>Unattempted Questions<span class="li-nums">{{unattemptedAnswers}}</span></li>
+               <li>Careless Mistakes<span class="li-nums">{{carelessQuestions}}</span></li>
+               <li>Overtime Incorrect Questions<span class="li-nums">{{overtimeInCorrectQuestions}}</span></li>
+               <li>Overtime Correct Questions<span class="li-nums">{{overtimeCorrectQuestions}}</span></li>
+            </ul>
+         </div>
+      </div>
+      <!-- Inner DIV -->
+   </div><!-- inner-tabs-div -->
+</div>

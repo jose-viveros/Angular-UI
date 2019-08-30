@@ -1,0 +1,35 @@
+<div class="col-sm-1 emp-row"></div>
+<div class="inner-tab tab-for-status col-sm-12 col-xs-12">
+   <h3 class="status">STATUS</h3>
+   <div class="wrapper">
+      <div class="col-sm-8 text-left">Number of students</div>
+      <div class="col-sm-4 text-right black">{{activeStudentCount}} / {{archiveStudentCount}} archive</div>
+   </div>
+   <div class="wrapper">
+      <div class="col-sm-8 text-left">Students<span class="black"> INACTIVE</span> in last<span class="black"> 7
+            Days</span></div>
+      <div class="col-sm-4 text-right"><a
+            (click)="showInactiveStudentActivity()">{{inactiveStudentsinlastSevenDays}}</a></div>
+   </div>
+   <div class="wrapper">
+      <div class="col-sm-8 text-left">Questions answered in last<span class="black"> 7 Days</span></div>
+      <div class="col-sm-4 text-right "><a (click)="showPerformance()">{{numberofQuestionsAnswered}}</a></div>
+   </div>
+   <div class="wrapper">
+      <div class="col-sm-8 text-left">Careless mistakes in last<span class="black"> 7 Days</span></div>
+      <div class="col-sm-4 text-right "><a (click)="showPerformance()">{{carelessQuestions}}</a></div>
+   </div>
+   <div class="wrapper">
+      <div class="col-sm-8 text-left">Overtime correct questions in last<span class="black"> 7 Days</span></div>
+      <div class="col-sm-4 text-right "><a (click)="showPerformance()">{{overtimeCorrectQuestions}}</a></div>
+   </div>
+   <div class="wrapper">
+      <div class="col-sm-8 text-left">Overtime Incorrect questions in last<span class="black"> 7 Days</span></div>
+      <div class="col-sm-4 text-right "><a (click)="showPerformance()">{{overtimeInCorrectQuestions}}</a></div>
+   </div>
+   <div class="wrapper">
+      <div class="col-sm-8 text-left">Unattempted questions in last<span class="black"> 7 Days</span></div>
+      <div class="col-sm-4 text-right "><a (click)="showPerformance()">{{unAttemptedQuestions}}</a></div>
+   </div>
+</div>
+<div class="col-sm-1"></div>

@@ -1,0 +1,115 @@
+<div id="s-activity" class="parent-contents stud-act">
+<ng4-loading-spinner [timeout]="15000"></ng4-loading-spinner>
+   <div class="inner-tabs-div col-sm-12">
+      <div class="activity-filters col-sm-12">
+         <div class="inner col-sm-12">
+            <div>
+               <app-student-filter ></app-student-filter>
+            </div>
+            <div>
+               <app-exam-filter></app-exam-filter>
+            </div>
+            <div class="student-activity-status activity-inner">
+              <div class="col-sm-12 action-part">
+                <div class="col-sm-8 selected-rec-wide text-left">{{noOfRows}} Records found
+                  <button class="rec-btn"> {{selectedRecordsCount}} selected </button>
+                </div>
+                <div class="action-btns col-sm-4 text-right">
+                  <button mat-raised-button class="btn btn-primary btn-active btn-activity" (click)="unAssignSelected()"
+                        [disabled]="selectedRecordsCount===0" id="btnSearch">UnAssign Selected Tests</button>
+                </div>
+              </div>
+              <div class="col-sm-12 selected-rec-res text-left" style="display: none;">{{noOfRows}} Records found
+                <button class="rec-btn"> {{selectedRecordsCount}} selected </button>
+              </div>
+              <br>
+               <div class="stud-list">
+                  <!--Response Table-->
+                  <mat-accordion displayMode="flat" multi class="example-headers-align exam-data-all">
+                    <section matSort class="mat-header-row">
+                      <span class="mat-header-cell e" mat-sort-header="type" >TEST TYPE</span>
+                      <span class="mat-header-cell n" mat-sort-header="name" >TEST NAME</span>
+                      <span class="mat-header-cell t" mat-sort-header="student" >STUDENT</span>
+                      <!--<span class="mat-header-cell p" mat-sort-header="student">PUBLISHER</span>-->
+                      <span class="mat-header-cell a" mat-sort-header="assign" >ASSIGNED DATE</span>
+                      <span class="mat-header-cell f" mat-sort-header="finish" >FINISHED DATE</span>
+                      <span class="mat-header-cell s" mat-sort-header="score" >SCORE</span>
+                      <span class="mat-header-cell r" mat-sort-header="rank" >RANK</span>
+                      <span class="mat-header-cell ac" mat-sort-header="action" >ACTION</span>
+                      <span class="mat-header-cell sel" mat-sort-header="select" >
+                        <mat-checkbox (change)="$event ? masterToggle() : null" [checked]="selection.hasValue() && isAllSelected()"
+                                             [indeterminate]="selection.hasValue() && !isAllSelected()">
+                        </mat-checkbox>
+                      </span>
+                    </section>
+                    <mat-expansion-panel *ngFor="let item of displayedRows$ | async"  >
+                      <mat-expansion-panel-header class="mat-row" *ngIf="!noRecord">
+                        <span class="mat-cell e" >{{item.examType}}</span>
+                        <span class="mat-cell n" >{{item.testName}}</span>
+                        <span class="mat-cell t" >{{item.student}}</span>
+                        <!--<span class="mat-cell p" >{{item.publisher}}</span>-->
+                        <span class="mat-cell a" >{{item.assignedDate | date:'dd/MM/yyyy'}}</span>
+                        <span class="mat-cell f" >{{item.finishedDate | date:'dd/MM/yyyy'}}</span>
+                        <span class="mat-cell s" >{{item.score}}</span>
+                        <span class="mat-cell r" >{{item.rank}}</span>
+                        <span class="mat-cell ac">
+                          <button mat-raised-button class="btn btn-primary btn-active btn-activity"
+                                  *ngIf="item.score!='' || item.rank!='NA'"
+                                             (click)="getAction(item)" id="btnAction">Review</button>
+                        </span>
+                        <span class="mat-cell sel" [ngClass]="{'active' : item.archived == 'Active', 'inactive' :item.archived=='InActive'}">
+                          <mat-checkbox (click)="$event.stopPropagation() " (change)="$event ? selection.toggle(item) : null; selectionChange(item)"
+                                             [checked]="selection.isSelected(item)" [disabled]="item.status!='PENDING'">
+                          </mat-checkbox>
+                        </span>
+                      </mat-expansion-panel-header>
+
+                      <div class="item-content">
+                        <div class="content-item">
+                          <div class="elem">TEST Type</div>
+                          <div class="val">{{item.examType}}</div>
+                        </div>
+                        <div class="content-item">
+                          <div class="elem">ASSIGNED DATE</div>
+                          <div class="val">{{item.assignedDate | date:'dd/MM/yyyy'}}</div>
+                        </div>
+                        <div class="content-item">
+                          <div class="elem">FINISHED DATE</div>
+                          <div class="val">{{item.finishedDate | date: 'dd/MM/yyyy'}}</div>
+                        </div>
+                        <div class="content-item">
+                          <div class="elem">SCORE</div>
+                          <div class="val">{{item.score}}</div>
+                        </div>
+                        <div class="content-item">
+                          <div class="elem">RANK</div>
+                          <div class="val">{{item.rank}}</div>
+                        </div>
+                        <div class="content-item">
+                          <div class="elem action">ACTION</div>
+                          <div class="val action">
+                            <button mat-raised-button class="btn btn-primary btn-active btn-activity"
+                                    *ngIf="item.score!='' || item.rank!='NA'"
+                                             (click)="getAction(item)" id="btnAction">Review
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </mat-expansion-panel>
+                  </mat-accordion>
+                  <div class="col-xs-12 warning" *ngIf="noRecord">
+                    <div class="col-sm-12 content"> {{noRecordMessage}}</div>
+                  </div>
+                  <mat-paginator #paginator
+                    [length]="totalRows$ | async"
+                    [pageIndex]="0"
+                    [pageSize]="5"
+                    [pageSizeOptions]="[5, 10, 20]"
+                    [showFirstLastButtons]="true"
+                  ></mat-paginator>
+                </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>

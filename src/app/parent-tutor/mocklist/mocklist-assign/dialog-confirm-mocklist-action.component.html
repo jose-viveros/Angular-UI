@@ -1,0 +1,9 @@
+<h2 mat-dialog-title>Confirm Action</h2>
+<div mat-dialog-content>
+  <p>Do you want to Assign Exams? 
+  	</p>
+</div>
+<div mat-dialog-actions>
+  <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Yes</button>
+  <button mat-button (click)="onNoClick()">No</button>
+</div>

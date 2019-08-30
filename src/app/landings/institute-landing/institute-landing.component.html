@@ -1,0 +1,32 @@
+<article class="main-content">
+   <section class="main-banner">
+      <img src="assets/main-banner.jpg" alt="Excell II Plan">
+   </section>
+   <section class="welcom-area">
+      <div class="container welcome-message">
+         <div class="inner text-center">
+            <h1>Welcome</h1>
+            <p class="welcome-para">
+               {{this.model.quotes}}
+            </p>
+            <br>
+            <br>
+            <p class="welcome-para">
+               {{this.model.description}}
+            </p>
+            
+            <div class="thre-btn-sec col-xs-12">
+               <div class="inner-butn-sec">
+                   <img src="data:image/PNG;base64,{{this.model.directorImageName}}" align="center" alt="this.model.directorName" height="200px" width="150px"/>
+                    <br>
+                    <p>{{this.model.directorName}}</p>    
+               </div>
+               <br>
+               <div class="inner-butn-sec textjustify">
+                {{this.model.message}}    
+               </div>
+            </div>
+         </div>
+      </div>
+   </section>
+</article>

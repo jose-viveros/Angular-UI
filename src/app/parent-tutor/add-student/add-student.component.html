@@ -1,0 +1,162 @@
+<article class="main-content">
+	
+		<div class="container registration-content">
+			<h2 style="text-align: center; margin:50px 0 -30px; ">Add Student</h2>
+			<div class="form-reg-section col-xs-12">
+	
+				<div class="form-inner">
+					<ng4-loading-spinner [timeout]="10000" ></ng4-loading-spinner>
+					<form [formGroup]="studentDetailsForm" novalidate
+						(ngSubmit)="onSubmitStudentDetails(studentDetailsForm.value)"
+						*ngIf="!morethanoneStudent">
+						<div class="wrapper row">
+							<div class="col-sm-4">
+								<label>First Name*</label> <input type="text" required autocomplete="false"
+									formControlName="firstName" ngModel>
+								<div
+									*ngFor="let validation of student_validation_messages.firstName">
+									<div class="error-message"
+										*ngIf="studentDetailsForm.get('firstName').hasError(validation.type) && (studentDetailsForm.get('firstName').dirty || studentDetailsForm.get('firstName').touched)">{{validation.message}}</div>
+								</div>
+							</div>
+							<div class="col-sm-4">
+								<label>Last Name*</label> <input type="text" required autocomplete="false"
+									formControlName="lastName" ngModel>
+								<div
+									*ngFor="let validation of student_validation_messages.lastName">
+									<div class="error-message"
+										*ngIf="studentDetailsForm.get('lastName').hasError(validation.type) && (studentDetailsForm.get('lastName').dirty || studentDetailsForm.get('lastName').touched)">{{validation.message}}</div>
+								</div>
+							</div>
+							<div class="col-sm-4">
+								<label>User Name*</label> <input type="text" required autocomplete="false"
+									formControlName="username" ngModel>
+								<div
+									*ngFor="let validation of student_validation_messages.username">
+									<div class="error-message"
+										*ngIf="studentDetailsForm.get('username').hasError(validation.type) && (studentDetailsForm.get('username').dirty || studentDetailsForm.get('username').touched)">{{validation.message}}</div>
+									
+								</div>
+								<div class="error-message" *ngIf="errorMessage">{{message}}</div>
+							</div>
+						</div>
+	
+						<div class="wrapper row">
+							<div class="col-sm-4">
+								<label>Standard</label> <input type="text" autocomplete="false"
+									formControlName="standard" ngModel>
+							</div>
+							<div class="col-sm-4">
+								<label>Region*</label> <select formControlName="region" required>
+									<option *ngFor="let region of regions" [value]="region">{{
+										region }}</option>
+								</select>
+								<div
+									*ngFor="let validation of student_validation_messages.region">
+									<div class="error-message"
+										*ngIf="studentDetailsForm.get('region').hasError(validation.type) && (studentDetailsForm.get('region').dirty || studentDetailsForm.get('region').touched)">{{validation.message}}</div>
+								</div>
+							</div>
+							<div class="col-sm-4">
+								<label>Gender*</label> <select formControlName="gender" required>
+									<option *ngFor="let gender of genders" [value]="gender">{{
+										gender }}</option>
+								</select>
+								<div
+									*ngFor="let validation of student_validation_messages.gender">
+									<div class="error-message"
+										*ngIf="studentDetailsForm.get('gender').hasError(validation.type) && (studentDetailsForm.get('gender').dirty || studentDetailsForm.get('gender').touched)">{{validation.message}}</div>
+								</div>
+							</div>
+						</div>
+	
+						<div class="wrapper row">
+							<div *ngIf="this.tutor" class="col-sm-4">
+								<label>Parent's Email</label> <input type="email"
+											formControlName="email" ngModel>
+								<div class="error-message" *ngIf="emailerrorMessage">{{emailmessage}}</div>
+							</div>
+							<div class="col-sm-4">
+								<label>1st Choice School</label> <select
+									formControlName="school1">
+									<option *ngFor="let school1 of schools" [value]="school1">{{
+										school1 }}</option>
+								</select>
+	
+							</div>
+							<div class="col-sm-4">
+								<label>2nd Choice School</label> <select
+									formControlName="school2">
+									<option *ngFor="let school2 of schools" [value]="school2">{{
+										school2 }}</option>
+								</select>
+							</div>
+	
+						</div>
+						<div class="wrapper row" formGroupName="matching_passwords">
+	
+							<div class="col-sm-4">
+								<label>Password*</label> <input type="Password" required autocomplete="false"
+									formControlName="password">
+								<div
+									*ngFor="let validation of student_validation_messages.password">
+									<div class="error-message"
+										*ngIf="studentDetailsForm.get('matching_passwords').get('password').hasError(validation.type) && 
+														  (studentDetailsForm.get('matching_passwords').get('password').dirty || 
+														  studentDetailsForm.get('matching_passwords').get('password').touched)">{{validation.message}}
+									</div>
+								</div>
+							</div>
+							<div class="col-sm-4">
+								<label>Repeat Password*</label> <input type="Password" required autocomplete="false"
+									formControlName="confirm_password">
+								<div
+									*ngFor="let validation of student_validation_messages.confirm_password">
+									<div class="error-message"
+										*ngIf="(studentDetailsForm.get('matching_passwords').get('confirm_password').hasError(validation.type)|| 
+															studentDetailsForm.get('matching_passwords').hasError(validation.type)) && 
+															(studentDetailsForm.get('matching_passwords').get('confirm_password').dirty || 
+															studentDetailsForm.get('matching_passwords').get('confirm_password').touched)">{{validation.message}}
+									</div>
+								</div>
+	
+							</div>
+						</div>
+	
+	
+						<div class="col-xs-12 submit text-center">
+							<input type="submit" name="submit" class="btn-active move"
+								value="ADD" id="add-now"
+								[disabled]="!studentDetailsForm.valid"> 
+							<input type="button" name="submit" value="Cancel" id="cancel-now"
+								class="btn-active move" 
+								(click)="navigateTo('my-student')"> 
+							<input type="button" *ngIf="this.tutor" name="submit" value="Add Bulk of Students" id="register-bulk"
+								class="btn-active move" 
+								(click)="morethanoneStudent=true">
+						</div>
+	
+					</form>
+	
+					<div *ngIf="morethanoneStudent">
+						<span>To add more that one student you need to save students record in an
+						excel sheet and upload the file.</span><br>
+						<span>Click here to download excel sheet format </span>
+						<button value="" id="add-now" class="btn-active move" 
+							(click)="downloadStudentRecordFormat()" >DOWNLOAD EXCEL FORMAT</button>
+						<br> <br> 
+						<input type="file" id="file" (change)="getFileDetails($event)"><br>
+	
+						<input type="button" (click)="uploadFile()" [disabled]="!selectedFiles" id="add-now" class="btn-active move" value="Upload">
+						<input type="button" value="Cancel" id="cancel-now"
+								class="btn-active move" 
+								(click)="navigateTo('my-student')"> 
+					</div>
+	
+					
+				</div>
+			</div>
+		</div>
+	</article>
+	
+	

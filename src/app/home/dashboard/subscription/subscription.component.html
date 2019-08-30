@@ -1,0 +1,157 @@
+<div class="subscriptions new-subscriptions col-xs-12">
+  <mat-tab-group>
+    <!-- <mat-tab label="Active Subscriptions">
+        <mat-grid-list cols="1" >
+          <mat-grid-tile  *ngFor="let subscription of activeSubscriptions" >
+            <mat-card class="subscription-card">
+              <mat-card-header>
+                <mat-card-title>{{subscription.title}}</mat-card-title>
+                <mat-card-subtitle>{{subscription.price | currency: currency:true}} </mat-card-subtitle>
+              </mat-card-header>
+              <mat-card-content>
+                <mat-list>
+                  <mat-list-item>  Bullets(Offers): {{subscription.shortDescription}} </mat-list-item>
+                  <mat-list-item>  Vailid for {{subscription.expirayDuration}} days </mat-list-item>
+                  <mat-list-item>  Expires on  {{subscription.expiryDate | date:'medium'}}  </mat-list-item>
+                  <mat-list-item>  Number of Mock tests:  {{subscription.noOfMockTests}}  </mat-list-item>
+                  <mat-list-item>  Number of Topic tests:  {{subscription.noOfTopicTests}}  </mat-list-item>
+                </mat-list>
+              </mat-card-content>
+            </mat-card>
+          </mat-grid-tile>
+        </mat-grid-list>
+    </mat-tab>
+  -->
+
+    <mat-tab label="Buy">
+      <mat-grid-list cols="2" rowHeight="100%">
+        <div class="row tabs-content-row pkgs-tab-main">
+          <div class="inner-main-pkgs">
+            <div class="by-box" *ngFor="let exam of exams; let i = index;">
+              <mat-card>
+                <mat-card-title class="title row">{{exam.name}}</mat-card-title>
+                <div class="" *ngIf="exam.subscriptions.length ">
+                  <!-- <div *ngFor="let sub of exam.subscriptions"> -->
+                  <!-- <mat-card class=""> -->
+                  <div class="pkgs-content" *ngIf="exam.subscriptions[0] as subscription ">
+                    <mat-card-subtitle class="price-row">{{subscription.price | currency: currency:true}}</mat-card-subtitle>
+                    <mat-divider></mat-divider>
+                    <mat-card-content class="content">
+                      <div [innerHTML]="subscription.longDesctiption">
+                      </div>
+                      <mat-list>
+                        <mat-list-item *ngIf="subscription.noOfMockTests"> <strong>Mock Tests # </strong> {{subscription.noOfMockTests}} </mat-list-item>
+                        <mat-list-item *ngIf="subscription.noOfTopicTests"> <strong>Topic Tests # </strong> {{subscription.noOfTopicTests}} </mat-list-item>
+                        <mat-list-item *ngIf="subscription.expiryDate"> <strong>Exp. Date</strong> {{subscription.expiryDate | date:'medium'}} </mat-list-item>
+                        <mat-list-item *ngIf="subscription.expiryDuration"> <strong>Valid Days</strong> {{subscription.expiryDuration}} </mat-list-item>
+                        <mat-list-item *ngIf="subscription.shortDescription"> {{subscription.shortDescription}} </mat-list-item>
+                      </mat-list>
+                    </mat-card-content>
+                    <button mat-raised-button class="buy-pkg-btn btn btn-primary btn-active btn-activity" (click)="checkout(subscription.id)" id="btnAction">BUY NOW</button>
+
+                  </div>
+                  <!-- </mat-card> -->
+                  <!-- </div> -->
+                </div>
+              </mat-card>
+            </div>
+          </div>
+        </div>
+        <div class="inner-pkg-row col-xs-12 all_pack" *ngFor="let exam of exams" style="display:none;">
+          <div class="by-box " id="pack_{{exam.id}}" *ngFor="let sub of exam.subscriptions">
+            <mat-card class="" *ngIf="exam.subscriptions.length > 1">
+              <div class="pkgs-content">
+                <mat-card-subtitle class="title row {{sub.title}} ticket">{{sub.title}}</mat-card-subtitle>
+                <mat-card-subtitle class="price-row">€ {{sub.price}} / month</mat-card-subtitle>
+                <mat-divider></mat-divider>
+                <mat-card-content>
+                  <mat-list>
+                    <mat-list-item> <strong>Mock Tests # </strong> {{sub.noOfMockTests}} </mat-list-item>
+                    <mat-list-item> <strong>Topic Tests # </strong> {{sub.noOfTopicTests}} </mat-list-item>
+                    <mat-list-item> <strong class="spec-label">Expires on# </strong> {{sub.expiryDate | date:'medium'}} </mat-list-item>
+                    <mat-list-item *ngIf="sub.shortDescription"> {{sub.shortDescription}} </mat-list-item>
+                  </mat-list>
+                </mat-card-content>
+                <button mat-raised-button class="buy-pkg-btn btn btn-primary btn-active btn-activity" (click)="checkout(sub.id)" id="btnAction">BUY NOW</button>
+              </div>
+            </mat-card>
+          </div>
+        </div>
+      </mat-grid-list>
+      <app-subscription-details [exam]="selectedExam" (isPayment)="makePayment($event)"></app-subscription-details>
+    </mat-tab>
+    <mat-tab label="Purchase History">
+      <div class="purchase-table col-sm-12">
+        <mat-accordion displayMode="flat" multi class="example-headers-align sub-purchase">
+        <section matSort class="mat-header-row">
+          <span class="mat-header-cell n" mat-sort-header="name">Name</span>
+          <span class="mat-header-cell p" mat-sort-header="price">Price</span>
+          <span class="mat-header-cell s" mat-sort-header="startDate">Start Date</span>
+          <span class="mat-header-cell e" mat-sort-header="expiryDate">Expiry Date</span>
+          <span class="mat-header-cell v" mat-sort-header="expiryDuration">Valid Days</span>
+        </section>
+        <mat-expansion-panel *ngFor="let item of displayedRows$ | async">
+          <mat-expansion-panel-header class="mat-row">
+            <span class="mat-cell n" >{{item.exam.name}}</span>
+            <span class="mat-cell p" >{{ item.price | currency: currency:true}}</span>
+            <span class="mat-cell s" >{{ item.startDate | date:'medium'}}</span>
+            <span class="mat-cell e" >{{ item.expiryDate | date:'medium'}}</span>
+            <span class="mat-cell v" >{{ item.expiryDuration}}</span>
+          </mat-expansion-panel-header>
+          <div class="item-content">
+            <div class="content-item">
+              <div class="elem">Start Date</div>
+              <div class="val">{{item.startDate | date:'medium'}}</div>
+            </div>
+            <div class="content-item">
+              <div class="elem">Expiry Date</div>
+              <div class="val">{{item.expiryDate | date:'medium'}}</div>
+            </div>
+            <div class="content-item">
+              <div class="elem">Valid Days</div>
+              <div class="val">{{item.expiryDuration}}</div>
+            </div>
+          </div>
+        </mat-expansion-panel>
+       </mat-accordion>
+      </div>
+       <mat-paginator #paginator
+          class="purchase-paging"
+          [length]="totalRows$ | async"
+          [pageIndex]="0"
+          [pageSize]="5"
+          [pageSizeOptions]="[5, 10, 20]"
+          [showFirstLastButtons]="true"
+        ></mat-paginator>
+      <!--<mat-accordion class="example-headers-align">-->
+        <!--<mat-card class="example-card for-history-tab">-->
+          <!--<mat-table #table class="table-section history-table" [dataSource]="purchaseHistoryDataSource">-->
+            <!--<ng-container matColumnDef="exam.name">-->
+              <!--<mat-header-cell *matHeaderCellDef class="table-header"> Name-->
+              <!--</mat-header-cell>-->
+              <!--<mat-cell *matCellDef="let element" class="table-information"> {{element.exam.name}} </mat-cell>-->
+            <!--</ng-container>-->
+            <!--<ng-container matColumnDef="price">-->
+              <!--<mat-header-cell *matHeaderCellDef class="table-header"> Price </mat-header-cell>-->
+              <!--<mat-cell *matCellDef="let element" class="table-information"> {{ element.price | currency: currency:true}} </mat-cell>-->
+            <!--</ng-container>-->
+            <!--<ng-container matColumnDef="startDate">-->
+              <!--<mat-header-cell *matHeaderCellDef class="table-header"> Start Date </mat-header-cell>-->
+              <!--<mat-cell *matCellDef="let element" class="table-information"> {{ element.startDate | date:'medium'}} </mat-cell>-->
+            <!--</ng-container>-->
+            <!--<ng-container matColumnDef="expiryDate">-->
+              <!--<mat-header-cell *matHeaderCellDef class="table-header"> Expiry Date </mat-header-cell>-->
+              <!--<mat-cell *matCellDef="let element" class="table-information"> {{ element.expiryDate | date:'medium'}} </mat-cell>-->
+            <!--</ng-container>-->
+            <!--<ng-container matColumnDef="expiryDuration">-->
+              <!--<mat-header-cell *matHeaderCellDef class="table-header"> Valid Days</mat-header-cell>-->
+              <!--<mat-cell *matCellDef="let element" class="table-information"> {{ element.expiryDuration}} </mat-cell>-->
+            <!--</ng-container>-->
+            <!--<mat-header-row style="background:#f5f5f5" *matHeaderRowDef="displayedColumns"></mat-header-row>-->
+            <!--<mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>-->
+          <!--</mat-table>-->
+        <!--</mat-card>-->
+      <!--</mat-accordion>-->
+    </mat-tab>
+  </mat-tab-group>
+</div>

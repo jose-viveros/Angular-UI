@@ -1,0 +1,537 @@
+section.parent-banner {
+    background: url(../../assets/parent-bg.png);
+    padding: 70px 0;
+    color: white;
+    background-size: cover;
+    background-position: center center;
+}
+button.normal-btn{
+    background: transparent;
+    border: solid 1px #bbb;
+    text-transform: uppercase;
+    padding: 5px 30px;
+    border-radius: 5px;
+    margin: 0 2px;
+    transition: all .3s ease;
+    font-size: 15px;
+}
+.prents-filter {
+    display: inline-block;
+    width: 100%;
+    font-size: 20px;
+}
+.parents .student-dash-tabs {
+    margin-top: 30px;
+}
+.parents-dash-tabs ul.nav-tabs.upper-ul li{
+	width: 19% !important;
+}
+.parent-my-account-sec .upper-ul {
+    margin-top: 0px !important;
+}
+.parent-my-account-sec ul.nav-tabs.upper-ul li {
+    width: 24%;
+}
+.student-dash-tabs ul.nav-tabs.upper-ul li a {
+    position: relative;
+}
+.student-dash-tabs ul.nav-tabs.upper-ul li a img{
+	position: absolute;
+	left: 25px;
+}
+.parent-my-account-sec ul.nav-tabs.upper-ul li a {
+    min-height: 75px;
+    background: #2c2c2c;
+}
+.parent-my-account-sec ul.nav-tabs.upper-ul li a span {
+    display: block;
+    /* padding-top: 12px; */
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    padding-left: 0px !important;
+    padding-top: 0px !important;
+}
+.parent-my-account-sec ul.nav-tabs.upper-ul li a:hover {
+    box-shadow: 0 1px 15px #00ceff;
+}
+.inner-tab {
+    margin: 20px auto;
+    width: 80%;
+    border-radius: 5px;
+    border: 1px solid #bbb;
+    padding: 0;
+    color: #bbbbbb;
+}
+.inner-tab .wrapper {
+    display: inline-block;
+    width: 100%;
+    /* padding: 24px 20px !important; */
+    margin: 0px 0px 10px;
+}
+.inner-tab .total {
+    border-top: solid 1px #bbb;
+}
+.inner-tab .black {
+    color: #2c2c2c;
+}
+.inner-tab-div{
+    margin-top: 10px;
+}
+
+/**********EDIT PROFILE***************/
+form.edit-pro input,
+form.edit-pro select {
+    color: #bbbbbb;
+    width: 100%;
+    border-radius: 5px;
+    padding: 10px;
+    border: solid 1px #bbbbbb;
+    outline: 0;
+    transition: all 0.3s ease;
+    height: 40px;
+}
+select.ng-untouched.ng-pristine.ng-valid {
+    padding: 8px 10px 10px !important;
+}
+form.edit-pro input:hover, 
+form.edit-pro input:focus, 
+form.edit-pro select:hover, 
+form.edit-pro select:focus {
+    border-color: #00ceff;
+}
+.edit-pro-inner {
+    margin: 20px 0;
+    margin: 0px;
+}
+form.edit-pro label {
+    color: #404040;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 13px;
+    width: 100%;
+}
+form.edit-pro .wrapper {
+    margin-bottom: 30px;
+}
+.p-tools-sec,
+.subscriptions {
+    padding: 30px 15px 20px;
+}
+.p-tools-sec h3 {
+    text-transform: uppercase;
+    font-size: 20px;
+    color: #404040;
+}
+.p-tools-sec .inner {
+    border-bottom: solid 1px #bbb;
+    color: #bbb;
+    padding-bottom: 20px;
+}
+.up-contest h5,
+.remove-data h5{
+    text-transform: uppercase;
+    color: #2c2c2c;
+    font-size: 15px;
+    margin-top: 18px;
+}
+.up-contest input {
+    padding: 12px;
+    transition: all 0.3s ease;
+}
+.up-contest a.downloader {
+    display: inline-block;
+    width: 100%;
+    text-decoration: underline;
+}
+span.warning {
+    color: #ff2c2c;
+}
+.remove-data.inner {
+    color: #2c2c2c;
+    text-transform: uppercase;
+}
+.remove-data.inner input.red{
+    background: #2c2c2c;
+    color: #fff;
+    border: 0;
+    transition: all .3s ease;
+}
+
+.remove-data.inner input.red {
+    background: #ff2c2c;
+    color: #fff;
+    border: 0;
+    transition: all .3s ease;
+    padding: 12px 40px;
+    font-size: 20px;
+    box-shadow: 0 10px 50px rgba(255, 44, 44, .3);
+}
+
+#Subscriptions h5 {
+    text-transform: uppercase;
+    font-size: 20px;
+    color: #2c2c2c;
+}
+.inner-subs {
+    border-bottom: solid 1px #bbb;
+    color: #bbb;
+}
+.key-facts ul {
+    padding: 0;
+}
+.key-facts li img{
+    margin-right: 10px
+}
+.key-facts h5 {
+    margin: 0;
+    border-bottom: solid 1px#bbb;
+    padding: 30px 0;
+}
+.key-facts li {
+    list-style: none;
+    padding: 20px 0 5px;
+    border-bottom: solid 1px #bbb;
+    text-transform: uppercase;
+}
+table.price-data.table {
+    width: 70%;
+    border: solid 1px #bbb;
+    border-radius: 5px !important;
+    font-size: 15px;
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 30px;
+}
+table.price-data.table thead{
+    background: #f5f5f5;
+}
+table.price-data.table th{
+    text-align: center;
+    padding: 15px 0;
+}
+table.price-data.table td{
+    padding: 18px 0;
+    position: relative;
+}
+table.price-data.table td img {
+    width: 30px;
+}
+table.price-data.table td button {
+    position: absolute;
+    bottom: -46px;
+    left: 0;
+    right: 0;
+    width: 90%;
+    padding: 12px 10px;
+    width: 130px;
+    margin: auto;
+    background: #2c2c2c;
+    border: 0;
+    color: white;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 20px rgba(0, 206, 255, .2);
+}
+table.price-data.table td button:hover {
+    background: #00ceff;
+}
+
+/******PARANT ACTIVITYT*************/
+.activity-filters input, .activity-filters select {
+    border: solid 1px #bbb;
+    border-radius: 5px;
+    color: #bbb;
+    padding: 10px;
+    outline: 0;
+}
+.activity-filters input:hover,
+.activity-filters input:focus, 
+.activity-filters select:focus,
+.activity-filters select:hover {
+    border-color: #00ceff;
+}
+.selected-results p{
+    margin:15px 0 0px; 
+}
+.selected-results button {
+    border: 0;
+    color: white;
+    margin-left: 5px;
+    padding: 10px;
+    border-radius: 5px;
+}
+.selected-results button.result {
+    background: #2c2c2c;
+}
+.selected-results.row {
+    padding: 14px 0 0;
+}
+.student-activity-table{
+    text-transform: uppercase;
+}
+span.Select_All {
+    display: inline-block;
+    width: 100%;
+    cursor: pointer;
+        position: relative;
+}
+span.Select_All input {
+    opacity: 0;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    cursor: pointer;
+    top: 0;
+    margin: 0;
+}
+span.Select_All::before {
+    position: relative;
+    background: transparent;
+    width: 15px;
+    height: 15px;
+    content: '';
+    display: inline-block;
+    border-radius: 10px;
+    border: solid 1px #bbb;
+    margin-right: 10px;
+}
+span.Select_All.active::before {
+    background: #00ceff;
+}
+button.rev{
+    background: transparent;
+    border: solid 1px #bbb;
+    text-transform: uppercase;
+    padding: 5px 30px;
+    border-radius: 5px;
+    margin: 0 2px;
+    transition: all .3s ease;
+}
+button.rev:hover {
+    background: #00ceff;
+    color: white;
+    border-color: #00ceff;
+    box-shadow: 0 1px 20px #00ceff;
+}
+
+/************MOCK LIST**************/
+button.rev.complete {
+    background: #00ceff;
+    border: 0;
+    box-shadow: 0 1px 10px #00ceff;
+    color: white;
+    width: 85%;
+    text-transform: capitalize;
+}
+button.rev.not-st {
+    background: #404040;
+    color: white;
+    border: 0;
+    box-shadow: 0 1px 10px #404040;
+    width: 85%;
+    text-transform: capitalize;
+}
+button.rev.prog {
+    background: #00e921;
+    color: white;
+    border: 0;
+    box-shadow: 0 1px 10px #00e921;
+    width: 85%;
+    text-transform: capitalize;
+}
+p.extra-select{
+    margin:20px 0 20px; 
+}
+
+/*****STUDENT MY********/
+.student_select_buttons {
+    display: inline-flex;
+    padding: 20px 10px 0;
+    width: 60%;
+    text-transform: uppercase;
+    margin-left: 17px;
+}
+.selected-res-stu {
+    padding-bottom: 10px !important;
+    display: inline-block;
+    width: 100%;
+}
+select.action {
+    display: inline-block;
+    width: 36%;
+    margin-left: 5px;
+}
+span.time_ {
+    display: inline-block;
+    width: 100%;
+}
+
+/****PARENT MY ACCOUNT********/
+
+button.edit, button.login {
+    background: transparent;
+    border: solid 1px transparent;
+    color: white;
+    padding: 5px 12px;
+    border-radius: 5px 5px 5px 5px;
+    margin: 2px 2px;
+    width: 85px;
+    position: relative;
+    box-shadow: 0 1px 10px rgba(0, 0, 0, .3);
+    transition: all 0.3s ease;
+}
+button.edit:hover, 
+button.login:hover {
+    box-shadow: 0 1px 10px rgba(0, 0, 0, .8);
+}
+button.edit img, button.login img{
+
+}
+button.edit{
+	background: #585858;
+	padding-left: 35px;
+}
+button.login{
+	background: #00ceff;
+	padding-left: 33px;
+}
+button.edit span, button.login span {
+    position: absolute;
+    left: 8px;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 28px;
+    padding-top: 8px;
+    border-right: solid 1px #8a8a8a;
+}
+button.login span {
+    border-right: solid 1px #fff;
+}
+
+/********PARANT TESTING AREA*********/
+.inner_testting h4 {
+    font-size: 20px;
+    text-transform: uppercase;
+    margin: 0 0 20px;
+    margin-left: 15px;
+}
+.inner_testting button.selected {
+    border: 0;
+    background: #2c2c2c;
+    color: white;
+    margin-left: 10px;
+    font-size: 15px;
+    padding: 8px 12px;
+    border-radius: 5px;
+}
+.question-table tbody tr:hover {
+    background: #00ceff;
+}
+.main-ques-sec {
+    border-radius: 5px;
+    border: solid 1px #bbb;
+    padding: 15px 15px 0;
+    height: 100%;
+    text-align: center;
+}
+h3.status.row {
+    margin-top: -15px;
+    margin-right: -15px;
+    margin-left: -15px;
+    padding: 15px;
+    text-transform: uppercase;
+}
+.main-ques-sec h2 {
+    margin: 30px 0 50px;
+}
+.your-ans,
+.correct-ans {
+    text-align: left;
+    width: 50%;
+    margin:15px auto;
+    text-transform: uppercase;
+}
+.your-ans span, 
+.correct-ans span {
+    display: inline-block;
+    width: 100%;
+    border: solid 2px #bbb;
+    border-radius: 5px;
+    text-align: center;
+    padding: 10px;
+    font-weight: bold;
+    color:#00ceff;
+}
+.correct-ans {
+	    color: #11e11b;
+}
+.correct-ans span{
+    border: solid 2px #11e11b;
+    color: #11e11b;
+}
+.explain.row {
+    background: #fafafa;
+    padding: 15px;
+    border-top: solid 1px #bbb;
+    margin-top: 60px;
+    border-radius: 0px 0px 5px 5px;
+}
+h4 img {
+    margin: -3px 5px 0;
+}
+.explain h4 {
+    margin: 10px -15px 20px;
+    border-bottom: solid 1px #bbb;
+    padding-bottom: 15px;
+}
+.col-sm-4.results-div {
+    height: 540px;
+    overflow: hidden;
+}
+
+select{
+	background: transparent!important;
+}
+/********11 / 12 ***************/
+.parent-my-account-sec {
+    margin-top:25px;
+}
+.parent-my-account-sec .tabs-scroller.tabs-scroller-accounts {
+    width: 21%;
+    float: left;
+    
+}
+.parent-my-account-sec .tab-content-inner {
+    float: left;
+    width: 79%;
+    min-height: 500px;
+    max-height: 100%;
+}
+/* .parent-my-account-sec .tab-content-inner .list-section{
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+} */
+.parent-my-account-sec ul.nav-tabs.upper-ul li {
+    width: 100% !important;
+    margin-bottom: 10px;
+}
+.new-tabs-style .fade{
+    display: none;
+}
+.new-tabs-style .fade.in {
+    display: block;
+}
+.p-tools-sec, .subscriptions {
+    padding: 0px 15px 20px;
+    margin-top: 0px;
+}
+table.price-data.table {
+    width: 100%!important;
+}
+

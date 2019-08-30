@@ -1,0 +1,172 @@
+<div class="container" >
+<br>
+	<form name="form" (ngSubmit)="f.form.valid" #f="ngForm" novalidate>
+    	<div>
+			<table style="width:80%;">
+			    <tbody>
+			      <tr [hidden]="isDomainHidden">
+			        <td style="width:15%"><h5>&nbsp;</h5></td>
+			        <td style="width:65%">
+			        	<mat-form-field class="half-width">
+			        		<mat-select placeholder="Domain" name="domain" required [(ngModel)]="model.seldomain" id="domain" #domain="ngModel" (change)="fetchSubjects()">
+						    	<mat-option value="{{k.id}},{{k.name}}" *ngFor="let k of  model.domain">{{k.name}}</mat-option>
+					  		</mat-select>
+							<mat-error *ngIf="domain.invalid">{{getErrorMessage()}}</mat-error>
+						</mat-form-field>
+					</td>
+			      </tr>
+			      <tr >
+			        <td><h5>&nbsp;</h5>
+					</td>
+			        <td>
+			        	<mat-form-field class="half-width">
+			        		<mat-select placeholder="Subject" required [disabled]="isSubjectHidden" name="subject" [(ngModel)]="model.selsubject" id="subject" #subject="ngModel" (change)="fetchTopics()">
+						    	<mat-option value="{{k.id}},{{k.description}}" *ngFor="let k of  model.subject">{{k.description}}</mat-option>
+					  		</mat-select>
+							<mat-error *ngIf="subject.invalid">{{getErrorMessage()}}</mat-error>
+						</mat-form-field>
+			        </td>
+			      </tr>
+			      <tr>
+			        <td><h5></h5></td>
+			        <td>
+			        	<mat-form-field class="half-width">
+			        		<mat-select placeholder="Topic" required [disabled]="isTopicHidden" name="topic" [(ngModel)]="model.seltopic" id="topic" #topic="ngModel" (change)="topicChange()">
+			        			<!--mat-option value="0,0">All</mat-option-->
+						    	<mat-option value="{{k.id}},{{k.description}}" *ngFor="let k of  model.topic">{{k.description}}</mat-option>
+					  		</mat-select>
+							<mat-error *ngIf="topic.invalid">{{getErrorMessage()}}</mat-error>
+						</mat-form-field>
+					</td>
+			      </tr>
+			      <tr>
+			        <td><h5></h5></td>
+			        <td>
+			        	<mat-form-field class="half-width">
+      						<input matInput placeholder="Search By Year" name="year" [(ngModel)]="model.year" (change)="reset()">
+      						<mat-hint align="end">Can be in format like DEC-2005</mat-hint>
+      					</mat-form-field>
+      					<br>
+					</td>
+			      </tr>
+			      <tr>
+			        <td><h5></h5></td>
+			        <td>
+      						<mat-checkbox name="noOptions" [(ngModel)]="noOptions" class="mat-select-placeholder" (change)="questionDescChange()">Without Options</mat-checkbox>
+					</td>
+                  </tr>
+                  <tr>
+			        <td><h5></h5></td>
+			        <td>
+      						<mat-checkbox name="isGroupQuestion" required [(ngModel)]="isGroupQuestion" class="mat-select-placeholder" (change)="currentPage = 1;setGroupQuestionSearch()">Search Group/Sub Group Questions</mat-checkbox>
+					</td>
+			      </tr>
+			      <tr>
+			        <td><h5></h5></td>
+		        	<td align="left" style="width:20%">
+		        		<mat-form-field class="full-width">
+    						<textarea [rows]=5 matInput placeholder="Question description" [(ngModel)]="model.questionDesc" (change)="currentPage = 1;questionDescChange()" name="questionDesc"></textarea>
+  						</mat-form-field>
+		        	</td>
+			      </tr>
+			      <tr>
+			        <td></td>
+		        	<td align="left" ><br>
+		        		<button  class="btn btn-primary" (click)="search()">Search</button> &nbsp; <button [disabled]="loading" class="btn btn-primary" (click)="next()">Next</button>
+		        	</td>
+			      </tr>
+		  	</table>
+		  </div>
+		  <mat-accordion class="example-headers-align"> 
+			<mat-card  class="example-card">
+			<table class="fullwidth">
+		  		<tr *ngFor="let ques of  model.questions ; let idx = index">
+		  			<td colspan=3>
+		  				<mat-card [ngClass]="{'matCard': ques.groupQuestionId && ques.id != ques.groupQuestionId, 'matCardMain' : ques.id == ques.groupQuestionId || !ques.groupQuestionId}">
+						  
+						  	<table style="width: 100%">
+						  		<tr [ngClass]="{'trSubQuestion': ques.groupQuestionId && ques.id != ques.groupQuestionId, 'trQuestionMain' : ques.id == ques.groupQuestionId || !ques.groupQuestionId}">
+						  			<td width="100%">
+						  				<p *ngIf="ques.id == ques.groupQuestionId || !ques.groupQuestionId">Question {{setQuestionIdx(idx + 1)}}: </p>
+						  				<p *ngIf="ques.groupQuestionId && ques.id != ques.groupQuestionId">Question {{getSubQuestionIdx()}}: </p>
+						  				<table class="tblHeader" width=100% >
+						  				<tr>
+						  					<td style="text-align:right">
+						  						<i *ngIf="ques.id == ques.groupQuestionId || !ques.groupQuestionId">Previous Exam : <u>{{ques.previousExamName}}, &nbsp;</u></i>
+						  						<i *ngIf="ques.id == ques.groupQuestionId || !ques.groupQuestionId">Year : <u>{{ques.year}}</u>, &nbsp;</i>
+							  					Diff. Level : 
+							  					<u align="left" *ngIf="ques.difficultyLevel  == 0">
+							  						&nbsp;Simple
+			  									</u>
+			  									<u align="left" *ngIf="ques.difficultyLevel  == 1">
+							  						&nbsp;Moderate
+			  									</u>
+			  									<u align="left" *ngIf="ques.difficultyLevel  == 2">
+							  						&nbsp;Hard
+			  									</u>
+				  								, &nbsp;Marks : <u>{{ques.marks}}</u>
+				  								<i *ngIf="ques.id == ques.groupQuestionId || !ques.groupQuestionId">, &nbsp;Topic : <u>{{ques.topic.description}}</u></i>
+				  								<i *ngIf="ques.id == ques.groupQuestionId || !ques.groupQuestionId">, &nbsp;Content Feeder : <u>{{ques.questionBank.user.firstName}} {{ques.questionBank.user.lastName}}</u></i>
+			  								</td>
+			  								<td style="text-align:right;">
+				  								<i class="material-icons" >
+				  									<b (click)="navigateEditQuestion(ques.id, ques.groupQuestionId)">mode edit</b>
+				  									<b (click)="deleteQuestion(ques.id)">delete</b>
+								  				</i>
+							  				</td>
+							  			</tr>
+						  				</table>
+						  			</td>
+						  			<!-- td  align="right">
+						  				<i class="material-icons" ><b (click)="navigateEditQuestion(ques.id, ques.groupQuestionId)">mode edit</b><b (click)="deleteQuestion(ques.id)">delete</b></i>
+						  				<p *ngIf="ques.difficultyLevel  == 0">Simple<br> {{ques.marks}} <br> {{ques.topic.description}}</p>
+		  								<p *ngIf="ques.difficultyLevel  == 1">Moderate<br> {{ques.marks}} <br> {{ques.topic.description}}</p>
+		  								<p *ngIf="ques.difficultyLevel  == 2">Hard<br> {{ques.marks}} <br> {{ques.topic.description}}</p>
+						  			</td-->
+						  		</tr>
+						  		<tr>
+						  			<td>
+						  				<div [innerHTML]="ques.description | safeHtml">
+						  				</div>
+						  			</td>
+						  		</tr>
+						  	</table>
+						  
+						  <mat-card-content *ngIf="ques.id != ques.groupQuestionId">
+						  		<mat-card class="example-card">
+											  <mat-card-header>
+											    <div mat-card-avatar class="example-header-image"></div>
+											    <mat-card-title>
+											    	Options 
+											    </mat-card-title>
+											  </mat-card-header>
+											  <mat-card-content *ngFor="let opt of  ques.answers">
+											  		<mat-checkbox class="example-margin"
+												          disabled="disabled"
+												          [checked]="opt.correct">
+												          <div [innerHTML]="opt.answer | safeHtml"></div>
+												      </mat-checkbox>
+												       
+												          	
+											  </mat-card-content>
+											  
+								</mat-card>
+						  </mat-card-content>
+						  <mat-card-actions align="end">
+						    	
+						  </mat-card-actions>
+						</mat-card>
+		  			</td>
+                  </tr>
+                  <tr>
+                      <td colspan=3 style="text-align: right">
+                            <br>
+                            <button class="btn btn-primary" [disabled]="previousDisabled" (click)="previousPage()">Previous</button>&nbsp;
+                            <button class="btn btn-primary" [disabled]="nextDisabled" (click)="nextPage()">Next</button>
+                      </td>
+                  </tr>  
+		  	</table>
+		  </mat-card>
+		 </mat-accordion>
+	</form>
+</div>

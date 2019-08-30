@@ -1,0 +1,64 @@
+<mat-card class="example-card search-for-assign">
+	<mat-form-field class="example-full-width">
+		<input matInput (keyup)="applyFilter($event.target.value)" placeholder="Search by Name" id="filterText" #filterText="ngModel"  [(ngModel)]= "model.filterText">
+  </mat-form-field>
+  <mat-accordion displayMode="flat" multi class="example-headers-align filter-data-all">
+    <section matSort class="mat-header-row">
+      <span class="mat-header-cell fs" mat-sort-header="select" >
+        <mat-checkbox (change)="$event ? masterToggle() : null"
+												[checked]="selection.hasValue() && isAllSelected()"
+												[indeterminate]="selection.hasValue() && !isAllSelected()">
+        </mat-checkbox>
+      </span>
+      <span class="mat-header-cell fn" mat-sort-header="name" >Name</span>
+      <span class="mat-header-cell fg" mat-sort-header="groupName" [hidden]="!isTutor">Group Name</span>
+      <span class="mat-header-cell fi" mat-sort-header="id" >Id</span>
+    </section>
+    <mat-expansion-panel *ngFor="let item of displayedRows$ | async">
+      <mat-expansion-panel-header class="mat-row">
+        <span class="mat-cell fs">
+          <mat-checkbox (click)="$event.stopPropagation()"
+												(change)="$event ? selection.toggle(item) : null"
+												[checked]="selection.isSelected(item)">
+          </mat-checkbox>
+        </span>
+        <span class="mat-cell fn" >{{item.name}}</span>
+        <span class="mat-cell fg" [hidden]="!tutor">{{item.groupName}}</span>
+        <span class="mat-cell fi" >{{item.id}}</span>
+      </mat-expansion-panel-header>
+      <div class="item-content">
+        <div class="content-item">
+          <div class="elem">TEST Type</div>
+          <div class="val">{{item.examType}}</div>
+        </div>
+        <div class="content-item">
+          <div class="elem">ASSIGNED DATE</div>
+          <div class="val">{{item.assignedDate | date:'dd/MM/yyyy'}}</div>
+        </div>
+        <div class="content-item">
+          <div class="elem">FINISHED DATE</div>
+          <div class="val time">{{item.finishedDate | date: 'dd/MM/yyyy'}}</div>
+        </div>
+        <div class="content-item">
+          <div class="elem">SCORE</div>
+          <div class="val">{{item.score}}</div>
+        </div>
+        <div class="content-item">
+          <div class="elem">RANK</div>
+          <div class="val">{{item.rank}}</div>
+        </div>
+      </div>
+    </mat-expansion-panel>
+  </mat-accordion>
+  <mat-paginator #paginator
+    [length]="totalRows$ | async"
+    [pageIndex]="0"
+    [pageSize]="5"
+    [pageSizeOptions]="[5, 10, 20]"
+    [showFirstLastButtons]="true"
+  ></mat-paginator>
+<div class="navi-btn">
+<button mat-button [mat-dialog-close]="{'data': this.selection, 'isAllSelected': isAllSelected()}" cdkFocusInitial>Ok</button>
+<button mat-button value="Cancel" (click)="onNoClick()">Cancel</button>
+</div>
+</mat-card>

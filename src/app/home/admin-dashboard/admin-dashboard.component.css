@@ -1,0 +1,18 @@
+
+.parent-content {
+    font-family: 'Poppins', sans-serif !important;
+    font-size: 15px !important;
+    height: auto;
+}
+
+.sec-tab-con ul li span.li-nums {
+    float: right;
+    background: #3b3b3b;
+    color: white;
+    width: 40px;
+    text-align: center;
+    border-radius: 100px;
+    height: 25px;
+    font-size: 12px;
+    padding: 4px;
+}

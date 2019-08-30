@@ -1,0 +1,1897 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,700');
+
+
+
+
+@media (min-width: 1200px){
+    .header{
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        font-size: 15px;
+    }
+    .header-options{
+        font-family: 'Poppins', sans-serif !important;
+        display: table;
+    }
+    img{
+        max-width: 100%;
+    }
+    h1,h2,h3,h4{
+        color: #404040;
+    }
+    a,a:hover{
+        transition: all 0.3s ease;
+        text-decoration: none;
+    }
+    button{
+        transition: all .3s ease;
+        outline: 0!important;
+    }
+    a:hover{
+        color: #00ceff;
+    }
+    .header {
+        padding: 15px;
+        box-shadow: 0 1px 10px rgba(0, 0, 0, .2);
+    }
+    nav#nav_ {
+        flex-direction: row;
+        margin-right: 217px;
+    }
+
+    nav#nav_ ul {
+        padding: 0;
+        margin: 0;
+    }
+    nav#nav_ ul li {
+        list-style: none;
+        display: inline-block;
+    }
+    nav#nav_ ul li a,
+    .login.col-sm-3 a {
+        color: #919191;
+        font-size: 15px;
+        text-transform: uppercase;
+        padding: 10px 20px;
+    }
+    nav#nav_ ul li a:hover,
+    .login.col-sm-3 a:hover {
+        color: #00ceff;
+    }
+    .fixedSize {
+        height: 97px !important;
+        width: 97px !important;
+    }
+    .container{
+        max-width: 78%;
+        position: relative;
+    }
+    .logo1 {
+        height: 100%;
+        max-width: 15%;
+    }
+    .nav-div{
+        max-width: 85%;
+        position: absolute;
+        transform: translate(-50%, -50%);
+        top: 50%;
+        left: 55%;
+    }
+    .user-avatar{
+        width: 50px;
+        position: absolute;
+        transform: translate(-50%, -50%);
+        top: 50%;
+        left: 82%;
+    }
+    .lap{
+        margin-top: -1px;
+        font-size: 15px;
+    }
+    .user-options {
+        display: inline-grid;
+        float: right;
+    }
+    .select-menu{
+        width:120px;
+        margin-left:10px;
+    }
+    .nav-menu-button{
+        background: none;
+        width:200px;
+        border:none;
+        margin-left: 100px;
+        margin-top: -3px;
+    }
+    .cdk-overlay-pane,
+    .mat-menu-panel.drop-menu button {
+      min-width: 160px;
+    }
+    .mat-menu-panel {
+      max-width: 160px;
+    }
+    .mat-menu-panel.drop-menu button {
+      font-size: 15px;
+      color: #bbb;
+      min-width:160px;
+      text-transform: uppercase;
+    }
+    .mat-menu-panel {
+       max-width: 160px !important;
+    }
+    .name-left{
+        float:left;
+        font-family: 'Poppins', sans-serif !important;
+        font-size: 18px;
+        font-weight: 500;
+    }
+    .user-role{
+      font-size: 16px;
+      font-weight: 200;
+
+    }
+    .name-right{
+        float:right;
+    }
+    .user-avatar-mob{
+        display: none;
+    }
+
+}
+@media (max-width: 1199px) and (min-width: 992px){
+    .header{
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        font-size: 15px;
+    }
+    .header-options{
+        font-family: 'Poppins', sans-serif !important;
+        display: table;
+    }
+    img{
+        max-width: 100%;
+    }
+    h1,h2,h3,h4{
+        color: #404040;
+    }
+    a,a:hover{
+        transition: all 0.3s ease;
+        text-decoration: none;
+    }
+    button{
+        transition: all .3s ease;
+        outline: 0!important;
+    }
+    a:hover{
+        color: #00ceff;
+    }
+    .header {
+        padding: 15px;
+        box-shadow: 0 1px 10px rgba(0, 0, 0, .2);
+    }
+    nav#nav_ {
+      flex-direction: row;
+      margin-right: 59px;
+    }
+    nav#nav_ ul {
+        padding: 0;
+        margin: 0;
+    }
+    nav#nav_ ul li {
+        list-style: none;
+        display: inline-block;
+    }
+    nav#nav_ ul li a,
+    .login.col-sm-3 a {
+        color: #919191;
+        font-size: 15px;
+        text-transform: uppercase;
+        padding: 10px 14px;
+    }
+    nav#nav_ ul li a:hover,
+    .login.col-sm-3 a:hover {
+        color: #00ceff;
+    }
+    .fixedSize {
+        height: 97px !important;
+        width: 97px !important;
+    }
+    .container{
+        max-width: 94%;
+        position: relative;
+    }
+    .logo1 {
+        height: 100%;
+        max-width: 120px;
+    }
+    .nav-div{
+        max-width: 85%;
+        position: absolute;
+        -webkit-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+        top: 50%;
+        left: 60%;
+    }
+    .user-avatar{
+        width: 50px;
+        width: 50px;
+        position: absolute;
+        transform: translate(-50%, -50%);
+        top: 46%;
+        left: 69%;
+    }
+    .lap{
+        margin-top: -1px;
+        font-size: 15px;
+    }
+    .user-options {
+        display: inline-grid;
+        float: right;
+    }
+    .select-menu{
+        width:120px;
+        margin-left:10px;
+    }
+    .nav-menu-button{
+        background: none;
+        width:200px;
+        border:none;
+        margin-left: 60px;
+        margin-top: -3px;
+    }
+    .cdk-overlay-pane,
+    .mat-menu-panel.drop-menu button {
+      min-width: 160px;
+    }
+    .mat-menu-panel {
+      max-width: 160px;
+    }
+    .mat-menu-panel.drop-menu button {
+      font-size: 15px;
+      color: #bbb;
+      min-width:160px;
+      text-transform: uppercase;
+    }
+    .mat-menu-panel {
+       max-width: 160px !important;
+    }
+    .name-left{
+        float:left;
+        font-family: 'Poppins', sans-serif !important;
+        font-size: 18px;
+        font-weight: 500;
+    }
+    .user-role{
+      font-size: 16px;
+      font-weight: 200;
+
+    }
+    .name-right{
+        float:right;
+    }
+    .user-avatar-mob{
+        display: none;
+    }
+}
+
+
+@media (max-width: 991px) and (min-width: 768px){
+    .header{
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        font-size: 15px;
+    }
+    .header-options{
+        font-family: 'Poppins', sans-serif !important;
+        display: table;
+    }
+    img{
+        max-width: 100%;
+    }
+    h1,h2,h3,h4{
+        color: #404040;
+    }
+    a,a:hover{
+        transition: all 0.3s ease;
+        text-decoration: none;
+    }
+    button{
+        transition: all .3s ease;
+        outline: 0!important;
+    }
+    a:hover{
+        color: #00ceff;
+    }
+    .header {
+        padding: 15px;
+        box-shadow: 0 1px 10px rgba(0, 0, 0, .2);
+    }
+    nav#nav_ {
+      flex-direction: row;
+      margin-right: 26px;
+    }
+    nav#nav_ ul {
+        padding: 0;
+        margin: 0;
+    }
+    nav#nav_ ul li {
+        list-style: none;
+        display: inline-block;
+    }
+    nav#nav_ ul li a,
+    .login.col-sm-3 a {
+        color: #919191;
+        font-size: 15px;
+        text-transform: uppercase;
+        padding: 10px 5px;
+    }
+    nav#nav_ ul li a:hover,
+    .login.col-sm-3 a:hover {
+        color: #00ceff;
+    }
+    .fixedSize {
+        height: 97px !important;
+        width: 97px !important;
+    }
+    .container{
+        max-width: 96%;
+        position: relative;
+    }
+    .logo1 {
+        height: 100%;
+        max-width: 120px;
+    }
+    .nav-div{
+        max-width: 85%;
+        position: absolute;
+        -webkit-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+        top: 50%;
+        left: 60%;
+    }
+    .user-avatar{
+        width: 50px;
+        width: 50px;
+        position: absolute;
+        transform: translate(-50%, -50%);
+        top: 46%;
+        left: 65%;
+    }
+    .lap{
+        margin-top: -1px;
+        font-size: 15px;
+        margin-left: -14px
+    }
+    .user-options {
+        display: inline-grid;
+        float: right;
+    }
+    .select-menu{
+        width:120px;
+        margin-left:10px;
+    }
+    .nav-menu-button{
+        background: none;
+        width: 190px;
+        border: none;
+        margin-left: 60px;
+        margin-top: -2px;
+    }
+    .cdk-overlay-pane,
+    .mat-menu-panel.drop-menu button {
+      min-width: 160px;
+    }
+    .mat-menu-panel {
+      max-width: 160px;
+    }
+    .mat-menu-panel.drop-menu button {
+      font-size: 15px;
+      color: #bbb;
+      min-width:160px;
+      text-transform: uppercase;
+    }
+    .mat-menu-panel {
+       max-width: 160px !important;
+    }
+    .name-left{
+        float: left;
+        font-family: 'Poppins', sans-serif !important;
+        font-size: 16px;
+        font-weight: 500;
+    }
+    .user-role{
+        font-size: 14px;
+        font-weight: 200;
+    }
+    .name-right{
+        float:right;
+    }
+    .user-avatar-mob{
+        display: none;
+    }
+}
+
+@media (max-width: 767px) and (min-width: 576px){
+    .header {
+        padding: 15px 15px 15px !important;
+        box-shadow: 0 1px 10px rgba(0, 0, 0, .2);
+    }
+    .container {
+        max-width: 767px !important;
+        padding-bottom: 5px;
+    }
+	.logo {
+        text-align: left;
+    }
+    .logo1{
+        transform: translateY(25%);
+    }
+    .logo1 img{
+        width: 70px;
+    }
+	.col-sm-3.social-col-foot {
+	    display: inline-block;
+	    width: 100%;
+	    text-align: center;
+	    margin: 10px 0;
+	}
+    .dashborad .login.logged.col-sm-4 {
+        display: none;
+    }
+    .dashborad nav#nav_ {
+        padding: 0 !important;
+    }
+    .dashborad .inner-menu {
+        top: 0px;
+    }
+    .login-logged-mobile {
+        display: inline-block !important;
+        float: right;
+        color: black;
+        padding-bottom: 0px;
+    }
+    .nav-div{
+        margin-left: auto;
+        margin-right: auto;
+        padding-bottom: 20px;
+    }
+    .nav-div .user-avatar{
+        display: none;
+    }
+    .user-info-section{
+        display: none;
+    }
+    .info-inner span {
+        font-size: 10px;
+    }
+    .info-inner h4 {
+        font-size: 12px;
+        margin-bottom: 0;
+        margin-left:2px;
+    }
+	p.footer-para {
+        text-align: center;
+        margin-bottom: 20px;
+	}
+	ul.social-footer li {
+        margin-right: 30px;
+	}
+	span#mob-menu {
+        display: block !important;
+        position: absolute;
+        font-size: 25px;
+        top: -35px;
+        width: 50px;
+        right: -70px;
+        text-align: center;
+    }
+    .user-avatar-mob{
+        width: 50px;
+        position: absolute;
+        top: -40px;
+        right: 100px;
+        display: block !important;
+    }
+
+    .mob-userInfo{
+        width: 120px;
+        position: absolute;
+        top: -40px;
+        right: -25px;
+        display: block !important;
+        font-family: 'Poppins', sans-serif !important;
+        text-align: center;
+        margin-left: 10px;
+    }
+    .mob-userInfo span{
+        width: 100%;
+        position: absolute;
+        display: block !important;
+        font-family: 'Poppins', sans-serif !important;
+    }
+    nav#nav_ {
+        max-width: 100% !important;
+        padding-left: 15px;
+    }
+    nav#nav_ ul{
+        width: 100%;
+        padding-left: 0px;
+        font-family: 'Poppins', sans-serif !important;
+        text-transform: uppercase;
+        list-style: none;
+    }
+	nav#nav_ ul li {
+        width: 100%;
+        text-align: center;
+        margin: 0;
+        border-bottom: solid 1px #ccc;
+        padding: 10px 0;
+        transition: all .3s ease;
+	}
+    nav#nav_ ul li:hover {
+        background: #00ceff;
+    }
+    nav#nav_ ul li:hover a{
+        color:#333;
+        text-decoration: none;
+    }
+	.inner-menu {
+        display: none;
+        width: 100%;
+        background: #2c2c2c;
+        margin-top: 0px;
+        padding: 15px;
+        position: relative;
+        top: 35px;
+        margin-bottom: 10px;
+	}
+	.login.col-sm-3 {
+        text-align: center;
+        padding-top: 10px;
+    }
+    .lap{
+        display: none;
+    }
+    .mob-auth{
+        display: flex !important;
+        width: 95%;
+        margin-left: auto;
+        margin-right: auto;
+        border-bottom: 1.2px solid #ccc;
+        font-size: 14px;
+        padding: 6px 0px 15px;
+    }
+    .mob-auth .mob-register{
+        margin: auto;
+        text-align: right;
+    }
+    .mob-auth .mob-register a{
+        color: #ccc;
+        font-family: 'Poppins', sans-serif !important;
+        text-decoration: none;
+    }
+    .mob-auth .mob-register a:hover{
+        color: #00ceff;
+    }
+    .mob-auth .mob-divider{
+        color: #ccc;
+        padding: 0px 10px;
+    }
+    .mob-auth .mob-setting{
+        display: flex;
+        color: #ccc;
+        font-family: 'Poppins', sans-serif !important;
+        margin-left: 25px;
+    }
+    .mob-auth .mob-setting .set-item{
+        min-width: 90px;
+        cursor: pointer;
+    }
+    .mob-auth .mob-setting .set-item:hover{
+        color: #00ceff;
+    }
+    .mob-auth .mob-setting .set-item span{
+        padding: 0px 10px;
+    }
+    .mob-auth .mob-login{
+        margin: auto;
+    }
+    .mob-auth .mob-login a{
+        color: #ccc;
+        font-family: 'Poppins', sans-serif !important;
+        text-decoration: none;
+    }
+    .mob-auth .mob-login a:hover{
+        color: #00ceff;
+    }
+    .name-left{
+        font-size: 16px;
+        font-weight: 500;
+    }
+    .user-role{
+        font-size: 13px;
+    }
+	nav#nav_ ul li a, .login.col-sm-3 a {
+        font-size: 14px;
+        padding: 5px 10px;
+        display: inline-block;
+        width: 100%;
+        color: #ccc;
+	}
+	.thre-btn-sec button {
+        width: 100%;
+        margin: 10px 0px;
+	}
+	.thre-btn-sec button span {
+        margin-right: 22%;
+	}
+	ul.footer-menu {
+        padding-left: 10px;
+	}
+    .student-dash-tabs ul.nav-tabs.upper-ul li {
+        width: auto;
+    }
+    .pre-nex-btns button {
+        margin: 5px 2px;
+    }
+    .pre-nex-btns .text-right {
+        text-align: center !important;
+    }
+    .parents-dash-tabs ul.nav-tabs.upper-ul li {
+        width: 45%;
+        font-size: 10px !important;
+        margin-bottom: 5px;
+    }
+    .parents-dash-tabs ul.nav-tabs.upper-ul li a {
+        padding: 12px 8px !important;
+        font-size: 11px;
+    }
+    .prents-filter button.normal-btn {
+        margin: 0 2px 5px;
+    }
+    .parent-my-account-sec ul.nav-tabs.upper-ul li a {
+        min-height: 65px;
+    }
+    .parent-my-account-sec ul.nav.nav-tabs.upper-ul li {
+        width: 45%;
+    }
+    .breadcums-inner {
+        font-size: 14px;
+    }
+    .inner-tab {
+        width: 100%;
+    }
+    table.price-data.table {
+        width: 100%;
+        font-size: 12px;
+    }
+    .price-data-tab.col-xs-12 {
+        padding: 0;
+    }
+    table.price-data.table td button {
+        width: 90%;
+        margin-right: 0px;
+        font-size: 12px;
+    }
+    .parents.dashboard .logged {
+        padding: 0;
+        display: none;
+    }
+    .sec-tab-con {
+        width: 100%;
+        margin-left: 0px;
+        min-height: 0px;
+        padding-bottom: 10px;
+    }
+    .activity-filters input,
+    .activity-filters select {
+        margin: 5px auto;
+        width: 45%;
+        width: 100%;
+    }
+    .filter_inner.row {
+        margin: 0;
+    }
+    .selected-results button.btn-active {
+        min-width: 0;
+        width: 100%;
+        margin-left: 0;
+        font-size: 16px;
+        padding: 18px 0 !important;
+    }
+    #students .activity-filters input,
+    #students .activity-filters select {
+        margin: 10px 0 0;
+        width: 100%;
+    }
+    .student_select_buttons {
+        display: inline-block;
+        padding: 20px 0px 10px;
+    }
+    .activity-filters.col-xs-12 {
+        padding: 0;
+    }
+    /*******MENU SCROLLER***********/
+    .tabs-scroller {
+        display: inline-block;
+        width: 100%;
+        overflow: auto;
+        padding-top: 28px;
+        margin-top: -22px;
+        height: auto;
+        padding-top: 25px;
+        margin-top: -43px;
+    }
+    ul.upper-ul.scroller {
+        overflow: scroll;
+        min-width: 725px;
+        position: relative;
+        padding: 0px;
+            height: auto;
+        margin-top: -50px;
+        background: transparent;
+        padding-top: 34px !important;
+    }
+    .parent-my-account-sec.new-tabs-style ul.nav.nav-tabs.upper-ul.scroller.scroller-for-myaccount{
+        min-width: 0;
+        max-width: 100%;
+        width: 100%;
+    }
+   .parents .student-dash-tabs ul.upper-ul.scroller li{
+        width: 18%;
+        width: 120px;
+        margin:0 2px 10px;
+    }
+    i.fa.fa-arrow-left,
+    i.fa.fa-arrow-right {
+        display: inline !important;
+        position: relative;
+        position: absolute;
+        left: -14px;
+        bottom: 0px;
+        font-size: 20px;
+        color: #00ceff;
+        float: left;
+        left: -8px;
+        top: 20px;
+        top: 43px !important;
+        z-index: 9;
+    }
+
+    i.fa.fa-arrow-right{
+        right: 5px;
+        right: -160px;
+        right: auto;
+        left: 33%;
+    }
+    .arrows_ {
+        position: relative;
+    }
+    i.fa.another-arrow {
+        left: -138px;
+        top: 12px;
+        left: auto;
+        top: 12px;
+        right: 198px;
+    }
+    .prents-filter {
+        margin-bottom: 33px;
+    }
+    .tabs-scroller.tabs-scroller-accounts {
+        margin: 0;
+    }
+    .upper-ul.scroller.scroller-for-myaccount {
+        padding: 0;
+    }
+    .tabs-scroller-accounts ul.upper-ul.scroller-for-myaccount li {
+        width: 160px;
+    }
+    .student-dash-tabs ul.nav-tabs.upper-ul li a img {
+        position: relative;
+        left: 0;
+        width: 30px;
+        width: auto;
+        margin-top: 0px;
+        margin-bottom: 5px;
+	}
+	.parent-my-account-sec ul.nav-tabs.upper-ul li a span {
+        padding: 0;
+        display: none;
+	}
+	.parent-my-account-sec ul.nav-tabs.upper-ul li a {
+    min-height: 0;
+	}
+	section.dash-inner-con.col-xs-12 {
+    padding: 0;
+	}
+    .parent-my-account-sec.new-tabs-style ul.nav-tabs.upper-ul li {
+        width: 65px!important;
+        margin: 0 2px 10px;
+        float: none;
+        display: list-item;
+    }
+	ul.nav.nav-tabs.upper-ul.scroller.scroller-for-myaccount {
+        min-width: 550px;
+        min-width: 580px;
+	}
+	.student-dash-tabs.newstudent-on-mobile ul.upper-ul li {
+        width: 30.5%;
+	}
+    .scroller-for-myaccount i.fa.another-arrow {
+        left: auto;
+        right: 11%;
+    }
+    .selected-results .col-md-6 {
+        padding: 0;
+    }
+    .p-tools-sec h3 button {
+        margin: 10px 0px;
+    }
+    #dashborad .inner-tabs-div {
+        margin-top: 10px;
+    }
+    h4.none-for-mob {
+        display: none;
+    }
+    span.second-filt {
+        display: inline-block !important;
+        float: right;
+    }
+    .filter-opener h4 {
+        text-align: left;
+    }
+    .col-sm-6.filter-opener.text-right h4 {
+        text-align: right;
+    }
+    .main-ques-sec {
+        padding: 0;
+    }
+    .login-logged-mobile {
+        margin-right: 35px;
+    }
+    .header {
+        padding: 15px 15px 0;
+    }
+    form.edit-pro .wrapper {
+         margin-bottom: 0px;
+    }
+    form.edit-pro input, form.edit-pro select {
+        margin-bottom: 10px;
+    }
+    .col-sm-12.filter-opener.text-right,
+    .col-sm-6.show-by.text-left ,
+    .inner.col-xs-12{
+        padding: 0;
+    }
+}
+
+
+
+/* @media (max-width: 991px){
+    .parents-dash-tabs ul.nav-tabs.upper-ul li {
+        width: 18%;
+        font-size: 11px;
+    }
+	nav#nav_ ul li a, .login.col-sm-3 a {
+	    font-size: 13px;
+	    padding: 10px 3px !important;
+	}
+	.inner-butn-sec {
+    margin-left: 0;
+	}
+	.thre-btn-sec button span {
+    margin-right: 15px;
+	}
+	ul.social-footer li {
+    margin-right: 10px;
+	}
+    .dashborad nav#nav_ ul li a, .dashborad .login h4 {
+    font-size: 13px;
+    padding: 10px 4px;
+    }
+    .left-tabs-nav li a {
+    font-size: 12px;
+    }
+    .activity-inner {
+        width: 100%;
+        background: white;
+        overflow-x: auto;
+        position: relative;
+        height: 500px;
+        padding: 0;
+    }
+
+    table.activity {
+    width: 700px !important;
+    overflow-x: scroll !important;
+    height: 400px;
+    position: absolute;
+    }
+    table.student-activity-table{
+        width: 1000px !important;
+    }
+    .filter-content {
+    background: white;
+    position: relative;
+    z-index: 9;
+    }
+    .student-dash-tabs ul.nav-tabs.upper-ul li a img {
+    left: 20px;
+    width: 30px;
+    margin-top: 7px;
+    }
+    .parent-my-account-sec ul.nav.nav-tabs.upper-ul li {
+    width: 23%;
+    width: 90%;
+    }
+    table.price-data.table td button {
+    width: 108px;
+    }
+    .dashborad .login h4 {
+    font-size: 11px;
+    margin-bottom: -12px;
+    font-weight: bold;
+    }
+    .dashborad .info-inner span {
+    font-size: 10px;
+    }
+    .student_select_buttons {
+    display: inline-flex;
+    padding: 20px 10px 10px;
+    width: 100%;
+    margin-left: 0px;
+    }
+    select.action {
+    width: auto;
+    }
+    .selected-results button.btn-active.move {
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+    margin: 30px 0 20px;
+    }
+    .number-nav ul li.numbs {
+    width: 38px;
+    }
+    table.question-table {
+    width: 100% !important;
+    overflow-x: scroll !important;
+    height: 100%;
+    position: relative;
+    }
+    .nav-div{
+        margin-left: 0px !important;
+        padding-top: 25px !important;
+    }
+    .nav-div .user-avatar{
+        width: 50px;
+        width: 50px;
+        position: absolute;
+        transform: translate(-50%, -50%);
+        top: 65%;
+        left: 62%;
+    }
+    .login a{
+        font-size: 13px !important;
+    }
+    .info-inner button{
+        width: 175px !important;
+    }
+    .info-inner span{
+        font-size: 13px !important;
+    }
+    .user-avatar-mob{
+        display: none;
+    }
+    .inner-menu{
+        display: block;
+    }
+
+} */
+@media (max-width: 575px) and (min-width: 415px){
+    .header {
+        padding: 15px 15px 15px !important;
+        box-shadow: 0 1px 10px rgba(0, 0, 0, .2);
+    }
+    .container {
+        max-width: 767px !important;
+        padding-bottom: 5px;
+    }
+	.logo {
+        text-align: left;
+    }
+    .logo1{
+        transform: translateY(25%);
+    }
+    .logo1 img{
+        width: 70px;
+    }
+	.col-sm-3.social-col-foot {
+	    display: inline-block;
+	    width: 100%;
+	    text-align: center;
+	    margin: 10px 0;
+	}
+    .dashborad .login.logged.col-sm-4 {
+        display: none;
+    }
+    .dashborad nav#nav_ {
+        padding: 0 !important;
+    }
+    .dashborad .inner-menu {
+        top: 0px;
+    }
+    .login-logged-mobile {
+        display: inline-block !important;
+        float: right;
+        color: black;
+        padding-bottom: 0px;
+    }
+    .nav-div{
+        margin-left: auto;
+        margin-right: auto;
+        padding-bottom: 20px;
+    }
+    .nav-div .user-avatar{
+        display: none;
+    }
+    .user-info-section{
+        display: none;
+    }
+    .info-inner span {
+        font-size: 10px;
+    }
+    .info-inner h4 {
+        font-size: 12px;
+        margin-bottom: 0;
+        margin-left:2px;
+    }
+	p.footer-para {
+        text-align: center;
+        margin-bottom: 20px;
+	}
+	ul.social-footer li {
+        margin-right: 30px;
+	}
+	span#mob-menu {
+        display: block !important;
+        position: absolute;
+        font-size: 25px;
+        top: -35px;
+        width: 50px;
+        right: -10px;
+        text-align: center;
+    }
+    .user-avatar-mob{
+        width: 50px;
+        position: absolute;
+        top: -40px;
+        right: 120px;
+        display: block !important;
+    }
+
+    .mob-userInfo{
+        width: 120px;
+        position: absolute;
+        top: -40px;
+        right: 15px;
+        display: block !important;
+        font-family: 'Poppins', sans-serif !important;
+        text-align: center;
+    }
+    .mob-userInfo span{
+        width: 100%;
+        position: absolute;
+        display: block !important;
+        font-family: 'Poppins', sans-serif !important;
+    }
+    nav#nav_ {
+        max-width: 100% !important;
+        padding-left: 15px;
+    }
+    nav#nav_ ul{
+        width: 100%;
+        padding-left: 0px;
+        font-family: 'Poppins', sans-serif !important;
+        text-transform: uppercase;
+        list-style: none;
+    }
+	nav#nav_ ul li {
+        width: 100%;
+        text-align: center;
+        margin: 0;
+        border-bottom: solid 1px #ccc;
+        padding: 10px 0;
+        transition: all .3s ease;
+	}
+    nav#nav_ ul li:hover {
+        background: #00ceff;
+    }
+    nav#nav_ ul li:hover a{
+        color:#333;
+        text-decoration: none;
+    }
+	.inner-menu {
+        display: none;
+        width: 100%;
+        background: #2c2c2c;
+        margin-top: 0px;
+        padding: 15px;
+        position: relative;
+        top: 35px;
+        margin-bottom: 10px;
+	}
+	.login.col-sm-3 {
+        text-align: center;
+        padding-top: 10px;
+    }
+    .lap{
+        display: none;
+    }
+    .mob-auth{
+        display: flex !important;
+        width: 95%;
+        margin-left: auto;
+        margin-right: auto;
+        border-bottom: 1.2px solid #ccc;
+        font-size: 14px;
+        padding: 6px 0px 15px;
+    }
+    .mob-auth .mob-register{
+        margin: auto;
+        text-align: right;
+    }
+    .mob-auth .mob-register a{
+        color: #ccc;
+        font-family: 'Poppins', sans-serif !important;
+        text-decoration: none;
+    }
+    .mob-auth .mob-register a:hover{
+        color: #00ceff;
+    }
+    .mob-auth .mob-divider{
+        color: #ccc;
+        padding: 0px 10px;
+    }
+    .mob-auth .mob-setting{
+        display: flex;
+        color: #ccc;
+        font-family: 'Poppins', sans-serif !important;
+        margin-left: 25px;
+    }
+    .mob-auth .mob-setting .set-item{
+        min-width: 90px;
+        cursor: pointer;
+    }
+    .mob-auth .mob-setting .set-item:hover{
+        color: #00ceff;
+    }
+    .mob-auth .mob-setting .set-item span{
+        padding: 0px 10px;
+    }
+    .mob-auth .mob-login{
+        margin: auto;
+    }
+    .mob-auth .mob-login a{
+        color: #ccc;
+        font-family: 'Poppins', sans-serif !important;
+        text-decoration: none;
+    }
+    .mob-auth .mob-login a:hover{
+        color: #00ceff;
+    }
+    .name-left{
+        font-size: 16px;
+        font-weight: 500;
+    }
+    .user-role{
+        font-size: 13px;
+    }
+	nav#nav_ ul li a, .login.col-sm-3 a {
+        font-size: 14px;
+        padding: 5px 10px;
+        display: inline-block;
+        width: 100%;
+        color: #ccc;
+	}
+	.thre-btn-sec button {
+        width: 100%;
+        margin: 10px 0px;
+	}
+	.thre-btn-sec button span {
+        margin-right: 22%;
+	}
+	ul.footer-menu {
+        padding-left: 10px;
+	}
+    .student-dash-tabs ul.nav-tabs.upper-ul li {
+        width: auto;
+    }
+    .pre-nex-btns button {
+        margin: 5px 2px;
+    }
+    .pre-nex-btns .text-right {
+        text-align: center !important;
+    }
+    .parents-dash-tabs ul.nav-tabs.upper-ul li {
+        width: 45%;
+        font-size: 10px !important;
+        margin-bottom: 5px;
+    }
+    .parents-dash-tabs ul.nav-tabs.upper-ul li a {
+        padding: 12px 8px !important;
+        font-size: 11px;
+    }
+    .prents-filter button.normal-btn {
+        margin: 0 2px 5px;
+    }
+    .parent-my-account-sec ul.nav-tabs.upper-ul li a {
+        min-height: 65px;
+    }
+    .parent-my-account-sec ul.nav.nav-tabs.upper-ul li {
+        width: 45%;
+    }
+    .breadcums-inner {
+        font-size: 14px;
+    }
+    .inner-tab {
+        width: 100%;
+    }
+    table.price-data.table {
+        width: 100%;
+        font-size: 12px;
+    }
+    .price-data-tab.col-xs-12 {
+        padding: 0;
+    }
+    table.price-data.table td button {
+        width: 90%;
+        margin-right: 0px;
+        font-size: 12px;
+    }
+    .parents.dashboard .logged {
+        padding: 0;
+        display: none;
+    }
+    .sec-tab-con {
+        width: 100%;
+        margin-left: 0px;
+        min-height: 0px;
+        padding-bottom: 10px;
+    }
+    .activity-filters input,
+    .activity-filters select {
+        margin: 5px auto;
+        width: 45%;
+        width: 100%;
+    }
+    .filter_inner.row {
+        margin: 0;
+    }
+    .selected-results button.btn-active {
+        min-width: 0;
+        width: 100%;
+        margin-left: 0;
+        font-size: 16px;
+        padding: 18px 0 !important;
+    }
+    #students .activity-filters input,
+    #students .activity-filters select {
+        margin: 10px 0 0;
+        width: 100%;
+    }
+    .student_select_buttons {
+        display: inline-block;
+        padding: 20px 0px 10px;
+    }
+    .activity-filters.col-xs-12 {
+        padding: 0;
+    }
+    /*******MENU SCROLLER***********/
+    .tabs-scroller {
+        display: inline-block;
+        width: 100%;
+        overflow: auto;
+        padding-top: 28px;
+        margin-top: -22px;
+        height: auto;
+        padding-top: 25px;
+        margin-top: -43px;
+    }
+    ul.upper-ul.scroller {
+        overflow: scroll;
+        min-width: 725px;
+        position: relative;
+        padding: 0px;
+            height: auto;
+        margin-top: -50px;
+        background: transparent;
+        padding-top: 34px !important;
+    }
+    .parent-my-account-sec.new-tabs-style ul.nav.nav-tabs.upper-ul.scroller.scroller-for-myaccount{
+        min-width: 0;
+        max-width: 100%;
+        width: 100%;
+    }
+   .parents .student-dash-tabs ul.upper-ul.scroller li{
+        width: 18%;
+        width: 120px;
+        margin:0 2px 10px;
+    }
+    i.fa.fa-arrow-left,
+    i.fa.fa-arrow-right {
+        display: inline !important;
+        position: relative;
+        position: absolute;
+        left: -14px;
+        bottom: 0px;
+        font-size: 20px;
+        color: #00ceff;
+        float: left;
+        left: -8px;
+        top: 20px;
+        top: 43px !important;
+        z-index: 9;
+    }
+
+    i.fa.fa-arrow-right{
+        right: 5px;
+        right: -160px;
+        right: auto;
+        left: 33%;
+    }
+    .arrows_ {
+        position: relative;
+    }
+    i.fa.another-arrow {
+        left: -138px;
+        top: 12px;
+        left: auto;
+        top: 12px;
+        right: 198px;
+    }
+    .prents-filter {
+        margin-bottom: 33px;
+    }
+    .tabs-scroller.tabs-scroller-accounts {
+        margin: 0;
+    }
+    .upper-ul.scroller.scroller-for-myaccount {
+        padding: 0;
+    }
+    .tabs-scroller-accounts ul.upper-ul.scroller-for-myaccount li {
+        width: 160px;
+    }
+    .student-dash-tabs ul.nav-tabs.upper-ul li a img {
+        position: relative;
+        left: 0;
+        width: 30px;
+        width: auto;
+        margin-top: 0px;
+        margin-bottom: 5px;
+	}
+	.parent-my-account-sec ul.nav-tabs.upper-ul li a span {
+        padding: 0;
+        display: none;
+	}
+	.parent-my-account-sec ul.nav-tabs.upper-ul li a {
+    min-height: 0;
+	}
+	section.dash-inner-con.col-xs-12 {
+    padding: 0;
+	}
+    .parent-my-account-sec.new-tabs-style ul.nav-tabs.upper-ul li {
+        width: 65px!important;
+        margin: 0 2px 10px;
+        float: none;
+        display: list-item;
+    }
+	ul.nav.nav-tabs.upper-ul.scroller.scroller-for-myaccount {
+        min-width: 550px;
+        min-width: 580px;
+	}
+	.student-dash-tabs.newstudent-on-mobile ul.upper-ul li {
+        width: 30.5%;
+	}
+    .scroller-for-myaccount i.fa.another-arrow {
+        left: auto;
+        right: 11%;
+    }
+    .selected-results .col-md-6 {
+        padding: 0;
+    }
+    .p-tools-sec h3 button {
+        margin: 10px 0px;
+    }
+    #dashborad .inner-tabs-div {
+        margin-top: 10px;
+    }
+    h4.none-for-mob {
+        display: none;
+    }
+    span.second-filt {
+        display: inline-block !important;
+        float: right;
+    }
+    .filter-opener h4 {
+        text-align: left;
+    }
+    .col-sm-6.filter-opener.text-right h4 {
+        text-align: right;
+    }
+    .main-ques-sec {
+        padding: 0;
+    }
+    .login-logged-mobile {
+        margin-right: 35px;
+    }
+    .header {
+        padding: 15px 15px 0;
+    }
+    form.edit-pro .wrapper {
+         margin-bottom: 0px;
+    }
+    form.edit-pro input, form.edit-pro select {
+        margin-bottom: 10px;
+    }
+    .col-sm-12.filter-opener.text-right,
+    .col-sm-6.show-by.text-left ,
+    .inner.col-xs-12{
+        padding: 0;
+    }
+}
+
+@media (max-width: 414px) and (min-width: 360px){
+    .header {
+        padding: 15px 15px 15px !important;
+        box-shadow: 0 1px 10px rgba(0, 0, 0, .2);
+    }
+    .container {
+        max-width: 767px !important;
+        padding-bottom: 5px;
+    }
+	.logo {
+        text-align: left;
+    }
+    .logo1{
+        transform: translateY(25%);
+    }
+    .logo1 img{
+        max-width: 55px;
+    }
+	.col-sm-3.social-col-foot {
+	    display: inline-block;
+	    width: 100%;
+	    text-align: center;
+	    margin: 10px 0;
+	}
+    .dashborad .login.logged.col-sm-4 {
+        display: none;
+    }
+    .dashborad nav#nav_ {
+        padding: 0 !important;
+    }
+    .dashborad .inner-menu {
+        top: 0px;
+    }
+    .login-logged-mobile {
+        display: inline-block !important;
+        float: right;
+        color: black;
+        padding-bottom: 0px;
+    }
+    .nav-div{
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .nav-div .user-avatar{
+        display: none;
+    }
+    .user-info-section{
+        display: none;
+    }
+    .info-inner span {
+        font-size: 10px;
+    }
+    .info-inner h4 {
+        font-size: 12px;
+        margin-bottom: 0;
+        margin-left:2px;
+    }
+	p.footer-para {
+        text-align: center;
+        margin-bottom: 20px;
+	}
+	ul.social-footer li {
+        margin-right: 30px;
+	}
+	span#mob-menu {
+        display: block !important;
+        position: absolute;
+        font-size: 20px;
+        top: -25px;
+        width: 50px;
+        right: 0px;
+        text-align: center;
+    }
+    .user-avatar-mob{
+        width: 40px;
+        position: absolute;
+        top: -30px;
+        right: 140px;
+        display: block !important;
+    }
+
+    .mob-userInfo{
+        width: 75px;
+        position: absolute;
+        top: -30px;
+        right: 40px;
+        display: block !important;
+        font-family: 'Poppins', sans-serif !important;
+    }
+    .mob-userInfo .name-left{
+        font-size: 13px !important;
+        text-align: center;
+        font-weight: 500;
+    }
+    .mob-userInfo .user-role{
+        font-size: 11px !important;
+        text-align: center;
+    }
+    nav#nav_ {
+        max-width: 100% !important;
+        padding-left: 15px;
+    }
+    nav#nav_ ul{
+        width: 100%;
+        text-decoration: none;
+        padding-left: 0px;
+        font-family: 'Poppins', sans-serif !important;
+    }
+	nav#nav_ ul li {
+        width: 100%;
+        text-align: center;
+        margin: 0;
+        border-bottom: solid 1px #ccc;
+        padding: 10px 0;
+        transition: all .3s ease;
+        list-style: none;
+	}
+    nav#nav_ ul li:hover {
+        background: #00ceff;
+    }
+    nav#nav_ ul li:hover a{
+        color:#333;
+        text-decoration: none;
+    }
+	.inner-menu {
+        display: none;
+        width: 100%;
+        background: #2c2c2c;
+        margin-top: 0px;
+        padding: 15px;
+        position: relative;
+        top: 35px;
+        margin-bottom: 10px;
+	}
+	.login.col-sm-3 {
+        text-align: center;
+        padding-top: 10px;
+    }
+    .lap{
+        display: none;
+    }
+    .mob-auth{
+        display: flex !important;
+        width: 94%;
+        margin-left: auto;
+        margin-right: auto;
+        padding: 10px 0px 15px;
+        border-bottom: 1.2px solid #ccc;
+        font-family: 'Poppins', sans-serif !important;
+    }
+    .mob-auth .mob-register{
+        margin: auto;
+        text-align: right;
+        font-size: 11px;
+
+    }
+    .mob-auth .mob-register a{
+        color: #ccc;
+        text-decoration: none;
+    }
+    .mob-auth .mob-register a:hover{
+        color: #00ceff;
+    }
+    .mob-auth .mob-divider{
+        color: #ccc;
+        padding: 0px 10px;
+    }
+    .mob-auth .mob-setting{
+        display: flex;
+        color: #ccc;
+    }
+    .mob-auth .mob-setting .set-item{
+        min-width: 38px;
+        cursor: pointer;
+        text-align: center;
+        font-size: 10px;
+    }
+    .mob-auth .mob-setting .set-item:hover{
+        color: #00ceff;
+    }
+    .mob-auth .mob-setting .set-item span{
+        padding: 0px 10px;
+    }
+    .mob-auth .mob-login{
+        margin: auto;
+        font-size: 11px;
+        text-decoration: none;
+    }
+    .mob-auth .mob-login a{
+        color: #ccc;
+        text-decoration: none;
+    }
+    .mob-auth .mob-login a:hover{
+        color: #00ceff;
+    }
+	.nav-div {
+        padding-top: 20px;
+	}
+	nav#nav_ ul li a, .login.col-sm-3 a {
+        font-size: 14px;
+        padding: 5px 10px;
+        display: inline-block;
+        width: 100%;
+        color: #ccc;
+	}
+	.thre-btn-sec button {
+        width: 100%;
+        margin: 10px 0px;
+	}
+	.thre-btn-sec button span {
+        margin-right: 22%;
+	}
+	ul.footer-menu {
+        padding-left: 10px;
+	}
+    .student-dash-tabs ul.nav-tabs.upper-ul li {
+        width: auto;
+    }
+    .pre-nex-btns button {
+        margin: 5px 2px;
+    }
+    .pre-nex-btns .text-right {
+        text-align: center !important;
+    }
+    .parents-dash-tabs ul.nav-tabs.upper-ul li {
+        width: 45%;
+        font-size: 10px !important;
+        margin-bottom: 5px;
+    }
+    .parents-dash-tabs ul.nav-tabs.upper-ul li a {
+        padding: 12px 8px !important;
+        font-size: 11px;
+    }
+    .prents-filter button.normal-btn {
+        margin: 0 2px 5px;
+    }
+    .parent-my-account-sec ul.nav-tabs.upper-ul li a {
+        min-height: 65px;
+    }
+    .parent-my-account-sec ul.nav.nav-tabs.upper-ul li {
+        width: 45%;
+    }
+    .breadcums-inner {
+        font-size: 14px;
+    }
+    .inner-tab {
+        width: 100%;
+    }
+    table.price-data.table {
+        width: 100%;
+        font-size: 12px;
+    }
+    .price-data-tab.col-xs-12 {
+        padding: 0;
+    }
+    table.price-data.table td button {
+        width: 90%;
+        margin-right: 0px;
+        font-size: 12px;
+    }
+    .parents.dashboard .logged {
+        padding: 0;
+        display: none;
+    }
+    .sec-tab-con {
+        width: 100%;
+        margin-left: 0px;
+        min-height: 0px;
+        padding-bottom: 10px;
+    }
+    .activity-filters input,
+    .activity-filters select {
+        margin: 5px auto;
+        width: 45%;
+        width: 100%;
+    }
+    .filter_inner.row {
+        margin: 0;
+    }
+    .selected-results button.btn-active {
+        min-width: 0;
+        width: 100%;
+        margin-left: 0;
+        font-size: 16px;
+        padding: 18px 0 !important;
+    }
+    #students .activity-filters input,
+    #students .activity-filters select {
+        margin: 10px 0 0;
+        width: 100%;
+    }
+    .student_select_buttons {
+        display: inline-block;
+        padding: 20px 0px 10px;
+    }
+    .activity-filters.col-xs-12 {
+        padding: 0;
+    }
+    /*******MENU SCROLLER***********/
+    .tabs-scroller {
+        display: inline-block;
+        width: 100%;
+        overflow: auto;
+        padding-top: 28px;
+        margin-top: -22px;
+        height: auto;
+        padding-top: 25px;
+        margin-top: -43px;
+    }
+    ul.upper-ul.scroller {
+        overflow: scroll;
+        min-width: 725px;
+        position: relative;
+        padding: 0px;
+            height: auto;
+        margin-top: -50px;
+        background: transparent;
+        padding-top: 34px !important;
+    }
+    .parent-my-account-sec.new-tabs-style ul.nav.nav-tabs.upper-ul.scroller.scroller-for-myaccount{
+        min-width: 0;
+        max-width: 100%;
+        width: 100%;
+    }
+   .parents .student-dash-tabs ul.upper-ul.scroller li{
+        width: 18%;
+        width: 120px;
+        margin:0 2px 10px;
+    }
+    i.fa.fa-arrow-left,
+    i.fa.fa-arrow-right {
+        display: inline !important;
+        position: relative;
+        position: absolute;
+        left: -14px;
+        bottom: 0px;
+        font-size: 20px;
+        color: #00ceff;
+        float: left;
+        left: -8px;
+        top: 20px;
+        top: 43px !important;
+        z-index: 9;
+    }
+
+    i.fa.fa-arrow-right{
+        right: 5px;
+        right: -160px;
+        right: auto;
+        left: 33%;
+    }
+    .arrows_ {
+        position: relative;
+    }
+    i.fa.another-arrow {
+        left: -138px;
+        top: 12px;
+        left: auto;
+        top: 12px;
+        right: 198px;
+    }
+    .prents-filter {
+        margin-bottom: 33px;
+    }
+    .tabs-scroller.tabs-scroller-accounts {
+        margin: 0;
+    }
+    .upper-ul.scroller.scroller-for-myaccount {
+        padding: 0;
+    }
+    .tabs-scroller-accounts ul.upper-ul.scroller-for-myaccount li {
+        width: 160px;
+    }
+    .student-dash-tabs ul.nav-tabs.upper-ul li a img {
+        position: relative;
+        left: 0;
+        width: 30px;
+        width: auto;
+        margin-top: 0px;
+        margin-bottom: 5px;
+	}
+	.parent-my-account-sec ul.nav-tabs.upper-ul li a span {
+        padding: 0;
+        display: none;
+	}
+	.parent-my-account-sec ul.nav-tabs.upper-ul li a {
+    min-height: 0;
+	}
+	section.dash-inner-con.col-xs-12 {
+    padding: 0;
+	}
+    .parent-my-account-sec.new-tabs-style ul.nav-tabs.upper-ul li {
+        width: 65px!important;
+        margin: 0 2px 10px;
+        float: none;
+        display: list-item;
+    }
+	ul.nav.nav-tabs.upper-ul.scroller.scroller-for-myaccount {
+        min-width: 550px;
+        min-width: 580px;
+	}
+	.student-dash-tabs.newstudent-on-mobile ul.upper-ul li {
+        width: 30.5%;
+	}
+    .scroller-for-myaccount i.fa.another-arrow {
+        left: auto;
+        right: 11%;
+    }
+    .selected-results .col-md-6 {
+        padding: 0;
+    }
+    .p-tools-sec h3 button {
+        margin: 10px 0px;
+    }
+    #dashborad .inner-tabs-div {
+        margin-top: 10px;
+    }
+    h4.none-for-mob {
+        display: none;
+    }
+    span.second-filt {
+        display: inline-block !important;
+        float: right;
+    }
+    .filter-opener h4 {
+        text-align: left;
+    }
+    .col-sm-6.filter-opener.text-right h4 {
+        text-align: right;
+    }
+    .main-ques-sec {
+        padding: 0;
+    }
+    .login-logged-mobile {
+        margin-right: 35px;
+    }
+    .header {
+        padding: 15px 15px 0;
+    }
+    form.edit-pro .wrapper {
+         margin-bottom: 0px;
+    }
+    form.edit-pro input, form.edit-pro select {
+        margin-bottom: 10px;
+    }
+    .col-sm-12.filter-opener.text-right,
+    .col-sm-6.show-by.text-left ,
+    .inner.col-xs-12{
+        padding: 0;
+    }
+}

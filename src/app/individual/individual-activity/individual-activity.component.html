@@ -1,0 +1,91 @@
+<div id="activity" class="parent-contents">
+	<ng4-loading-spinner  [timeout]="10000" ></ng4-loading-spinner>
+	   <div class="inner-tabs-div col-xs-12">
+		  <div class="activity-filters col-xs-12">
+			 <div>
+				<app-exam-filter [showAssignedComponent]=false></app-exam-filter>
+			 </div>
+		  </div>   
+			 <table class="activity student-activity-table table" width="100%">
+				<tr>
+				   <td>
+					  <mat-accordion class="example-headers-align">
+						 <mat-card class="example-card">
+							<table class="fullwidth">
+							   <tbody>
+								  <tr>
+									 <td>
+										{{noOfRows}} Tests found.
+									 </td>
+								  </tr>
+							   </tbody>
+							</table>
+						 </mat-card>
+					  </mat-accordion>
+				   </td>
+				</tr>
+				<tr>
+				   <td>
+					  <mat-accordion class="example-headers-align">
+						 <mat-card class="example-card">
+							<mat-table #table class="table-section" [dataSource]="dataSource">
+							   <ng-container matColumnDef="testName">
+								  <mat-header-cell class="table-header" *matHeaderCellDef> Test Name </mat-header-cell>
+								  <mat-cell class="table-information" *matCellDef="let element">
+									 {{element.testName}} </mat-cell>
+							   </ng-container>
+							   <ng-container matColumnDef="questions">
+								<mat-header-cell class="table-header" *matHeaderCellDef> Questions </mat-header-cell>
+								<mat-cell class="table-information" *matCellDef="let element">
+									{{element.questions}} </mat-cell>
+							  </ng-container>
+							  <ng-container matColumnDef="marks">
+								<mat-header-cell class="table-header" *matHeaderCellDef>  Marks </mat-header-cell>
+								<mat-cell class="table-information" *matCellDef="let element">
+								   {{element.marks}} </mat-cell>
+							</ng-container>
+							<ng-container matColumnDef="duration">
+								<mat-header-cell class="table-header" *matHeaderCellDef>  Duration </mat-header-cell>
+								<mat-cell class="table-information" *matCellDef="let element"> 
+									{{element.duration}} </mat-cell>
+							</ng-container>
+                            <ng-container matColumnDef="finishedDate">
+									<mat-header-cell class="table-header" *matHeaderCellDef> Finished Date </mat-header-cell>
+									  <mat-cell class="table-information" *matCellDef="let element"> {{element.finishedDate | date:'dd/MM/yyyy'}} </mat-cell>
+								</ng-container>
+								<ng-container matColumnDef="avgScore">
+									<mat-header-cell class="table-header" *matHeaderCellDef> Average Score </mat-header-cell>
+									  <mat-cell class="table-information" *matCellDef="let element"> {{element.avgScore}} </mat-cell>
+								</ng-container>
+								<ng-container matColumnDef="score">
+									<mat-header-cell class="table-header" *matHeaderCellDef> Your Score </mat-header-cell>
+									  <mat-cell class="table-information" *matCellDef="let element"> {{element.score}}</mat-cell>
+								</ng-container>
+								<ng-container matColumnDef="rank">
+									<mat-header-cell class="table-header" *matHeaderCellDef> Your Rank </mat-header-cell>
+									  <mat-cell class="table-information" *matCellDef="let element"> {{element.rank}}</mat-cell>
+								</ng-container>
+								<ng-container matColumnDef="status">
+									<mat-header-cell class="table-header" *matHeaderCellDef> Status </mat-header-cell>
+									  <mat-cell class="table-information" *matCellDef="let element"> {{element.status}} </mat-cell>
+								</ng-container>
+							   
+							   <ng-container matColumnDef="action">
+								  <mat-header-cell class="table-header" *matHeaderCellDef> Action </mat-header-cell>
+								  <mat-cell class="table-information" *matCellDef="let element">
+									 <button mat-raised-button class="btn btn-primary btn-active btn-activity" (click)="getAction(element)"
+										id="btnAction">{{element.action}}</button>
+								  </mat-cell>
+							   </ng-container>
+							   <mat-header-row style="background:#f5f5f5" *matHeaderRowDef="displayedColumns"></mat-header-row>
+							   <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+							</mat-table>
+							<mat-paginator #paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 20]" [showFirstLastButtons]="true">
+							</mat-paginator>
+						 </mat-card>
+					  </mat-accordion>
+				   </td>
+				</tr>
+			 </table>
+	   </div><!-- inner-tabs-div -->
+	</div>

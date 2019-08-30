@@ -1,0 +1,60 @@
+<article class="main-content">
+    <div class="container registration-content">
+        <div class="form-reg-section col-xs-12">
+            <div class="form-inner" *ngIf="this.action === 'START'">
+                <h2 align="center" style="border-bottom-style: solid 2px transparent;">
+                    Upload Assignment for "{{this.examName}}"</h2>
+                <form [formGroup]="freeStyleFormGroup" novalidate (ngSubmit)="uploadFile(freeStyleFormGroup.value)">
+                    <div class="col-sm-4">
+                        <input type="file" (change)="handleFreeStyleFile($event.target.files)"
+                            formControlName="freeStyleImage" ngModel>
+                        <div class="error-message" *ngIf="sizeErrorLogo">image size should be less than 1 MB</div>
+                    </div>
+                    <div class="col-xs-12 submit text-center">
+                        <input type="submit" name="submit" class="btn-active move" value="Upload" id="register-now"
+                            [disabled]="!freeStyleFormGroup.valid">
+                    </div>
+
+                </form>
+            </div>
+            <div class="form-inner" *ngIf="this.action != 'START'">
+                <h2 align="center" style="border-bottom-style: solid 2px transparent;">
+                    Assignment: "{{this.examName}}"</h2><br>
+                <div class="wrapper row">
+                    <div class="col-sm-6">
+                        <label>Assignment Uploaded On : {{this.model.ASSIGNMENT_UPLOADED_ON}}</label> 
+                    </div>
+                    <div class="col-sm-6">
+                        <label>Download Assignment:  
+                        <i class="material-icons">
+                            <a href="{{this.model.ASSIGNMENT_DOWNLOAD_URL}}" target="_blank">get_app</a>
+                        </i>
+                        </label>
+                    </div>
+                </div>
+                <div class="wrapper row" *ngIf="this.action === 'PENDING'">
+                    <div class="col-sm-6">
+                        <label>Review Uploaded On: Pending</label>
+                    </div>
+                    <div class="col-sm-6">
+                        <label>Download Review: 
+                        </label>
+                    </div>
+                </div>
+                <div class="wrapper row" *ngIf="this.action === 'COMPLETE'">
+                    <div class="col-sm-6">
+                        <label>Review Uploaded On: {{this.model.REVIEWED_UPLOADED_ON}}</label>
+                    </div>
+                    <div class="col-sm-6">
+                        <label>Download Review: 
+                        <i class="material-icons">
+                            <a href="{{this.model.REVIEWED_DOWNLOAD_URL}}" target="_blank">get_app</a>
+                        </i>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</article>
+

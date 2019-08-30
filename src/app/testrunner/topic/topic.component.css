@@ -1,0 +1,38 @@
+input[type=submit] {
+	background-color: #204a87;
+	color: white;
+	padding: 10px 15px;
+	margin: 8px 0px;
+	border-radius: 10px;
+	cursor: pointer;
+	font-weight: bold;
+}
+
+input[type=submit]:hover {
+	background-color: #00b1c5;
+	font-style: italic;
+}
+
+.learning {
+	background-color: transparent;
+	color:#0e0c3e;
+	height: 55px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  min-width: 300px;
+}
+
+.mat-table {
+  overflow: auto;
+  height: 300px;
+  max-height: 500px;
+}
+
+.mat-header-cell {
+  color: #204a87;
+  font-weight: bold;
+ 
+}

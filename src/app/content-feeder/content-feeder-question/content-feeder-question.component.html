@@ -1,0 +1,250 @@
+<div class="form-wrapper" style="border-style: groove; width: 100%" >
+	<form name="form" (ngSubmit)="f.form.valid" #f="ngForm" novalidate>
+		<ul class="breadcrumb">
+			<li><b class="notactive" (click)="breadCrumbAction('DM')">Domain</b></li>
+			<li><b class="notactive" (click)="breadCrumbAction('QB')">Question Bank</b></li>
+			<li><span class="lastli">Question</span></li>
+		</ul>
+		
+		<div style="width:100%" align="right">
+			<table width="90%">
+			<tr>
+			<td width="33%">
+			<mat-form-field style="width:70%">
+				<mat-select placeholder="Topic" required name="topic" [(ngModel)]="model.topic" id="topic" #topic="ngModel">
+				  	<mat-option value="{{k.id}},{{k.description}}" *ngFor="let k of  model.topiclist">{{k.description}}</mat-option>
+				</mat-select>
+				<mat-error *ngIf="topic.invalid">{{getErrorMessage()}}</mat-error>
+			</mat-form-field>
+			</td><td> 
+			<mat-form-field > 
+				<input matInput placeholder="Previous Exam Name" name="previousExamName" [(ngModel)]="questionRequest.previousExamName" class="matInputCss">
+			</mat-form-field>
+			</td><td>
+			<mat-form-field > 
+                <input matInput placeholder="Year" name="year" [(ngModel)]="questionRequest.year" class="matInputCss">
+                <mat-hint align="end">Can be in format like DEC-2005</mat-hint>
+			</mat-form-field>
+			</td>
+			</tr></table>
+		</div>
+		<mat-card class="example-card">
+		  <mat-card-header>
+		    <!-- <div mat-card-avatar class="example-header-image"></div> -->
+		    <mat-card-title class="headerClass">Question :</mat-card-title>
+		    <mat-card-subtitle>Add Question text, example Paragraph, etc</mat-card-subtitle>
+		  </mat-card-header>
+		  <mat-card-content>
+		  	<input type="hidden" [(ngModel)]="model.questionid" name="questionid" id="questionid">
+		    <p>
+		      <textarea id="question" class="form-control" rows="40" name="question" ></textarea>
+		    </p>
+		  </mat-card-content>
+		  <mat-card-actions>
+		  	<table style="width:100%">
+		  		<tr>
+		  			<td align="left">
+						<!-- 
+      					<mat-checkbox [disabled]="disableGrpChk" name="grpQuestion" [(ngModel)]="grpQuestion" (change)="checkAndHideOptions()"></mat-checkbox>
+      					 -->
+      					<mat-form-field>	
+	      					<mat-select placeholder="Question Type" [disabled]="disableGrpChk" name="questionType" required [(ngModel)]="questionRequest.questionType" id="questionType" #questionType="ngModel" (change)="onQuestionTypeChange()">
+						    	<mat-option [value]="0">Simple Question</mat-option>
+						    	<mat-option [value]="1">Sub Question</mat-option>
+						    	<mat-option [value]="2">Group Question</mat-option>
+					  		</mat-select>
+      						<mat-error *ngIf="questionType.invalid">{{getErrorMessage()}}</mat-error>
+						</mat-form-field>
+		  			</td>
+		  			<td style="width:25%" align="left">
+		  			<mat-form-field>
+					  <mat-select placeholder="Difficulty Level" name="difficultyLevel" required [(ngModel)]="questionRequest.difficultyLevel" id="difficultyLevel" #difficultyLevel="ngModel">
+					    <mat-option _disabled [value]="">Select </mat-option>
+					    <mat-option [value]="0">Simple</mat-option>
+					    <mat-option [value]="1">Moderate</mat-option>
+					    <mat-option [value]="2">Hard</mat-option>
+					  </mat-select>
+					  <mat-error *ngIf="difficultyLevel.invalid">{{getErrorMessage()}}</mat-error>
+					</mat-form-field>
+		  			</td>
+		  			<td style="width:25%" align="left">
+						<mat-form-field > <input matInput placeholder="Marks" name="marks" required [(ngModel)]="questionRequest.marks" min="0" max="20" type="number" >
+						<mat-error *ngIf="marks.invalid">{{getErrorMessage()}}</mat-error>
+						</mat-form-field>
+  					</td>
+		  			<td align="right">
+		  				<button [disabled]="!grpQuestion" mat-raised-button class="btn btn-primary" (click)="addSubQuestion()">Add Sub-Question</button>
+		  			</td>
+		  		</tr>
+		  	</table>
+		  </mat-card-actions>
+		</mat-card>
+		<div>
+		<mat-card class="example-card">
+		  <mat-card-header *ngIf="isNotAGroupQuestion">
+		    <!-- <div mat-card-avatar class="example-header-image"></div> -->
+		    <mat-card-title class="headerClass">
+		    	Options :
+		    </mat-card-title>
+		  </mat-card-header>
+		  <mat-card-content id="questionTbl">
+		    <mat-card class="example-card" >
+		    	  <mat-card-subtitle>
+		    	  Option 1
+		    	  </mat-card-subtitle>
+				  <mat-card-content>
+					<textarea id="answer1" name="answer1" class="form-control" rows="40"></textarea>
+					<section class="example-section">
+      					<mat-checkbox name="chkIsCorrect0" [(ngModel)]="chkIsCorrect0" class="example-margin" >Is Correct</mat-checkbox>
+    				</section>
+    				<p *ngIf="model.question && model.question.answers && model.question.answers[0]">
+    					<input type="hidden" [(ngModel)]="model.question.answers[0].id" name="answerId0" id = "answerId0">
+    				</p>
+				  </mat-card-content>
+			</mat-card>
+			<mat-card class="example-card">
+					<mat-card-subtitle>
+		    	  Option 2
+		    	  </mat-card-subtitle>
+				  <mat-card-content>
+					<textarea id="answer2" name="answer2" class="form-control" rows="40"></textarea>
+					<section class="example-section">
+      					<mat-checkbox name="chkIsCorrect1" [(ngModel)]="chkIsCorrect1" class="example-margin" >Is Correct</mat-checkbox>
+    				</section>
+    				<p *ngIf="model.question && model.question.answers && model.question.answers[1]">    
+    				<input type="hidden" [(ngModel)]="model.question.answers[1].id" name="answerId1" id = "answerId1">
+    				</p>
+				  </mat-card-content>
+			</mat-card>
+			<mat-card class="example-card">
+				<mat-card-subtitle>
+		    	  Option 3
+		    	  </mat-card-subtitle>
+				  <mat-card-content>
+					<textarea id="answer3" name="answer3" class="form-control" rows="40" ></textarea>
+					<section class="example-section">
+      					<mat-checkbox name="chkIsCorrect2" [(ngModel)]="chkIsCorrect2" class="example-margin" >Is Correct</mat-checkbox>
+    				</section>
+    				<p *ngIf="model.question && model.question.answers && model.question.answers[2]">
+    					<input type="hidden" [(ngModel)]="model.question.answers[2].id" name="answerId2" id = "answerId2">
+    				</p>
+				  </mat-card-content>
+			</mat-card>
+			
+			<mat-card id="matTmpl4" class="example-card" style="display:none" >
+				<mat-card-subtitle>
+		    	  Option 4
+		    	  </mat-card-subtitle>
+				  <mat-card-content>
+					<textarea id="answer4" name="answer4"  class="form-control" rows="40" ></textarea>
+					<section class="example-section">
+      					<mat-checkbox name="chkIsCorrect3" [(ngModel)]="chkIsCorrect3" class="example-margin" >Is Correct</mat-checkbox>
+    				</section>
+    				<p *ngIf="model.question && model.question.answers && model.question.answers[3]">    
+    					<input type="hidden" [(ngModel)]="model.question.answers[3].id" name="answerId3" id = "answerId3">
+    				</p>
+				  </mat-card-content>
+			</mat-card>
+			
+			<mat-card class="example-card" id="matTmpl5" style="display:none">
+				<mat-card-subtitle>
+		    	  Option 5
+		    	  </mat-card-subtitle>
+				  <mat-card-content>
+					<textarea id="answer5" class="form-control" rows="40"></textarea>
+					<section class="example-section">
+      					<mat-checkbox name="chkIsCorrect4" [(ngModel)]="chkIsCorrect4" class="example-margin" >Is Correct</mat-checkbox>
+    				</section>    
+    				<p *ngIf="model.question && model.question.answers && model.question.answers[4]">
+    					<input type="hidden" [(ngModel)]="model.question.answers[4].id" name="answerId4" id = "answerId4">
+    				</p>
+				  </mat-card-content>
+			</mat-card>
+			<mat-card id="matTmpl6" class="example-card" style="display:none">
+				<mat-card-subtitle>
+		    	  Option 6
+		    	  </mat-card-subtitle>
+				  <mat-card-content>
+					<textarea id="answer6" class="form-control" rows="40"></textarea>
+					<section class="example-section">
+      					<mat-checkbox name="chkIsCorrect5" [(ngModel)]="chkIsCorrect5" class="example-margin" >Is Correct</mat-checkbox>
+    				</section>
+    				<p *ngIf="model.question && model.question.answers && model.question.answers[5]">
+    					<input type="hidden" [(ngModel)]="model.question.answers[5].id" name="answerId5" id = "answerId5">
+    				</p>    
+				  </mat-card-content>
+			</mat-card>
+			<mat-card id="matTmpl7" class="example-card" style="display:none">
+				<mat-card-subtitle>
+		    	  Option 7
+		    	  </mat-card-subtitle>
+				  <mat-card-content>
+					<textarea id="answer7" class="form-control" rows="40"></textarea>
+					<section class="example-section">
+      					<mat-checkbox name="chkIsCorrect6" [(ngModel)]="chkIsCorrect6" class="example-margin" >Is Correct</mat-checkbox>
+    				</section>    
+    				<p *ngIf="model.question && model.question.answers && model.question.answers[6]">
+    					<input type="hidden" [(ngModel)]="model.question.answers[6].id" name="answerId6" id = "answerId6">
+    				</p>
+				  </mat-card-content>
+			</mat-card>
+			<mat-card class="example-card" id="matTmpl8" style="display:none">
+				<mat-card-subtitle>
+		    	  Option 8
+		    	  </mat-card-subtitle>
+				  <mat-card-content>
+					<textarea id="answer8" class="form-control" rows="40"></textarea>
+					<section class="example-section">
+      					<mat-checkbox name="chkIsCorrect7" [(ngModel)]="chkIsCorrect7" class="example-margin" >Is Correct</mat-checkbox>
+    				</section>    
+    				<p *ngIf="model.question && model.question.answers && model.question.answers[7]">
+    					<input type="hidden" [(ngModel)]="model.question.answers[7].id" name="answerId7" id = "answerId7">
+    				</p>
+				  </mat-card-content>
+			</mat-card>
+			<mat-card class="example-card" id="matTmpl9" style="display:none">
+				<mat-card-subtitle>
+		    	  Option 9
+		    	  </mat-card-subtitle>
+				  <mat-card-content>
+					<textarea id="answer9" class="form-control" rows="40"></textarea>
+					<section class="example-section">
+      					<mat-checkbox name="chkIsCorrect8" [(ngModel)]="chkIsCorrect8" class="example-margin" >Is Correct</mat-checkbox>
+    				</section>    
+    				<p *ngIf="model.question && model.question.answers && model.question.answers[8]">
+    					<input type="hidden" [(ngModel)]="model.question.answers[8].id" name="answerId8" id = "answerId8">
+    				</p>
+				  </mat-card-content>
+			</mat-card>
+			<mat-card class="example-card" id="matTmpl10" style="display:none">
+				<mat-card-subtitle>
+		    	  Option 10
+		    	  </mat-card-subtitle>
+				  <mat-card-content>
+					<textarea id="answer10" class="form-control" rows="40"></textarea>
+					<section class="example-section">
+      					<mat-checkbox name="chkIsCorrect9" [(ngModel)]="chkIsCorrect9" class="example-margin" >Is Correct</mat-checkbox>
+    				</section>    
+    				<p *ngIf="model.question && model.question.answers && model.question.answers[9]">
+    					<input type="hidden" [(ngModel)]="model.question.answers[9].id" name="answerId9" id = "answerId9">
+    				</p>
+				  </mat-card-content>
+			</mat-card>
+			<mat-card class="example-card">
+				<mat-card-subtitle>
+		    	  Explanation
+		    	</mat-card-subtitle>
+				<mat-card-content>
+					<textarea id="explanation" class="form-control" rows="40"></textarea>
+				</mat-card-content>
+			</mat-card>
+		  </mat-card-content>
+		  <mat-card-actions>
+		    <button *ngIf="isNotAGroupQuestion" mat-raised-button [disabled]="addOptionBtnToogleBool" class="btn btn-primary" (click)="addOption()" id="btnAddOption">Add Option</button>
+					&nbsp;
+			<button mat-raised-button [disabled]="saveBtnToogleBool" class="btn btn-primary" (click)="save()">Save</button>
+		  </mat-card-actions>
+		</mat-card>
+		</div>
+	</form>
+</div>

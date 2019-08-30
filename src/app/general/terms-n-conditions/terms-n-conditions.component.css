@@ -1,0 +1,16 @@
+.container{
+  display: flex;
+  flex-direction: column;
+  min-width: 350px;
+  border-style: none;
+  font-family: sans-serif;
+  color: #204a87;
+    
+}
+.TOC{
+    border:groove;
+	margin-left:5%;
+    margin-right: 5%; 
+    width:400px;
+    
+ }

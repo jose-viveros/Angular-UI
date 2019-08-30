@@ -1,0 +1,31 @@
+<app-nav-header [login]="loginTxt" (currentPath)="selectedPathFromHeader($event)" (hideMenus)="hideMenu($event)"></app-nav-header>
+<section *ngIf="false" class="breadcums-inner col-xs-12">
+   <div class="container parent-contents bread">
+      <div class="dashborad-breadcums">
+         <ul>
+            <app-breadcrum-link [bredcrumbPath]="currentPath"> </app-breadcrum-link>
+         </ul>
+      </div>
+   </div>
+</section>
+<section *ngIf="isShowMenu" class="dashboard-banner parent-banner col-xs-12">
+   <div class="container parent-contents-hello">
+      <h1>Hi, <span class="bold">{{userName}}</span></h1>
+   </div>
+</section>
+<section class="dash-inner-con col-xs-12 nav-options parent-contents-main-row" [ngClass]="[(isShowMenu) ? 'student-dash-tabs' : '']">
+   <div *ngIf="isShowMenu" (change)="pathSelected" class="container parent-contents parent-contents-container">
+      <div class="parents-dash-tabs ">
+         <div class="arrows_">
+            <div class="tabs-scroller">
+               <ul class="nav nav-tabs upper-ul scroller nav-option" routerLinkActive="active">
+                  <li *ngFor="let menu of menus" [ngClass]="[(menu.menuName === 'Dashboard' && isDefaultSelected) ? 'default-selected' : '' ]" [hidden]="showHideMenu(menu)" id="m{{menu.id}}"><a
+                        data-toggle="tab" href="" (click)="navigateTo(menu.id, menu.menuUrl, 'MAIN', menu.menuName)" routerLinkActive="active">{{menu.menuName}}</a></li>
+               </ul>
+            </div>
+         </div>
+      </div>
+   </div>
+<router-outlet (activate)="onActivate($event)"> </router-outlet>
+</section>
+<app-new-footer></app-new-footer>

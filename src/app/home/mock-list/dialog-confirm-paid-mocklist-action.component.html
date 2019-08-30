@@ -1,0 +1,9 @@
+<h2 mat-dialog-title>Confirm Action</h2>
+<div mat-dialog-content>
+  <p class="warn">You have seleted paid test. Please click on Buy button to buy subscription
+  </p>
+</div>
+<div mat-dialog-actions>
+  <button mat-button class="confirm" (click)="onBuyClick()">Buy</button>
+  <button mat-button class="confirm" [mat-dialog-close]="true" cdkFocusInitial>Cancel</button>
+</div>

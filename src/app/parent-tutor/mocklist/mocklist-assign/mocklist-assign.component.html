@@ -1,0 +1,106 @@
+<mat-card class="example-card search-for-assign">
+	<h3>Assign Test</h3>
+	<mat-form-field class="example-full-width">
+  		<input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter" id="filterText" #filterText="ngModel"  [(ngModel)]= "model.filterText">
+	</mat-form-field>
+	<mat-form-field class="example-full-width">
+		<input matInput type="date" placeholder="Due Date" id="dueDate" #filterText="ngModel"  [(ngModel)]= "model.dueDate">
+   </mat-form-field>
+	<mat-accordion displayMode="flat" multi class="example-headers-align mock-all">
+    <section matSort class="mat-header-row">
+      <span class="mat-header-cell es" mat-sort-header="select" >
+        <mat-checkbox (change)="$event ? masterToggle() : null"
+												[checked]="selection.hasValue() && isAllSelected()"
+												[indeterminate]="selection.hasValue() && !isAllSelected()">
+        </mat-checkbox>
+      </span>
+      <span class="mat-header-cell ex" mat-sort-header="type" >Exam Name</span>
+      <span class="mat-header-cell en" mat-sort-header="type" >Student Name</span>
+      <span class="mat-header-cell et" mat-sort-header="type" >Note</span>
+    </section>
+    <mat-expansion-panel *ngFor="let item of displayedRows$ | async">
+      <mat-expansion-panel-header class="mat-row">
+        <span class="mat-cell es">
+          <mat-checkbox (click)="$event.stopPropagation() " (change)="$event ? selection.toggle(item) : null;"
+						  [checked]="selection.isSelected(item)"
+                        [disabled]="item.status == 'NOTSTARTED' || item.status == 'INPROGRESS' || item.status == 'ARCHIVED'">
+          </mat-checkbox>
+        </span>
+        <span class="mat-cell ex" >{{item.examName}}</span>
+        <span class="mat-cell en" >{{item.studentName}}</span>
+        <span class="mat-cell et" >
+          <span *ngIf="item.status == 'ASSIGN'" matTooltip="Assign Exam to Student"  >Assign Exam</span>
+			    	<span *ngIf="item.status == 'NOTSTARTED'" class="inactive" matTooltip="Exam Assigned but not started"  >Exam assigned but not started, will not be Reassigned</span>
+			    	<span *ngIf="item.status == 'REASSIGN'" matTooltip="Reassign a completed test"  >Exam assigned and completed, can be Reassigned</span>
+					<span *ngIf="item.status == 'INPROGRESS'"  class="inactive" matTooltip="Exam is in progress">Exam assigned and inprogress, will not be Reassigned</span>
+					<span *ngIf="item.status == 'ARCHIVED'"  class="inactive" matTooltip="Archive student">Student is archived, exam can not be assigned</span>
+        </span>
+      </mat-expansion-panel-header>
+      <div class="item-content" *ngIf="item.status != '' && item.status != null">
+        <div class="content-item">
+          <div class="elem">Note</div>
+          <div class="val">
+            <span *ngIf="item.status == 'NOTSTARTED'" class="inactive" matTooltip="Exam Assigned but not started"  >Exam assigned but not started, will not be Reassigned</span>
+			    	<span *ngIf="item.status == 'REASSIGN'" matTooltip="Reassign a completed test"  >Exam assigned and completed, can be Reassigned</span>
+					<span *ngIf="item.status == 'INPROGRESS'"  class="inactive" matTooltip="Exam is in progress">Exam assigned and inprogress, will not be Reassigned</span>
+					<span *ngIf="item.status == 'ARCHIVED'"  class="inactive" matTooltip="Archive student">Student is archived, exam can not be assigned</span>
+          </div>
+        </div>
+      </div>
+    </mat-expansion-panel>
+  </mat-accordion>
+  <mat-paginator #paginator
+    [length]="totalRows$ | async"
+    [pageIndex]="0"
+    [pageSize]="5"
+    [pageSizeOptions]="[5, 10, 20]"
+    [showFirstLastButtons]="true"
+  ></mat-paginator>
+
+	<!--<mat-table #table [dataSource]="dataSource">-->
+		<!--<ng-container matColumnDef="select">-->
+					<!--<mat-header-cell *matHeaderCellDef class="table-header">-->
+					   <!--<mat-checkbox (change)="$event ? masterToggle() : null" [checked]="selection.hasValue() && isAllSelected()"-->
+						  <!--[indeterminate]="selection.hasValue() && !isAllSelected()">-->
+					   <!--</mat-checkbox>-->
+					<!--</mat-header-cell>-->
+					<!--<mat-cell *matCellDef="let element" class="wideCell">-->
+					   <!--<mat-checkbox (click)="$event.stopPropagation() " (change)="$event ? selection.toggle(element) : null;"-->
+						  <!--[checked]="selection.isSelected(element)" [disabled]="element.status == 'NOTSTARTED' || element.status == 'INPROGRESS' || element.status == 'ARCHIVED'">-->
+					   <!--</mat-checkbox>-->
+					<!--</mat-cell>-->
+		 <!--</ng-container>-->
+		<!--<ng-container matColumnDef="examName">-->
+			<!--<mat-header-cell *matHeaderCellDef> Exam Name </mat-header-cell>-->
+		    <!--<mat-cell *matCellDef="let element"> {{element.examName}} </mat-cell>-->
+		<!--</ng-container>-->
+
+		<!--<ng-container matColumnDef="studentName">-->
+			<!--<mat-header-cell *matHeaderCellDef> Student Name </mat-header-cell>-->
+		    <!--<mat-cell *matCellDef="let element"> {{element.studentName}} </mat-cell>-->
+		<!--</ng-container>-->
+
+		<!--<ng-container matColumnDef="status">-->
+			<!--<mat-header-cell *matHeaderCellDef> Note </mat-header-cell>-->
+		    <!--<mat-cell *matCellDef="let element">-->
+			    	<!--<span *ngIf="element.status == 'ASSIGN'" matTooltip="Assign Exam to Student"  >Assign Exam</span>-->
+			    	<!--<span *ngIf="element.status == 'NOTSTARTED'" class="inactive" matTooltip="Exam Assigned but not started"  >Exam assigned but not started, will not be Reassigned</span>-->
+			    	<!--<span *ngIf="element.status == 'REASSIGN'" matTooltip="Reassign a completed test"  >Exam assigned and completed, can be Reassigned</span>-->
+					<!--<span *ngIf="element.status == 'INPROGRESS'"  class="inactive" matTooltip="Exam is in progress">Exam assigned and inprogress, will not be Reassigned</span>-->
+					<!--<span *ngIf="element.status == 'ARCHIVED'"  class="inactive" matTooltip="Archive student">Student is archived, exam can not be assigned</span>-->
+		    <!--</mat-cell>-->
+		<!--</ng-container>-->
+
+	  	<!--<mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>-->
+	    <!--<mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>-->
+	<!--</mat-table>-->
+	<!--<mat-paginator #paginator-->
+							 <!--[pageSize]="5"-->
+							 <!--[pageSizeOptions]="[5, 10, 20]"-->
+							 <!--[showFirstLastButtons]="true">-->
+	<!--</mat-paginator>-->
+	<div class="navi-btn">
+	<button mat-raised-button class="btn btn-primary btn-active assigned-btn" (click)="action()" cdkFocusInitial>Assign</button>
+	<button mat-button (click)="onNoClick()">Cancel</button>
+	</div>
+</mat-card>

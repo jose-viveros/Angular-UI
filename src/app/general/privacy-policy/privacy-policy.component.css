@@ -1,0 +1,10 @@
+.container{
+  display: flex;
+  flex-direction: column;
+  min-width: 350px;
+  border-style: none;
+  font-family: sans-serif;
+  color: #204a87;
+    
+}
+

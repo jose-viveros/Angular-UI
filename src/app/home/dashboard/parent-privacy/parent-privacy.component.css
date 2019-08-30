@@ -1,0 +1,63 @@
+a{
+	color: #0080ff;
+}
+a:hover{
+ cursor: pointer;
+ color: #00ceff;
+}
+.color-active{
+  color: #0080ff;
+  text-decoration-line: underline;
+}
+.emp-row {
+  display: none!important;
+}
+.tab-for-status {
+  width: 100% !important;
+  margin: 0 0 20px!important;
+}
+.tab-for-status h3.status {
+  background: #2c2c2c !important;
+  color: white!important;
+  padding: 15px 0 !important;
+  border-radius: 5px 5px 0px 0px !important;
+}
+.tab-for-status .wrapper {
+  padding: 35px 20px!important;
+  margin: 0px 0px 0px!important;
+  border-bottom: solid 1px #bfbfbf!important;
+}
+.tab-for-status .wrapper:last-child {
+  border-bottom: solid 0px #bfbfbf!important;
+}
+.p-tools-sec h3{
+  margin: 20px 0;
+}
+.warn {
+  color: #2c2c2c;
+  font-family: 'Poppins', sans-serif !important;
+}
+.mat-dialog button{
+  border-radius: 5px !important;
+  color: #fff !important;
+}
+
+@media(max-width: 575px) and(min-width: 415px){
+  .p-tools-sec .inner{
+    left: -10px;
+   }
+  .p-tools-sec.inner h5{
+      left: 15px !important;
+      position: relative;
+   }
+   .text-center .move{
+      min-width: 255px !important;
+      font-size: 18px !important;
+   }
+}
+@media(max-width: 414px) and (min-width: 360px){
+  .red{
+    font-size: 14px !important;
+    padding: 15px !important;
+  }
+}

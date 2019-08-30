@@ -1,0 +1,43 @@
+<div style="border-style: none; height: 60px; max-width: 800px; margin: auto; text-align: right;" class="learning" >
+	<input type="submit" id = "mock" value="Start Topic Test" (click)="testrunner()" > 
+	<input type="submit" id = "back" value="Back" routerLink="/subject" >
+</div>
+
+<div class="container">
+<mat-table #table [dataSource]="testHistory">
+
+    <ng-container matColumnDef="date">
+      <mat-header-cell *matHeaderCellDef> Date </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.date}} </mat-cell>
+    </ng-container>
+	
+	<ng-container matColumnDef="testId">
+      <mat-header-cell *matHeaderCellDef> Test Id </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.testId}} </mat-cell>
+    </ng-container>
+     
+     <ng-container matColumnDef="score">
+      <mat-header-cell *matHeaderCellDef> Score </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.score}} </mat-cell>
+    </ng-container>
+     
+    <ng-container matColumnDef="results">
+      <mat-header-cell *matHeaderCellDef> Results </mat-header-cell>
+      <mat-cell *matCellDef="let element"> 
+      <button (click)="getResults(element.testId)" class="btn btn-primary">Results</button>
+      </mat-cell>
+    </ng-container>
+    
+     
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+
+  </mat-table>
+
+  <mat-paginator #paginator
+                 [pageSize]="5"
+                 [pageSizeOptions]="[5, 10, 20]"
+                 [showFirstLastButtons]="true">
+  </mat-paginator>
+
+ </div> 

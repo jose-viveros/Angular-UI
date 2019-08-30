@@ -1,0 +1,13 @@
+<div>
+    <div class="dg-content" mat-dialog-content>
+        <p>Exam Name: {{data.examName}}</p>
+        <p>Please write the problem description : </p>
+        <mat-form-field class="example-full-width">
+          <textarea matInput [(ngModel)]="data.desc"></textarea>
+        </mat-form-field>
+    </div>
+    <div class="dg-actions" mat-dialog-actions>
+        <button mat-button [mat-dialog-close]="data.desc" cdkFocusInitial>Submit</button>
+        <button mat-button (click)="onNoClick()">Cancel</button>
+    </div>
+</div>

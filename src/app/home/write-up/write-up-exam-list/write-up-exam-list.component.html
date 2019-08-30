@@ -1,0 +1,112 @@
+<!-- <article class="main-content">
+<ng4-loading-spinner [timeout]="7000"></ng4-loading-spinner>
+<div>
+    <mat-accordion class="example-headers-align">
+        <mat-card class="example-card">
+            <div class="row">
+                <label>Write-Up Type</label> <div class="col-sm-4">
+                    <mat-select class="select-area" placeholder="Write-up Type" name="freestyle" [(ngModel)]="model.selfreestyle" id="freestyle" #freestyle="ngModel" >
+                        <mat-option value="-1">All</mat-option> 
+                        <mat-option value="{{k.id}}" *ngFor="let k of model.freestyletopics">{{k.description}}</mat-option>
+                    </mat-select>
+                </div>
+                <div class="col-sm-4">
+                    <button mat-raised-button class="btn btn-primary btn-active table-information" (click)="search()"
+                        id="btnAdd">Search</button>
+                </div>
+            </div>
+        </mat-card>
+        <mat-card class="example-card">
+            <button mat-raised-button class="btn btn-primary btn-active table-information" (click)="addExam()"
+                    id="btnAdd">Add Exam</button>
+        </mat-card>
+        <mat-card class="example-card">
+            <mat-table #table class="table-section" [dataSource]="dataSource">
+                <ng-container matColumnDef="topicName">
+                    <mat-header-cell *matHeaderCellDef class="table-header"> Write-up Topic </mat-header-cell>
+                    <mat-cell *matCellDef="let element" class="table-information"> {{element.topicName}} </mat-cell>
+                </ng-container>
+                <ng-container matColumnDef="marks">
+                    <mat-header-cell *matHeaderCellDef class="table-header"> Marks
+                    </mat-header-cell>
+                    <mat-cell *matCellDef="let element" class="table-information"> {{element.marks}} </mat-cell>
+                </ng-container>
+                <ng-container matColumnDef="topic">
+                    <mat-header-cell *matHeaderCellDef class="table-header"> Write-up Type </mat-header-cell>
+                    <mat-cell *matCellDef="let element" class="table-information"> {{element.topic}} </mat-cell>
+                </ng-container>
+                <mat-header-row style="background:#f5f5f5" *matHeaderRowDef="displayedColumns">
+                </mat-header-row>
+                <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+            </mat-table>
+            <mat-paginator #paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 20]" [showFirstLastButtons]="true">
+            </mat-paginator>
+        </mat-card>
+    </mat-accordion>
+</div>
+</article> -->
+
+<div id="write-up-exam-list" class="parent-contents">
+	<ng4-loading-spinner [timeout]="7000"></ng4-loading-spinner>
+	<div class="inner-tabs-div col-sm-12">
+		<div class="activity-filters col-sm-12">
+			<div class="col-sm-12 show-by text-center exam-filter">
+				<div class="write-up-fltr col-sm-12 row">
+					<div class="col-sm-12" style="padding: 0 !important;">
+						<div class="col-xl-4 col-lg-3  col-md-3 col-sm-12  sech-by-name">
+							<label style="float:left">Write-Up Type:</label>
+							<mat-select class="select-area" placeholder="Select"
+								name="freestyle" [(ngModel)]="model.selfreestyle" id="freestyle"
+								#freestyle="ngModel"> <mat-option
+								value="-1">All</mat-option> <mat-option value="{{k.id}}"
+								*ngFor="let k of model.freestyletopics">{{k.description}}</mat-option>
+							</mat-select>
+
+						</div>
+						<div class="col-xl-8 col-lg-9 col-md-9 col-sm-12 radio-btn text-right">
+							<button mat-raised-button
+								class="btn btn-primary btn-active"
+								(click)="search()" id="btnSearch"><i class="fa fa-search"></i> Search</button>
+						</div>
+					</div>
+				
+				</div>
+			</div>
+			
+			<div class="col-sm-12 action-part">
+				
+					<div class="col-sm-4 selected-rec-wide text-left w-rec" style="margin-top:25px">
+						{{noOfRows}} Records found
+					 </div>
+					 <div class="col-sm-8 selected-rec-wide text-right w-rec" style="margin-top:-35px">
+					<button mat-raised-button
+								class="btn btn-primary btn-active"
+								(click)="addExam()" id="btnSearch">Add Exam</button>
+				  </div>
+			 </div>
+			 
+             <div class="stud-list">
+                 <mat-accordion displayMode="flat" multi class="example-headers-align exam-data-all">
+                    <section matSort class="mat-header-row">
+                      <span class="mat-header-cell e" mat-sort-header="topic" >WRITE-UP TOPIC</span>
+                      <span class="mat-header-cell n" mat-sort-header="marks" >MARKS</span>
+                      <span class="mat-header-cell e" mat-sort-header="type" >WRITE-UP TYPE</span>
+                    </section>
+                    <mat-expansion-panel *ngFor="let item of displayedRows$ | async"  >
+                      <mat-expansion-panel-header class="mat-row">
+                        <span class="mat-cell e" >{{item.topicName}}</span>
+                        <span class="mat-cell n" >{{item.marks}}</span>
+                        <span class="mat-cell e" >{{item.topic}}</span>
+                      </mat-expansion-panel-header>
+                     </mat-expansion-panel>
+                   </mat-accordion>
+                   <mat-paginator #paginator
+                    [length]="totalRows$ | async"
+                    [pageIndex]="0"
+                    [pageSize]="5"
+                    [pageSizeOptions]="[5, 10, 20]"
+                    [showFirstLastButtons]="true"
+                  ></mat-paginator>
+             </div>
+		</div>
+	</div>
